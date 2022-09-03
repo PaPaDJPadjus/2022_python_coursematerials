@@ -1,5 +1,4 @@
-"""Cha-ching!"""
-
+"""Raha."""
 money = int(input("Enter a sum: "))
 coins = 0
 
