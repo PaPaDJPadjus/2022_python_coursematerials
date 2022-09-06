@@ -1,6 +1,7 @@
 """Math operators."""
 from math import floor
 
+
 def add(x: int, y: int):
     """Add x to y."""
     return x + y
@@ -8,26 +9,25 @@ def add(x: int, y: int):
 
 def sub(x: int, y: int):
     """Subtract y from x."""
-    negate = x - y
-    pass
+    return x - y
 
 
 def multiply(x: int, y: int):
     """Multiply x by y."""
-    multiplication = x * y
-    pass
+    return x * y
 
 
 def div(x: int, y: int):
     """Divide x by y."""
-    division = x / y
-    pass
+    return x / y
+
 
 
 def modulus(x: int, y: int):
     """Divide x by y and return remainder. Use an arithmetic operator."""
     remaining = x % y
     pass
+
 
 def floor_div(x: int, y: int):
     """Divide x by y and floor the value. Use an arithmetic operator."""
@@ -94,8 +94,9 @@ def if_else(a: int, b: int, c: int, d: int):
         print("0")
     pass
 
+
 def surface(length: int, width: int):
-    """Add the missing parameters to calculate the surface of a rectangle. Calculate and return the value of the surface."""
+    """Missing parameters + surface."""
     rectangle_surface = length * width
     pass
 
@@ -104,6 +105,7 @@ def volume(length: int, width: int, height: int):
     """Add the missing parameters to calculate the volume of a cuboid. Calculate and return the value of the volume."""
     cuboid_volume = length * width * height
     pass
+
 
 def calculate(a: int, x: int, y: int):
     """Takes input from user and picks the equation and numbers."""
@@ -116,9 +118,10 @@ def calculate(a: int, x: int, y: int):
     elif a == 3:
         print(div(x, y))
 
+
 print(f"Possible equations: \n0. Add\n1. Subtract\n2. Multiply\n3. Divide")
 a = input("Enter which equation: ")
 x = input("Enter the first number: ")
 y = input("Enter the second number: ")
 
-print(calculate(a, x, y))
+print(calculate(int(a), int(x), int(y)))
