@@ -40,7 +40,7 @@ def exponent(x: int, y: int) -> int:
 def first_greater_or_equal(x: int, y: int) -> str:
     """If x is greater or equal than y then return True. If not then return False."""
     if x >= y:
-        print("True")
+        return "True"
     else:
         return "False"
 
@@ -48,7 +48,7 @@ def first_greater_or_equal(x: int, y: int) -> str:
 def second_less_or_equal(x: int, y: int) -> str:
     """If y is less or equal than x then return True. If not then return False."""
     if y <= x:
-        print("True")
+        return "True"
     else:
         return "False"
 
@@ -56,7 +56,7 @@ def second_less_or_equal(x: int, y: int) -> str:
 def x_is_y(x: int, y: int) -> str:
     """If x value is the same as y value then return True. If not then return False."""
     if x == y:
-        print("True")
+        return "True"
     else:
         return "False"
 
@@ -64,12 +64,12 @@ def x_is_y(x: int, y: int) -> str:
 def x_is_not_y(x: int, y: int) -> str:
     """If x value is not the same as y value then return True. If not then return False."""
     if x == y:
-        print("False")
+        return "False"
     else:
         return "True"
 
 
-def if_else(a: int, b: int, c: int, d: int) -> int:
+def if_else(a: int, b: int, c: int, d: int) -> str | int:
     """
     Create a program that has 4 numeric parameters.
 
@@ -79,9 +79,9 @@ def if_else(a: int, b: int, c: int, d: int) -> int:
     parameters_ab = multiply(a, b)
     parameters_cd = div(c, d)
     if parameters_ab > parameters_cd:
-        print(f"{parameters_ab} is greater")
+        return str(parameters_ab)
     elif parameters_ab < parameters_cd:
-        print(f"{parameters_cd} is greater")
+        return str(parameters_cd)
     elif parameters_ab == parameters_cd:
         return 0
 
@@ -99,18 +99,35 @@ def volume(length: int, width: int, height: int) -> int:
 def calculate(a: int, x: int, y: int) -> int:
     """Takes input from user and picks the equation and numbers."""
     if a == 0:
-        print(add(x, y))
+        return add(x, y)
     elif a == 1:
-        print(sub(x, y))
+        return sub(x, y)
     elif a == 2:
-        print(multiply(x, y))
+        return multiply(x, y)
     elif a == 3:
         return div(x, y)
 
 
-print(f"Possible equations:\n 0. Add\n 1. Subtract\n 2. Multiply\n 3. Divide")
+print(f"Possible equations:\n0. Add \n1. Subtract \n2. Multiply \n3. Divide ")
 a = input("Enter which equation: ")
 x = input("Enter the first number: ")
 y = input("Enter the second number: ")
 
 print(calculate(int(a), int(x), int(y)))
+
+if __name__ == '__main__':
+    print(add(1, -2))  # -1
+    print(sub(5, 5))  # 0
+    print(multiply(5, 5))  # 25
+    print(div(15, 5))  # 3
+    print(modulus(9, 3))  # 0
+    print(floor_div(3, 2))  # 1
+    print(exponent(5, 5))  # 3125
+    print(first_greater_or_equal(1, 2))  # False
+    print(second_less_or_equal(5, 5))  # True
+    print(x_is_y(1, 2))  # False
+    print(x_is_not_y(1, 2))  # True
+    print(if_else(1, 3, 5, 99))  # 3
+    print(if_else(2, 1, 10, 5))  # 0
+    print(surface(1, 2))  # 2
+    print(volume(5, 5, 5))  # 125
