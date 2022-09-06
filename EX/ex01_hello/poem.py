@@ -1,3 +1,4 @@
+"""Luuletus ex02."""
 colour = input("Enter a colour ")
 object = input("Enter plural objects ")
 activity = input("Enter an activity ")

@@ -1,2 +1,3 @@
-"""Mingi lause."""
-print("Hello, World!")
+"""Intro sentence."""
+
+print("Hello world!")
