@@ -22,23 +22,19 @@ def div(x: int, y: int):
     return x / y
 
 
-
 def modulus(x: int, y: int):
     """Divide x by y and return remainder. Use an arithmetic operator."""
-    remaining = x % y
-    pass
+    return x % y
 
 
 def floor_div(x: int, y: int):
     """Divide x by y and floor the value. Use an arithmetic operator."""
-    div_floor = floor(x / y)
-    pass
+    return floor(x / y)
 
 
 def exponent(x: int, y: int):
     """Calculate x raised to the power of y."""
-    power = x ** y
-    pass
+    return x ** y
 
 
 def first_greater_or_equal(x: int, y: int):
@@ -46,17 +42,15 @@ def first_greater_or_equal(x: int, y: int):
     if x >= y:
         print("True")
     else:
-        print("False")
-    pass
+        return "False"
 
 
 def second_less_or_equal(x: int, y: int):
     """If y is less or equal than x then return True. If not then return False."""
-    if y >= x:
+    if y <= x:
         print("True")
     else:
-        print("False")
-    pass
+        return "False"
 
 
 def x_is_y(x: int, y: int):
@@ -64,8 +58,7 @@ def x_is_y(x: int, y: int):
     if x == y:
         print("True")
     else:
-        print("False")
-    pass
+        return "False"
 
 
 def x_is_not_y(x: int, y: int):
@@ -73,8 +66,8 @@ def x_is_not_y(x: int, y: int):
     if x == y:
         print("False")
     else:
-        print("True")
-    pass
+        return "True"
+
 
 
 def if_else(a: int, b: int, c: int, d: int):
@@ -84,27 +77,24 @@ def if_else(a: int, b: int, c: int, d: int):
     Multiply parameters 1-2 (multiply a by b) by each other and divide parameters 3-4 (divide c by d) by each other.
     Next check and return the greater value. If both values are the same then return 0 (number zero).
     """
-    parametersab = multiply(a, b)
-    parameterscd = div(c, d)
-    if parametersab > parameterscd:
-        print(f"{parametersab} is greater")
-    elif parametersab < parameterscd:
-        print(f"{parameterscd} is greater")
-    elif parametersab == parameterscd:
-        print("0")
-    pass
+    parameters_ab = multiply(a, b)
+    parameters_cd = div(c, d)
+    if parameters_ab > parameters_cd:
+        print(f"{parameters_ab} is greater")
+    elif parameters_ab < parameters_cd:
+        print(f"{parameters_cd} is greater")
+    elif parameters_ab == parameters_cd:
+        return "0"
 
 
 def surface(length: int, width: int):
     """Missing parameters + surface."""
-    rectangle_surface = length * width
-    pass
+    return length * width
 
 
 def volume(length: int, width: int, height: int):
     """Add the missing parameters to calculate the volume of a cuboid. Calculate and return the value of the volume."""
-    cuboid_volume = length * width * height
-    pass
+    return length * width * height
 
 
 def calculate(a: int, x: int, y: int):
@@ -116,7 +106,7 @@ def calculate(a: int, x: int, y: int):
     elif a == 2:
         print(multiply(x, y))
     elif a == 3:
-        print(div(x, y))
+        return div(x, y)
 
 
 print(f"Possible equations: \n0. Add\n1. Subtract\n2. Multiply\n3. Divide")
@@ -125,3 +115,23 @@ x = input("Enter the first number: ")
 y = input("Enter the second number: ")
 
 print(calculate(int(a), int(x), int(y)))
+
+if __name__ == '__main__':
+    print(add(1, -2))  # -1
+    print(sub(5, 5))  # 0
+    print(multiply(5, 5))  # 25
+    print(div(15, 5))  # 3
+    print(modulus(9, 3))  # 0
+    print(floor_div(3, 2))  # 1
+    print(exponent(5, 5))  # 3125
+    print(first_greater_or_equal(1, 2))  # False
+    print(second_less_or_equal(5, 5))  # True
+    print(x_is_y(1, 2))  # False
+    print(x_is_not_y(1, 2))  # True
+    print(if_else(1, 3, 5, 99))  # 3
+    print(if_else(2, 1, 10, 5))  # 0
+    # print(surface(1, 2)) # 2
+    # print(volume(5, 5, 5)) # 125
+    # print(clock(0, 0, 1, 15))  # 1.25
+    # print(clock(0, 1, 5, 0))  # 65
+    # Try "calculate" here
