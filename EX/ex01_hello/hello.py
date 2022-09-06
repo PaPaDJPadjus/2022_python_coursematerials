@@ -1,7 +1,8 @@
-"""Hello kood ex01."""
+"""Hello code ex01."""
+
 name = input("What is your name? ")   # asks for name
-esimene = int(input("Hello, " + str(name) + "! Enter a random number: "))   # says name and asks for first number
-print(esimene)
-teine = int(input("Great! Now enter a second random number: "))    # asks for second number
-print(teine)
-print(str(esimene) + " + " + str(teine) + " " + "is " + str(esimene + teine))    # prints equation with answer
+first = int(input("Hello, " + str(name) + "! Enter a random number: "))   # says name and asks for first number
+print(first)
+second = int(input("Great! Now enter a second random number: "))    # asks for second number
+print(second)
+print(str(first) + " + " + str(second) + " " + "is " + str(first + second))    # prints equation with answer
