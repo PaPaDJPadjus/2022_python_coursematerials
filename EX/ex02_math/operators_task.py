@@ -2,42 +2,42 @@
 from math import floor
 
 
-def add(x: int, y: int):
+def add(x: int, y: int) -> int:
     """Add x to y."""
     return x + y
 
 
-def sub(x: int, y: int):
+def sub(x: int, y: int) -> int:
     """Subtract y from x."""
     return x - y
 
 
-def multiply(x: int, y: int):
+def multiply(x: int, y: int) -> int:
     """Multiply x by y."""
     return x * y
 
 
-def div(x: int, y: int):
+def div(x: int, y: int) -> int:
     """Divide x by y."""
-    return x / y
+    return round(x / y)
 
 
-def modulus(x: int, y: int):
+def modulus(x: int, y: int) -> int:
     """Divide x by y and return remainder. Use an arithmetic operator."""
     return x % y
 
 
-def floor_div(x: int, y: int):
+def floor_div(x: int, y: int) -> int:
     """Divide x by y and floor the value. Use an arithmetic operator."""
     return floor(x / y)
 
 
-def exponent(x: int, y: int):
+def exponent(x: int, y: int) -> int:
     """Calculate x raised to the power of y."""
     return x ** y
 
 
-def first_greater_or_equal(x: int, y: int):
+def first_greater_or_equal(x: int, y: int) -> str:
     """If x is greater or equal than y then return True. If not then return False."""
     if x >= y:
         print("True")
@@ -45,7 +45,7 @@ def first_greater_or_equal(x: int, y: int):
         return "False"
 
 
-def second_less_or_equal(x: int, y: int):
+def second_less_or_equal(x: int, y: int) -> str:
     """If y is less or equal than x then return True. If not then return False."""
     if y <= x:
         print("True")
@@ -53,7 +53,7 @@ def second_less_or_equal(x: int, y: int):
         return "False"
 
 
-def x_is_y(x: int, y: int):
+def x_is_y(x: int, y: int) -> str:
     """If x value is the same as y value then return True. If not then return False."""
     if x == y:
         print("True")
@@ -61,7 +61,7 @@ def x_is_y(x: int, y: int):
         return "False"
 
 
-def x_is_not_y(x: int, y: int):
+def x_is_not_y(x: int, y: int) -> str:
     """If x value is not the same as y value then return True. If not then return False."""
     if x == y:
         print("False")
@@ -69,8 +69,7 @@ def x_is_not_y(x: int, y: int):
         return "True"
 
 
-
-def if_else(a: int, b: int, c: int, d: int):
+def if_else(a: int, b: int, c: int, d: int) -> int:
     """
     Create a program that has 4 numeric parameters.
 
@@ -84,20 +83,20 @@ def if_else(a: int, b: int, c: int, d: int):
     elif parameters_ab < parameters_cd:
         print(f"{parameters_cd} is greater")
     elif parameters_ab == parameters_cd:
-        return "0"
+        return 0
 
 
-def surface(length: int, width: int):
+def surface(length: int, width: int) -> int:
     """Missing parameters + surface."""
     return length * width
 
 
-def volume(length: int, width: int, height: int):
+def volume(length: int, width: int, height: int) -> int:
     """Add the missing parameters to calculate the volume of a cuboid. Calculate and return the value of the volume."""
     return length * width * height
 
 
-def calculate(a: int, x: int, y: int):
+def calculate(a: int, x: int, y: int) -> int:
     """Takes input from user and picks the equation and numbers."""
     if a == 0:
         print(add(x, y))
@@ -109,29 +108,9 @@ def calculate(a: int, x: int, y: int):
         return div(x, y)
 
 
-print(f"Possible equations: \n0. Add\n1. Subtract\n2. Multiply\n3. Divide")
+print(f"Possible equations:\n 0. Add\n 1. Subtract\n 2. Multiply\n 3. Divide")
 a = input("Enter which equation: ")
 x = input("Enter the first number: ")
 y = input("Enter the second number: ")
 
 print(calculate(int(a), int(x), int(y)))
-
-if __name__ == '__main__':
-    print(add(1, -2))  # -1
-    print(sub(5, 5))  # 0
-    print(multiply(5, 5))  # 25
-    print(div(15, 5))  # 3
-    print(modulus(9, 3))  # 0
-    print(floor_div(3, 2))  # 1
-    print(exponent(5, 5))  # 3125
-    print(first_greater_or_equal(1, 2))  # False
-    print(second_less_or_equal(5, 5))  # True
-    print(x_is_y(1, 2))  # False
-    print(x_is_not_y(1, 2))  # True
-    print(if_else(1, 3, 5, 99))  # 3
-    print(if_else(2, 1, 10, 5))  # 0
-    # print(surface(1, 2)) # 2
-    # print(volume(5, 5, 5)) # 125
-    # print(clock(0, 0, 1, 15))  # 1.25
-    # print(clock(0, 1, 5, 0))  # 65
-    # Try "calculate" here
