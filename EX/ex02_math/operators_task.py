@@ -108,7 +108,7 @@ def calculate(a: int, x: int, y: int) -> int:
         return div(x, y)
 
 
-print(f"Possible equations:\n0. Add \n1. Subtract \n2. Multiply \n3. Divide ")
+print(f"Possible equations:\n0 - Add\n1 - Subtract\n2 - Multiply\n3 - Divide.")
 a = input("Enter which equation: ")
 x = input("Enter the first number: ")
 y = input("Enter the second number: ")
