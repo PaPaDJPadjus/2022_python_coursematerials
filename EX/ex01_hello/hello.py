@@ -1,4 +1,4 @@
-"""Hello code ex01."""
+"""Hello code ex01 intro."""
 
 name = input("What is your name? ")   # asks for name
 first = int(input("Hello, " + str(name) + "! Enter a random number: "))   # says name and asks for first number
