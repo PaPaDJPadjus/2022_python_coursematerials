@@ -37,39 +37,39 @@ def exponent(x: int, y: int) -> int:
     return x ** y
 
 
-def first_greater_or_equal(x: int, y: int) -> str:
+def first_greater_or_equal(x: int, y: int):
     """If x is greater or equal than y then return True. If not then return False."""
     if x >= y:
-        return str(True)
+        return True
     else:
-        return str(False)
+        return False
 
 
-def second_less_or_equal(x: int, y: int) -> str:
+def second_less_or_equal(x: int, y: int):
     """If y is less or equal than x then return True. If not then return False."""
     if y <= x:
-        return str(True)
+        return True
     else:
-        return str(False)
+        return False
 
 
-def x_is_y(x: int, y: int) -> str:
+def x_is_y(x: int, y: int):
     """If x value is the same as y value then return True. If not then return False."""
     if x == y:
-        return str(True)
+        return True
     else:
-        return str(False)
+        return False
 
 
-def x_is_not_y(x: int, y: int) -> str:
+def x_is_not_y(x: int, y: int):
     """If x value is not the same as y value then return True. If not then return False."""
     if x == y:
-        return str(False)
+        return False
     else:
-        return str(True)
+        return True
 
 
-def if_else(a: int, b: int, c: int, d: int) -> str | int:
+def if_else(a: int, b: int, c: int, d: int):
     """
     Create a program that has 4 numeric parameters.
 
@@ -79,14 +79,14 @@ def if_else(a: int, b: int, c: int, d: int) -> str | int:
     parameters_ab = multiply(a, b)
     parameters_cd = div(c, d)
     if parameters_ab > parameters_cd:
-        return str(parameters_ab)
+        return int(parameters_ab)
     if parameters_ab < parameters_cd:
-        return str(parameters_cd)
+        return int(parameters_cd)
     if parameters_ab == parameters_cd:
         return 0
 
 
-def surface(length: int, width: int) -> int:
+def surface(length: int, width: int):
     """Missing parameters + surface."""
     return length * width
 
@@ -103,7 +103,7 @@ def clock(days: int, hours: int, minutes: int, seconds: int):
     return minutes + days + seconds + hours
 
 
-def calculate(a: int, x: int, y: int) -> int:
+def calculate(a: int, x: int, y: int):
     """Takes input from user and picks the equation and numbers."""
     if a == 0:
         return add(x, y)
