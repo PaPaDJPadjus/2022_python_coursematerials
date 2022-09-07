@@ -96,6 +96,13 @@ def volume(length: int, width: int, height: int) -> int:
     return length * width * height
 
 
+def clock(days: int, hours: int, minutes: int, seconds: int):
+    days = days * 24 * 60
+    hours = hours * 60
+    seconds = seconds / 60
+    return minutes + days + seconds + hours
+
+
 def calculate(a: int, x: int, y: int) -> int:
     """Takes input from user and picks the equation and numbers."""
     if a == 0:
@@ -124,3 +131,6 @@ if __name__ == '__main__':
     print(if_else(2, 1, 10, 5))  # 0
     print(surface(1, 2))  # 2
     print(volume(5, 5, 5))  # 125
+    print(clock(0, 0, 1, 15))  # 1.25
+    print(clock(0, 1, 5, 0))  # 65
+    print(calculate(0, 1, 1))
