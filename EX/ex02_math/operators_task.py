@@ -79,9 +79,9 @@ def if_else(a: int, b: int, c: int, d: int):
     parameters_ab = multiply(a, b)
     parameters_cd = div(c, d)
     if parameters_ab > parameters_cd:
-        return int(parameters_ab)
+        return parameters_ab
     if parameters_ab < parameters_cd:
-        return int(parameters_cd)
+        return parameters_cd
     if parameters_ab == parameters_cd:
         return 0
 
