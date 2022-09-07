@@ -17,9 +17,9 @@ def multiply(x: int, y: int) -> int:
     return x * y
 
 
-def div(x: int, y: int) -> int:
+def div(x: int, y: int):
     """Divide x by y."""
-    return round(x / y)
+    return x / y
 
 
 def modulus(x: int, y: int) -> int:
@@ -40,33 +40,33 @@ def exponent(x: int, y: int) -> int:
 def first_greater_or_equal(x: int, y: int) -> str:
     """If x is greater or equal than y then return True. If not then return False."""
     if x >= y:
-        return "True"
+        return "'True'"
     else:
-        return "False"
+        return "'False'"
 
 
 def second_less_or_equal(x: int, y: int) -> str:
     """If y is less or equal than x then return True. If not then return False."""
     if y <= x:
-        return "True"
+        return "'True'"
     else:
-        return "False"
+        return "'False'"
 
 
 def x_is_y(x: int, y: int) -> str:
     """If x value is the same as y value then return True. If not then return False."""
     if x == y:
-        return "True"
+        return "'True'"
     else:
-        return "False"
+        return "'False'"
 
 
 def x_is_not_y(x: int, y: int) -> str:
     """If x value is not the same as y value then return True. If not then return False."""
     if x == y:
-        return "False"
+        return "'False'"
     else:
-        return "True"
+        return "'True'"
 
 
 def if_else(a: int, b: int, c: int, d: int) -> str | int:
@@ -80,9 +80,9 @@ def if_else(a: int, b: int, c: int, d: int) -> str | int:
     parameters_cd = div(c, d)
     if parameters_ab > parameters_cd:
         return str(parameters_ab)
-    elif parameters_ab < parameters_cd:
+    if parameters_ab < parameters_cd:
         return str(parameters_cd)
-    elif parameters_ab == parameters_cd:
+    if parameters_ab == parameters_cd:
         return 0
 
 
