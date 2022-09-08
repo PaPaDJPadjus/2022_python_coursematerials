@@ -39,7 +39,7 @@ def school_pressure(ects: int, weeks: int):
     if ects_hours > weeks_hours:
         return -1
     else:
-        return float(pressure)
+        return pressure
 
 
 def add_fractions(a: int, b: int, c: int, d: int):
