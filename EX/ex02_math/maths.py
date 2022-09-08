@@ -16,7 +16,7 @@ def average(a: int, b: int, c: int, d: int) -> float:
     return (a + b + c + d) / 4
 
 
-def school_pressure(ects: int, weeks: int) -> float:
+def school_pressure(ects: int, weeks: int):
     """
     Implement a function to know how many hours are needed per week if each ECTS is 26 hours.
 
@@ -30,7 +30,7 @@ def school_pressure(ects: int, weeks: int) -> float:
     weeks_hours = weeks * 168
     ects_hours = ects * 26
     pressure = ects_hours / weeks
-    if ects_hours > weeks_hours or weeks == 0:
+    if ects_hours > weeks_hours or weeks == 0 or pressure <= 1:
         return -1
     else:
         return pressure
@@ -56,5 +56,7 @@ def add_fractions(a: int, b: int, c: int, d: int):
     first_top_fraction = a * d
     second_top_fraction = c * b
     sum_fractions = first_top_fraction + second_top_fraction
-    print(f"{sum_fractions}/{bottom_fraction}")
-    return
+    return str(sum_fractions) + "/" + str(bottom_fraction)
+
+
+print(school_pressure(30, 12))
