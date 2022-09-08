@@ -30,7 +30,7 @@ def school_pressure(ects: int, weeks: int):
     weeks_hours = weeks * 168
     ects_hours = ects * 26
     pressure = ects_hours / weeks
-    if ects_hours > weeks_hours or weeks == 0 or pressure <= 1:
+    if ects_hours > weeks_hours or weeks == 0 or pressure <= 1 or pressure == 0:
         return -1
     else:
         return pressure
