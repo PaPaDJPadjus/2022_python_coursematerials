@@ -36,7 +36,7 @@ def school_pressure(ects: int, weeks: int) -> float:
         return pressure
 
 
-def add_fractions(a: int, b: int, c: int, d: int) -> str:
+def add_fractions(a: int, b: int, c: int, d: int):
     """
     Implement a function that takes 4 parameters.
 
@@ -52,6 +52,9 @@ def add_fractions(a: int, b: int, c: int, d: int) -> str:
     add_fractions(1, 3, 1, 3) # 1/3 + 1/3 => there are many correct answers like "2/3" and "6/9"
     add_fractions(2, 5, 1, 5) # 2/5 + 1/5 => there are many correct answers like "3/5" and "15/25"
     """
-
-
-
+    bottom_fraction = b * d
+    first_top_fraction = a * d
+    second_top_fraction = c * b
+    sum_fractions = first_top_fraction + second_top_fraction
+    print(f"{sum_fractions}/{bottom_fraction}")
+    return
