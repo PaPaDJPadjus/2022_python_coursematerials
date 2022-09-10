@@ -1,6 +1,3 @@
-"""Prime numbers."""
-
-
 def is_prime_number(number: int):
     """
     Check if the number is a prime number.
