@@ -113,4 +113,3 @@ def calculate(a: int, x: int, y: int):
         return multiply(x, y)
     elif a == 3:
         return div(x, y)
-
