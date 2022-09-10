@@ -114,23 +114,3 @@ def calculate(a: int, x: int, y: int):
     elif a == 3:
         return div(x, y)
 
-
-if __name__ == '__main__':
-    print(add(1, -2))  # -1
-    print(sub(5, 5))  # 0
-    print(multiply(5, 5))  # 25
-    print(div(15, 5))  # 3
-    print(modulus(9, 3))  # 0
-    print(floor_div(3, 2))  # 1
-    print(exponent(5, 5))  # 3125
-    print(first_greater_or_equal(1, 2))  # False
-    print(second_less_or_equal(5, 5))  # True
-    print(x_is_y(1, 2))  # False
-    print(x_is_not_y(1, 2))  # True
-    print(if_else(1, 3, 5, 99))  # 3
-    print(if_else(2, 1, 10, 5))  # 0
-    print(surface(1, 2))  # 2
-    print(volume(5, 5, 5))  # 125
-    print(clock(0, 0, 1, 15))  # 1.25
-    print(clock(0, 1, 5, 0))  # 65
-    print(calculate(0, 1, 1))
