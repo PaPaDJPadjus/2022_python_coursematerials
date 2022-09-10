@@ -97,6 +97,7 @@ def volume(length: int, width: int, height: int) -> int:
 
 
 def clock(days: int, hours: int, minutes: int, seconds: int):
+    """Convert everything into minutes."""
     days = days * 24 * 60
     hours = hours * 60
     seconds = seconds / 60
@@ -104,7 +105,7 @@ def clock(days: int, hours: int, minutes: int, seconds: int):
 
 
 def calculate(a: int, x: int, y: int):
-    """Takes input from user and picks the equation and numbers."""
+    """Take input from user and pick equation and numbers."""
     if a == 0:
         return add(x, y)
     elif a == 1:
