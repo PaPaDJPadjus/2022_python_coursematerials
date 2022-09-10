@@ -29,12 +29,12 @@ def encode(message: str, shift: int):
     if shift == 0:
         return message
     for el in message:
-        if el == " ":
-            encoded_message += " "
-        else:
+        if el in alphabet:
             shifted_letter_num = alphabet.find(el)
             cipher_to_letter_num = (shifted_letter_num + shift) % 26
             encoded_message += alphabet[cipher_to_letter_num]
+        else:
+            encoded_message += el
 
     return encoded_message
 
