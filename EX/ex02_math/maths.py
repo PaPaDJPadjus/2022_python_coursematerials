@@ -1,3 +1,6 @@
+"""Does maths."""
+
+
 def average(a: int, b: int, c: int, d: int) -> float:
     """
     Implement a function that has 4 numeric parameters.
