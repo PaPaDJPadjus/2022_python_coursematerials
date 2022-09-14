@@ -71,7 +71,6 @@ def the_first_control_number_algorithm(text: str) -> str:
     if length > 11 or length < 11:
         return "Incorrect ID code!"
 
-
     for el in control_id_code:
         if i < 10:
             controlled_number = int(el) * i
