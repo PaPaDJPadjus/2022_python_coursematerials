@@ -70,13 +70,13 @@ def the_first_control_number_algorithm(text: str) -> str:
     if length > 11 or length < 11:
         return "Incorrect ID code!"
 
-    for el in control_id_code:
-        control_number = int(el) * int((el in weight))
+    for el in weight:
+        control_number = int(el) *
         controlled_weight += control_number
     print(controlled_weight)
 
     last_digit = int(control_id_code[-1:])
-    controlled_weight %= 11
+    controlled_weight = controlled_weight % 11
     if length == 11 and int(controlled_weight) == last_digit:
         return control_id_code
     else:
