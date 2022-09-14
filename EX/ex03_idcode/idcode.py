@@ -65,23 +65,19 @@ def the_first_control_number_algorithm(text: str) -> str:
         else:
             continue
 
-    last_digit = int(control_id_code[-1:])
-
     for el in control_id_code:
         length += 1
     if length > 11 or length < 11:
         return "Incorrect ID code!"
 
-    for el in control_id_code:
-        while int(el) < 11:
-            control_number = int(el) * int((el in weight))
-            controlled_weight += control_number
-
+    for el in weight:
+        controlled_number = int(el) * int((el in control_id_code))
+        controlled_weight += controlled_number
     controlled_weight %= 11
-    if int(controlled_weight) < 10 and last_digit == controlled_weight:
-        return control_id_code
-    else:
+    if int(controlled_weight) == int(control_id_code[-1:]):
         return "Needs the second algorithm!"
+    else:
+        return control_id_code
 
 
 if __name__ == '__main__':
