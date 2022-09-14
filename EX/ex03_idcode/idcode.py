@@ -59,6 +59,9 @@ def the_first_control_number_algorithm(text: str) -> str:
     length = 0
     numbers = "0123456789"
     weight = "1234567891"
+    i = 0
+    j = 1
+
     for el in text:
         if el in numbers:
             control_id_code += str(el)
@@ -71,15 +74,16 @@ def the_first_control_number_algorithm(text: str) -> str:
         return "Incorrect ID code!"
 
     for el in weight:
-        controlled_number = int(el) * int((el in control_id_code))
+        controlled_number = int(weight.find(el)) * int(control_id_code[i:])
         controlled_weight += controlled_number
+        i += 1
+
     controlled_weight %= 11
-    if controlled_weight == 0:
-        return "Incorrect ID code!"
+    print(controlled_weight)
     if int(controlled_weight) == int(control_id_code[-1:]):
-        return "Needs the second algorithm!"
-    else:
         return control_id_code
+    if int(controlled_weight) != int(control_id_code[-1:]):
+        return "Needs the second algorithm!"
 
 
 if __name__ == '__main__':
@@ -93,6 +97,6 @@ if __name__ == '__main__':
     print(the_first_control_number_algorithm("123456789123456789"))  # -> "Incorrect ID code!"
     print(the_first_control_number_algorithm("ID code is: 49403136526"))  # -> "49403136526"
     print(the_first_control_number_algorithm("efs4  9   #4aw0h 3r 1a36g5j2!!6-"))  # -> "49403136526"
-    print(the_first_control_number_algorithm("50412057633"))  # -> "50412057633"
-    print(the_first_control_number_algorithm("Peeter's ID is euf50weird2fs0fsk51ef6t0s2yr7fyf4"))  # -> "Needs
+    print(the_first_control_number_algorithm("51201166313"))  # -> "2nd"
+    print(the_first_control_number_algorithm("Peeter's ID is 50205160274"))  # -> "Needs
     # the second algorithm!"
