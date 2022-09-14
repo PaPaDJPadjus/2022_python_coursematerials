@@ -74,6 +74,8 @@ def the_first_control_number_algorithm(text: str) -> str:
         controlled_number = int(el) * int((el in control_id_code))
         controlled_weight += controlled_number
     controlled_weight %= 11
+    if controlled_weight == 0:
+        return "Incorrect ID code!"
     if int(controlled_weight) == int(control_id_code[-1:]):
         return "Needs the second algorithm!"
     else:
