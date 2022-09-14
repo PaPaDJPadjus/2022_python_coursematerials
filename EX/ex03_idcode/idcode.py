@@ -91,7 +91,6 @@ def the_first_control_number_algorithm(text: str) -> str:
         return "Needs the second algorithm!"
 
 
-
 if __name__ == '__main__':
     print("\nFind ID code:")
     print(find_id_code(""))  # -> "Not enough numbers!"
@@ -103,6 +102,6 @@ if __name__ == '__main__':
     print(the_first_control_number_algorithm("12345678912"))  # -> "Incorrect ID code!"
     print(the_first_control_number_algorithm("ID code is: 49403136526"))  # -> "49403136526"
     print(the_first_control_number_algorithm("efs4  9   #4aw0h 3r 1a36g5j2!!6-"))  # -> "49403136526"
-    print(the_first_control_number_algorithm("51201166313"))  # -> "2nd"
+    print(the_first_control_number_algorithm("50412057633"))
     print(the_first_control_number_algorithm("Peeter's ID is 50205160274"))  # -> "Needs
     # the second algorithm!"
