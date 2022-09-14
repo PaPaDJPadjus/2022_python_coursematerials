@@ -55,7 +55,7 @@ def the_first_control_number_algorithm(text: str) -> str:
     :return: string
     """
     control_id_code = ""
-    controlled_weight = ""
+    controlled_weight = 0
     length = 0
     numbers = "0123456789"
     weight = "1234567891"
@@ -65,20 +65,20 @@ def the_first_control_number_algorithm(text: str) -> str:
         else:
             continue
 
+    last_digit = int(control_id_code[-1:])
+
     for el in control_id_code:
         length += 1
-    if length == 11:
-        return control_id_code
     if length > 11 or length < 11:
         return "Incorrect ID code!"
 
     for el in control_id_code:
         while int(el) < 11:
-            control_number = el * (el in weight)
+            control_number = int(el) * int((el in weight))
             controlled_weight += control_number
 
     controlled_weight %= 11
-    if int(controlled_weight) < 10:
+    if int(controlled_weight) < 10 and last_digit == controlled_weight:
         return control_id_code
     else:
         return "Needs the second algorithm!"
@@ -97,4 +97,4 @@ if __name__ == '__main__':
     print(the_first_control_number_algorithm("efs4  9   #4aw0h 3r 1a36g5j2!!6-"))  # -> "49403136526"
     print(the_first_control_number_algorithm("50412057633"))  # -> "50412057633"
     print(the_first_control_number_algorithm("Peeter's ID is euf50weird2fs0fsk51ef6t0s2yr7fyf4"))  # -> "Needs
-    # the second algorithm
+    # the second algorithm!"
