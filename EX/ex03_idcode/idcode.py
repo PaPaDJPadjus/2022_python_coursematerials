@@ -68,8 +68,6 @@ def the_first_control_number_algorithm(text: str) -> str:
 
     for el in control_id_code:
         length += 1
-    if length > 11 or length < 11:
-        return "Incorrect ID code!"
 
     for el in control_id_code:
         if i < 10:
@@ -83,13 +81,15 @@ def the_first_control_number_algorithm(text: str) -> str:
             break
 
     controlled_weight %= 11
-    print(controlled_weight)
-    if controlled_weight == 0:
+    if length > 11 or length < 11:
+        return "Incorrect ID code!"
+    if controlled_weight == 0 or controlled_weight > 10:
         return "Incorrect ID code!"
     if controlled_weight < 10 and int(controlled_weight) == int(control_id_code[-1:]):
         return control_id_code
     if int(controlled_weight) != int(control_id_code[-1:]):
         return "Needs the second algorithm!"
+
 
 
 if __name__ == '__main__':
@@ -100,7 +100,7 @@ if __name__ == '__main__':
     print(find_id_code("efs4  9   #4aw0h 3r 1a36g5j2!!6-"))  # -> "49403136526"
 
     print(the_first_control_number_algorithm(""))  # -> "Incorrect ID code!"
-    print(the_first_control_number_algorithm("123456789123456789"))  # -> "Incorrect ID code!"
+    print(the_first_control_number_algorithm("12345678912"))  # -> "Incorrect ID code!"
     print(the_first_control_number_algorithm("ID code is: 49403136526"))  # -> "49403136526"
     print(the_first_control_number_algorithm("efs4  9   #4aw0h 3r 1a36g5j2!!6-"))  # -> "49403136526"
     print(the_first_control_number_algorithm("51201166313"))  # -> "2nd"
