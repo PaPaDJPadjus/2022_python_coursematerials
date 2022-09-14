@@ -33,8 +33,6 @@ def find_id_code(text: str) -> str:
         return "Not enough numbers!"
 
 
-
-
 def the_first_control_number_algorithm(text: str) -> str:
     """
     Check if given value is correct for control number in ID code only with the first algorithm.
@@ -56,7 +54,34 @@ def the_first_control_number_algorithm(text: str) -> str:
     :param text: string
     :return: string
     """
-    # Write your code here
+    control_id_code = ""
+    controlled_weight = ""
+    length = 0
+    numbers = "0123456789"
+    weight = "1234567891"
+    for el in text:
+        if el in numbers:
+            control_id_code += str(el)
+        else:
+            continue
+
+    for el in control_id_code:
+        length += 1
+    if length == 11:
+        return control_id_code
+    if length > 11 or length < 11:
+        return "Incorrect ID code!"
+
+    for el in control_id_code:
+        while int(el) < 11:
+            control_number = el * (el in weight)
+            controlled_weight += control_number
+
+    controlled_weight %= 11
+    if int(controlled_weight) < 10:
+        return control_id_code
+    else:
+        return "Needs the second algorithm!"
 
 
 if __name__ == '__main__':
@@ -65,3 +90,11 @@ if __name__ == '__main__':
     print(find_id_code("123456789123456789"))  # -> "Too many numbers!"
     print(find_id_code("ID code is: 49403136526"))  # -> "49403136526"
     print(find_id_code("efs4  9   #4aw0h 3r 1a36g5j2!!6-"))  # -> "49403136526"
+
+    print(the_first_control_number_algorithm(""))  # -> "Incorrect ID code!"
+    print(the_first_control_number_algorithm("123456789123456789"))  # -> "Incorrect ID code!"
+    print(the_first_control_number_algorithm("ID code is: 49403136526"))  # -> "49403136526"
+    print(the_first_control_number_algorithm("efs4  9   #4aw0h 3r 1a36g5j2!!6-"))  # -> "49403136526"
+    print(the_first_control_number_algorithm("50412057633"))  # -> "50412057633"
+    print(the_first_control_number_algorithm("Peeter's ID is euf50weird2fs0fsk51ef6t0s2yr7fyf4"))  # -> "Needs
+    # the second algorithm
