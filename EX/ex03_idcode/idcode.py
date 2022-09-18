@@ -104,7 +104,7 @@ def is_valid_year_number(year_number: int):
 
 def is_valid_month_number(month_number: int):
     """Check if given value is correct for month number in ID code."""
-    if month_number < 0:
+    if month_number <= 0:
         return False
     if month_number > 12:
         return False
@@ -159,6 +159,8 @@ if __name__ == '__main__':
     print("\nMonth number:")
     print(is_valid_month_number(2))  # -> True
     print(is_valid_month_number(15))  # -> False
+    for i in range(15):
+        print(f"{i} {is_valid_month_number(i)}")
 
     print("\nBorn order number:")
     print(is_valid_birth_number(0))  # -> False
