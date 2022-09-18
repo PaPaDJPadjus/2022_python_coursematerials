@@ -255,14 +255,16 @@ def is_id_valid(id_code: str):
         return False
     if month_number == 2 and int(day_number) == 0 or int(day_number) > 31:
         return False
+    if is_valid_gender_number(gender) is False:
+        return False
+    if is_valid_month_number(month_number) is False:
+        return False
     if is_valid_day_number(gender, year_number, month_number, day_number) is False:
         return False
     if is_valid_birth_number(birth_number) is False:
         return False
     if is_valid_control_number(id_code) is True:
         return True
-    else:
-        return False
 
 
 def get_data_from_id(id_code: str) -> str:
