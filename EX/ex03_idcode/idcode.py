@@ -263,8 +263,8 @@ def is_id_valid(id_code: str):
         return False
 
 
-# def get_data_from_id(id_code: str) -> str:
-    # """Get possible information about the person."""
+def get_data_from_id(id_code: str) -> str:
+    """Get possible information about the person."""
     # Write your code here
 
 
