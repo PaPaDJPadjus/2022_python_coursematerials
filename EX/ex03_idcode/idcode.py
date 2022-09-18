@@ -246,34 +246,16 @@ def is_valid_day_number(gender_number: int, year_number: int, month_number: int,
 
 def is_id_valid(id_code: str):
     """Check if given ID code is valid and return the result (True or False)."""
-    gender_number = 0
-    year_number = ""
-    month_number = ""
-    day_number = ""
-    birth_number = ""
-    number = 1
-    if is_valid_control_number(id_code) is False:
+    year_number = id_code[1:3]
+    gender = id_code[0:1]
+    month_number = id_code[2:4]
+    day_number = id_code[3:5]
+    birth_number = id_code[-3:]
+    if int(day_number) == 0 or int(day_number) > 31:
         return False
-
-    for el in id_code:
-        if number == 1:
-            gender_number += int(el)
-            number += 2
-        elif number == 3 or number == 4:
-            year_number += el
-            number += 1
-        elif number == 5 or number == 6:
-            month_number += el
-            number += 1
-        elif number == 7 or number == 8:
-            day_number += el
-            number += 1
-        elif number == 9 or number == 10 or number == 11:
-            birth_number += el
-            number += 1
-    if is_valid_day_number(gender_number, int(year_number), int(month_number), int(day_number)) is True:
+    if is_valid_day_number(int(gender), int(year_number), int(month_number), int(day_number)) is True:
         return True
-    if is_valid_birth_number(birth_number) is True:
+    if is_valid_birth_number(int(birth_number)) is True:
         return True
     if is_valid_control_number(id_code[-1:]) is True:
         return True
@@ -281,9 +263,8 @@ def is_id_valid(id_code: str):
         return False
 
 
-
-def get_data_from_id(id_code: str) -> str:
-    """Get possible information about the person."""
+# def get_data_from_id(id_code: str) -> str:
+    # """Get possible information about the person."""
     # Write your code here
 
 
@@ -308,9 +289,9 @@ if __name__ == '__main__':
     print(is_id_valid("49808270244"))  # -> True
     print(is_id_valid("12345678901"))  # -> False
 
-    print("\nFull message:")
-    print(get_data_from_id("49808270244"))  # -> "This is a female born on 27.08.1998 in Tallinn."
-    print(get_data_from_id("60109200187"))  # -> "Given invalid ID code!"
+    # print("\nFull message:")
+    # print(get_data_from_id("49808270244"))  # -> "This is a female born on 27.08.1998 in Tallinn."
+    # print(get_data_from_id("60109200187"))  # -> "Given invalid ID code!"
 
     # print("\nTest now your own ID code:")
     # personal_id = input()  # type your own id in command prompt
