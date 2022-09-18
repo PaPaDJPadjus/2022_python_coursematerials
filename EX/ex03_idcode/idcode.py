@@ -251,6 +251,9 @@ def is_id_valid(id_code: str):
     month_number = int(id_code[3:5])
     day_number = int(id_code[5:7])
     birth_number = int(id_code[7:10])
+    for el in id_code:
+        if el != el.isdigit():
+            return False
     if the_first_control_number_algorithm(id_code) == "Incorrect ID code!":
         return False
     if month_number == 2 and int(day_number) == 0 or int(day_number) > 31:
