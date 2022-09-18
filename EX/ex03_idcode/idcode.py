@@ -195,6 +195,9 @@ def is_valid_control_number(id_code: str):
     controlled_weight = 0
     if answer == id_code:
         return True
+    if answer == "Incorrect ID code!":
+        return False
+
     if answer == "Needs the second algorithm!":
         for el in id_code:
             if number < 10:
@@ -221,17 +224,19 @@ def is_valid_day_number(gender_number: int, year_number: int, month_number: int,
         return False
     if month_number == 2 and day_number > 29:
         return False
+
     year = get_full_year(gender_number, year_number)
-    if is_leap_year(year) is True:
-        days = 29
-    if is_leap_year(year) is False:
-        days = 28
+
     if month_number == 1 or month_number == 3 or month_number == 5 or month_number == 6 or month_number == 8:
         days = 31
     if month_number == 10 or month_number == 12:
         days = 31
     else:
         days = 30
+    if is_leap_year(year) is True:
+        days = 29
+    if is_leap_year(year) is False:
+        days = 28
 
     if days < day_number:
         return False
