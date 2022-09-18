@@ -104,7 +104,7 @@ def is_valid_year_number(year_number: int):
 
 def is_valid_month_number(month_number: int):
     """Check if given value is correct for month number in ID code."""
-    if month_number < 00:
+    if month_number < 0:
         return False
     if month_number > 12:
         return False
@@ -135,9 +135,9 @@ def get_gender(first_nr: int):
     if first_nr == 0 or first_nr > 6:
         return False
     if first_nr == 1 or first_nr == 3 or first_nr == 5:
-        return "Male"
+        return "male"
     if first_nr == 2 or first_nr == 4 or first_nr == 6:
-        return "Female"
+        return "female"
 
 
 if __name__ == '__main__':
