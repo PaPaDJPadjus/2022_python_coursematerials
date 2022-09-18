@@ -250,6 +250,7 @@ def is_id_valid(id_code: str):
     year_number = ""
     month_number = ""
     day_number = ""
+    birth_number = ""
     number = 1
     if is_valid_control_number(id_code) is False:
         return False
@@ -257,26 +258,24 @@ def is_id_valid(id_code: str):
         if number == 1:
             gender_number += int(el)
             number += 1
-        if number == 2:
+        if number == 2 or number == 3:
             year_number += el
             number += 1
-        if number == 3:
-            year_number += el
-            number += 1
-        if number == 4:
+        if number == 4 or number == 5:
             month_number += el
             number += 1
-        if number == 5:
-            month_number += el
-            number += 1
-        if number == 6:
+        if number == 6 or number == 7:
             day_number += el
             number += 1
-        if number == 7:
-            day_number += el
-            number += 1
+        if number == 8 or number == 9 or number == 10:
+            birth_number += el
     if is_valid_day_number(gender_number, int(year_number), int(month_number), int(day_number)) is True:
-        return True
+        if is_valid_birth_number(int(birth_number)) is True:
+            if is_valid_gender_number(int(gender_number)) is True:
+                if is_valid_control_number(id_code) is True:
+                    return True
+    else:
+        return False
 
 
 def get_data_from_id(id_code: str) -> str:
