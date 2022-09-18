@@ -255,16 +255,10 @@ def is_id_valid(id_code: str):
         return False
     if month_number == 2 and int(day_number) == 0 or int(day_number) > 31:
         return False
-    if is_valid_gender_number(gender) is True:
-        return True
-    if is_valid_year_number(year_number) is True:
-        return True
-    if is_valid_month_number(month_number) is True:
-        return True
-    if is_valid_day_number(gender, year_number, month_number, day_number) is True:
-        return True
-    if is_valid_birth_number(birth_number) is True:
-        return True
+    if is_valid_day_number(gender, year_number, month_number, day_number) is False:
+        return False
+    if is_valid_birth_number(birth_number) is False:
+        return False
     if is_valid_control_number(id_code) is True:
         return True
     else:
@@ -295,7 +289,7 @@ if __name__ == '__main__':
 
     print("\nOverall ID check::")
     print(is_id_valid("49808270244"))  # -> True
-    print(is_id_valid("12345678901"))  # -> False
+    print(is_id_valid("40301260247"))  # -> False
 
     print("\nFull message:")
     print(get_data_from_id("49808270244"))  # -> "This is a female born on 27.08.1998 in Tallinn."
