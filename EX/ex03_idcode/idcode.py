@@ -189,12 +189,12 @@ def get_birth_place(birth_number: int):
 
 def is_valid_control_number(id_code: str):
     """Check if given value is correct for control number in ID code."""
-    the_first_control_number_algorithm(id_code)
+    answer = the_first_control_number_algorithm(id_code)
     number = 3
     number_two = 1
     controlled_weight = 0
 
-    if id_code == "Needs the second algorithm!":
+    if answer == "Needs the second algorithm!":
         for el in id_code:
             if number < 10:
                 controlled_number = int(el) * number
@@ -205,12 +205,11 @@ def is_valid_control_number(id_code: str):
                     controlled_number = int(el) * number_two
                     controlled_weight += controlled_number
                     number_two += 1
-
     controlled_weight %= 11
 
-    if controlled_weight == 10:
+    if int(controlled_weight) == int(id_code[-1:]):
         return True
-    if int(controlled_weight) != int(id_code[-1:]):
+    if controlled_weight == 10:
         return True
     else:
         return False
@@ -222,10 +221,10 @@ def is_valid_day_number(gender_number: int, year_number: int, month_number: int,
         return False
     if month_number == 2 and day_number > 29:
         return False
-
-    if is_leap_year(get_full_year(gender_number, year_number)) is True:
+    year = get_full_year(gender_number, year_number)
+    if is_leap_year(year) is True:
         days = 29
-    if month_number == 2:
+    if is_leap_year(year) is False:
         days = 28
     if month_number == 1 or month_number == 3 or month_number == 5 or month_number == 6 or month_number == 8:
         days = 31
@@ -240,14 +239,11 @@ def is_valid_day_number(gender_number: int, year_number: int, month_number: int,
         return True
 
 
-
-
 def is_id_valid(id_code: str):
     """Check if given ID code is valid and return the result (True or False)."""
 
     is_valid_control_number(id_code)
     is_valid_day_number(id_code)
-
 
 
 def get_data_from_id(id_code: str) -> str:
@@ -264,7 +260,7 @@ if __name__ == '__main__':
     print(is_valid_day_number(4, 5, 12, 25))  # -> True
     print(is_valid_day_number(3, 10, 8, 32))  # -> False
     print("\nFebruary check:")
-    print(is_valid_day_number(4, 96, 2, 30))  # -> False (February cannot contain more than 29 days in any circumstances)
+    print(is_valid_day_number(4, 96, 2, 30))  # False (February cannot contain more than 29 days in any circumstances)
     print(is_valid_day_number(4, 99, 2, 29))  # -> False (February contains 29 days only during leap year)
     print(is_valid_day_number(4, 8, 2, 29))  # -> True
     print("\nMonth contains 30 or 31 days check:")
