@@ -251,17 +251,13 @@ def is_id_valid(id_code: str):
     month_number = int(id_code[3:5])
     day_number = int(id_code[5:7])
     birth_number = int(id_code[7:10])
+    if is_valid_control_number(id_code) is False:
+        return False
     if find_id_code(id_code) == "Too many numbers!" or find_id_code(id_code) == "Not enough numbers!":
         return False
     if int(day_number) == 0 or int(day_number) > 31:
         return False
-    if is_valid_gender_number(gender) is True:
-        return True
-    if is_valid_year_number(year_number) is True:
-        return True
-    if is_valid_month_number(month_number) is True:
-        return True
-    if is_valid_day_number(day_number) is True:
+    if is_valid_day_number(gender, year_number, month_number, day_number) is True:
         return True
     if is_valid_birth_number(int(birth_number)) is True:
         return True
