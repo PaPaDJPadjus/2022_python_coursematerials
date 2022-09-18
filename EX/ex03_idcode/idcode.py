@@ -193,7 +193,8 @@ def is_valid_control_number(id_code: str):
     number = 3
     number_two = 1
     controlled_weight = 0
-
+    if answer == id_code:
+        return True
     if answer == "Needs the second algorithm!":
         for el in id_code:
             if number < 10:
@@ -205,8 +206,7 @@ def is_valid_control_number(id_code: str):
                     controlled_number = int(el) * number_two
                     controlled_weight += controlled_number
                     number_two += 1
-    controlled_weight %= 11
-
+        controlled_weight %= 11
     if int(controlled_weight) == int(id_code[-1:]):
         return True
     if controlled_weight == 10:
