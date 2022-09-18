@@ -273,6 +273,12 @@ def is_id_valid(id_code: str):
             number += 1
     if is_valid_day_number(gender_number, int(year_number), int(month_number), int(day_number)) is True:
         return True
+    if is_valid_birth_number(birth_number) is True:
+        return True
+    if is_valid_control_number(id_code[-1:]) is True:
+        return True
+    else:
+        return False
 
 
 
