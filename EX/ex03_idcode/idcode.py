@@ -227,7 +227,7 @@ def is_valid_day_number(gender_number: int, year_number: int, month_number: int,
 
     year = get_full_year(gender_number, year_number)
 
-    if month_number == 1 or month_number == 3 or month_number == 5 or month_number == 6 or month_number == 8:
+    if month_number == 1 or month_number == 3 or month_number == 5 or month_number == 7 or month_number == 8:
         days = 31
     elif month_number == 10 or month_number == 12:
         days = 31
@@ -255,7 +255,7 @@ def is_id_valid(id_code: str):
         return False
     if find_id_code(id_code) == "Too many numbers!" or find_id_code(id_code) == "Not enough numbers!":
         return False
-    if int(day_number) == 0 or int(day_number) > 31:
+    if month_number == 2 and int(day_number) == 0 or int(day_number) > 31:
         return False
     if is_valid_day_number(gender, year_number, month_number, day_number) is True:
         return True
