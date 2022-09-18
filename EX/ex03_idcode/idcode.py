@@ -247,9 +247,6 @@ def is_valid_day_number(gender_number: int, year_number: int, month_number: int,
 def is_id_valid(id_code: str):
     """Check if given ID code is valid and return the result (True or False)."""
 
-    is_valid_control_number(id_code)
-    is_valid_day_number(id_code)
-
 
 def get_data_from_id(id_code: str) -> str:
     """Get possible information about the person."""
