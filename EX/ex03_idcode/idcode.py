@@ -246,15 +246,22 @@ def is_valid_day_number(gender_number: int, year_number: int, month_number: int,
 
 def is_id_valid(id_code: str):
     """Check if given ID code is valid and return the result (True or False)."""
-    gender = id_code[0:1]
-    year_number = id_code[1:3]
-    month_number = id_code[3:5]
-    day_number = id_code[5:7]
-    birth_number = id_code[7:10]
-    print(f" {gender} {year_number} {month_number} {day_number} {birth_number}")
+    gender = int(id_code[0:1])
+    year_number = int(id_code[1:3])
+    month_number = int(id_code[3:5])
+    day_number = int(id_code[5:7])
+    birth_number = int(id_code[7:10])
+    if find_id_code(id_code) == "Too many numbers!" or find_id_code(id_code) == "Not enough numbers!":
+        return False
     if int(day_number) == 0 or int(day_number) > 31:
         return False
-    if is_valid_day_number(int(gender), int(year_number), int(month_number), int(day_number)) is True:
+    if is_valid_gender_number(gender) is True:
+        return True
+    if is_valid_year_number(year_number) is True:
+        return True
+    if is_valid_month_number(month_number) is True:
+        return True
+    if is_valid_day_number(day_number) is True:
         return True
     if is_valid_birth_number(int(birth_number)) is True:
         return True
