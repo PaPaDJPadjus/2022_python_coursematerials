@@ -256,24 +256,21 @@ def is_id_valid(id_code: str):
         return False
 
     for el in id_code:
-        print(el)
         if number == 1:
             gender_number += int(el)
             number += 2
-        if number == 3 or number == 4:
+        elif number == 3 or number == 4:
             year_number += el
             number += 1
-        if number == 5 or number == 6:
+        elif number == 5 or number == 6:
             month_number += el
             number += 1
-        if number == 7 or number == 8:
+        elif number == 7 or number == 8:
             day_number += el
             number += 1
-        if number == 9 or number == 10 or number == 11:
+        elif number == 9 or number == 10 or number == 11:
             birth_number += el
             number += 1
-    print(f"{gender_number} {year_number} {month_number} {day_number} {birth_number}")
-    print(is_valid_day_number(gender_number, int(year_number), int(month_number), int(day_number)))
     if is_valid_day_number(gender_number, int(year_number), int(month_number), int(day_number)) is True:
         return True
 
@@ -305,9 +302,9 @@ if __name__ == '__main__':
     print(is_id_valid("49808270244"))  # -> True
     print(is_id_valid("12345678901"))  # -> False
 
-    #print("\nFull message:")
-    #print(get_data_from_id("49808270244"))  # -> "This is a female born on 27.08.1998 in Tallinn."
-    #print(get_data_from_id("60109200187"))  # -> "Given invalid ID code!"
+    print("\nFull message:")
+    print(get_data_from_id("49808270244"))  # -> "This is a female born on 27.08.1998 in Tallinn."
+    print(get_data_from_id("60109200187"))  # -> "Given invalid ID code!"
 
     # print("\nTest now your own ID code:")
     # personal_id = input()  # type your own id in command prompt
