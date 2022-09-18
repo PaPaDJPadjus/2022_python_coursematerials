@@ -253,23 +253,22 @@ def is_id_valid(id_code: str):
     birth_number = int(id_code[7:10])
     if the_first_control_number_algorithm(id_code) == "Incorrect ID code!":
         return False
-    elif is_valid_control_number(id_code[-1:]) is True:
-        return True
-    elif is_valid_control_number(id_code) is True:
-        return True
-    elif month_number == 2 and int(day_number) == 0 or int(day_number) > 31:
+    if month_number == 2 and int(day_number) == 0 or int(day_number) > 31:
         return False
-    elif is_valid_gender_number(gender) is True:
+    if is_valid_gender_number(gender) is True:
         return True
-    elif is_valid_month_number(month_number) is True:
+    if is_valid_year_number(year_number) is True:
         return True
-    elif is_valid_day_number(gender, year_number, month_number, day_number) is True:
+    if is_valid_month_number(month_number) is True:
         return True
-    elif is_valid_birth_number(int(birth_number)) is True:
+    if is_valid_day_number(gender, year_number, month_number, day_number) is True:
+        return True
+    if is_valid_birth_number(birth_number) is True:
+        return True
+    if is_valid_control_number(id_code) is True:
         return True
     else:
         return False
-
 
 
 def get_data_from_id(id_code: str) -> str:
