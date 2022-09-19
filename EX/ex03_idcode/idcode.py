@@ -246,24 +246,22 @@ def is_valid_day_number(gender_number: int, year_number: int, month_number: int,
 
 def is_id_valid(id_code: str):
     """Check if given ID code is valid and return the result (True or False)."""
-    gender = int(id_code[0:1])
-    year_number = int(id_code[1:3])
-    month_number = int(id_code[3:5])
-    day_number = int(id_code[5:7])
-    birth_number = int(id_code[7:10])
-    if find_id_code(id_code) == "Too many numbers!" or find_id_code(id_code) == "Not enough numbers!":
-        return False
+    gender = id_code[0:1]
+    year_number = id_code[1:3]
+    month_number = id_code[3:5]
+    day_number = id_code[5:7]
+    birth_number = id_code[7:10]
     if the_first_control_number_algorithm(id_code) == "Incorrect ID code!":
         return False
     if month_number == 2 and int(day_number) == 0 or int(day_number) > 31:
         return False
-    if is_valid_gender_number(gender) is False:
+    if is_valid_gender_number(int(gender)) is False:
         return False
-    if is_valid_month_number(month_number) is False:
+    if is_valid_month_number(int(month_number)) is False:
         return False
-    if is_valid_day_number(gender, year_number, month_number, day_number) is False:
+    if is_valid_day_number(int(gender), int(year_number), int(month_number), int(day_number)) is False:
         return False
-    if is_valid_birth_number(birth_number) is False:
+    if is_valid_birth_number(int(birth_number)) is False:
         return False
     if is_valid_control_number(id_code) is True:
         return True
@@ -272,13 +270,13 @@ def is_id_valid(id_code: str):
 def get_data_from_id(id_code: str):
     """Get possible information about the person."""
     if is_id_valid(id_code) is True:
-        gender = int(id_code[0:1])
-        year_number = int(id_code[1:3])
+        gender = id_code[0:1]
+        year_number = id_code[1:3]
         month_number = id_code[3:5]
         day_number = id_code[5:7]
-        birth_number = int(id_code[7:10])
-        birthday_date = f"{day_number}.{month_number}.{get_full_year(gender, year_number)}"
-        return f"This is a {get_gender(gender)} born on {birthday_date} in {get_birth_place(birth_number)}."
+        birth_number = id_code[7:10]
+        birthday_date = f"{day_number}.{month_number}.{get_full_year(int(gender), int(year_number))}"
+        return f"This is a {get_gender(int(gender))} born on {birthday_date} in {get_birth_place(int(birth_number))}."
     else:
         return "Given invalid ID code!"
 
@@ -302,12 +300,12 @@ if __name__ == '__main__':
 
     print("\nOverall ID check::")
     print(is_id_valid("49808270244"))  # -> True
-    print(is_id_valid("40301260247"))  # -> False
+    print(is_id_valid(""))  # -> False
 
     print("\nFull message:")
     print(get_data_from_id("49808270244"))  # -> "This is a female born on 27.08.1998 in Tallinn."
     print(get_data_from_id("60109200187"))  # -> "Given invalid ID code!"
 
-    # print("\nTest now your own ID code:")
-    # personal_id = input()  # type your own id in command prompt
-    # print(is_id_valid(personal_id))  # -> True
+    print("\nTest now your own ID code:")
+    personal_id = input()  # type your own id in command prompt
+    print(is_id_valid(personal_id))  # -> True
