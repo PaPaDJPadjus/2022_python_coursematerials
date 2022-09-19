@@ -252,7 +252,7 @@ def is_id_valid(id_code: str):
     day_number = int(id_code[5:7])
     birth_number = int(id_code[7:10])
     for el in id_code:
-        if el != el.isdigit():
+        if el != id_code.isdigit():
             return False
     if the_first_control_number_algorithm(id_code) == "Incorrect ID code!":
         return False
@@ -270,9 +270,16 @@ def is_id_valid(id_code: str):
         return True
 
 
-def get_data_from_id(id_code: str) -> str:
+def get_data_from_id(id_code: str):
     """Get possible information about the person."""
-    # Write your code here
+
+    gender = int(id_code[0:1])
+    year_number = int(id_code[1:3])
+    month_number = id_code[3:5]
+    day_number = id_code[5:7]
+    birth_number = int(id_code[7:10])
+    birthday_date = f"{day_number}.{month_number}.{get_full_year(gender, year_number)}"
+    return f"This is a {get_gender(gender)} born on {birthday_date} in {get_birth_place(birth_number)}"
 
 
 if __name__ == '__main__':
