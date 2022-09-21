@@ -23,8 +23,7 @@ def workday_count(days: int):
         return 5
     else:
         weeks = days // 7
-        left_over = days % 7
-        workdays = weeks * 5 + left_over
+        workdays = days - (weeks * 2)
         return workdays
 
 
@@ -43,7 +42,7 @@ def sorta_sum(a: int, b: int) -> int:
     :return: Sum or 20
     """
     sum_of = a + b
-    if sum_of <= 10 and sum_of <= 19:
+    if sum_of in range(9, 20):
         return 20
     else:
         return sum_of
