@@ -25,8 +25,6 @@ def workday_count(days: int):
         return workdays + 5
 
 
-
-
 def sorta_sum(a: int, b: int) -> int:
     """
     Given 2 ints, a and b, return their sum.
@@ -123,18 +121,15 @@ def divisions(numbers: list) -> int:
     :param numbers: List of integers
     :return: Amount of pairs
     """
-    print(len(numbers))
-    i = 1
     pairs = 0
-    if len(numbers) == 0 or len(numbers) == 1:
-        return 0
-
-    for el in numbers:
-        if numbers[i] // el and numbers[i] % el == 0:
-            pairs += 1
-            i += 1
-
+    for number in numbers:
+        i = 0
+        while i < len(numbers):
+            if number % numbers[i] == 0:
+                pairs += 1
+                i += 1
+            else:
+                i += 1
+    pairs -= len(numbers)
     return pairs
-
-
-print(divisions([2, 3, 8]))
+print(divisions([25, 22, 4, 400, 50]))
