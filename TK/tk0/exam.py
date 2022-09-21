@@ -17,14 +17,15 @@ def workday_count(days: int):
     :param days: given number of days
     :return: workdays in given days
     """
-
     if days < 6:
         return days
+    if days == 6 or days == 7:
+        return 5
     else:
         weeks = days // 7
         left_over = days % 7
         workdays = weeks * 5 + left_over
-        return str(workdays)
+        return workdays
 
 
 def sorta_sum(a: int, b: int) -> int:
@@ -42,7 +43,7 @@ def sorta_sum(a: int, b: int) -> int:
     :return: Sum or 20
     """
     sum_of = a + b
-    if sum_of <= 10 >= 19:
+    if sum_of <= 10 and sum_of <= 19:
         return 20
     else:
         return sum_of
@@ -88,20 +89,18 @@ def last_indices_elements_sum(nums: list) -> int:
     :param nums: List of non-negative integers.
     :return: Sum of elements at indices of last two elements.
     """
-
-    first_nr_el = nums[-1]
-    if nums[first_nr_el] > len(nums):
+    first_nr_el = int(nums[-1])
+    sec_nr_el = int(nums[-2])
+    if first_nr_el >= len(nums):
         first_nr = 0
     else:
         first_nr = nums[first_nr_el]
 
-    sec_nr_el = nums[-2]
-    if nums[sec_nr_el] > len(nums):
-        second_nr = 0
+    if sec_nr_el >= len(nums):
+        sec_nr = 0
     else:
-        second_nr = nums[sec_nr_el]
-
-    return first_nr + second_nr
+        sec_nr = nums[sec_nr_el]
+    return first_nr + sec_nr
 
 
 def divisions(numbers: list) -> int:
@@ -125,5 +124,5 @@ def divisions(numbers: list) -> int:
     :param numbers: List of integers
     :return: Amount of pairs
     """
-
-    return 0
+    if len(numbers) == 0:
+        return 0
