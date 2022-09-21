@@ -132,4 +132,3 @@ def divisions(numbers: list) -> int:
                 i += 1
     pairs -= len(numbers)
     return pairs
-print(divisions([25, 22, 4, 400, 50]))
