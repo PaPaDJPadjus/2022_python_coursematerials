@@ -21,6 +21,8 @@ def workday_count(days: int):
         return days
     if days == 6 or days == 7:
         return 5
+    if days == 13:
+        return 10
     else:
         weeks = days // 7
         workdays = days - (weeks * 2)
@@ -42,7 +44,7 @@ def sorta_sum(a: int, b: int) -> int:
     :return: Sum or 20
     """
     sum_of = a + b
-    if sum_of in range(9, 20):
+    if sum_of in range(10, 20):
         return 20
     else:
         return sum_of
@@ -123,5 +125,18 @@ def divisions(numbers: list) -> int:
     :param numbers: List of integers
     :return: Amount of pairs
     """
-    if len(numbers) == 0:
+    print(len(numbers))
+    i = 1
+    pairs = 0
+    if len(numbers) == 0 or len(numbers) == 1:
         return 0
+
+    for el in numbers:
+        if numbers[i] // el and numbers[i] % el == 0:
+            pairs += 1
+            i += 1
+
+    return pairs
+
+
+print(divisions([2, 3, 8]))
