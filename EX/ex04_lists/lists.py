@@ -63,7 +63,7 @@ def search_by_make(all_cars: str, maker: str):
     cars = []
     cars_list = list_of_cars(all_cars)
     for el in cars_list:
-        if el in cars_list:
+        if el in cars:
             continue
         if maker.lower() in el:
             cars.append(el)
@@ -75,6 +75,5 @@ def search_by_make(all_cars: str, maker: str):
             continue
     return cars
 
+
 print(search_by_make("Audi A4 A60,Skoda Superb ultra mega,Audi A4,Audi A6, Audi a4", "audi"))
-
-
