@@ -48,7 +48,7 @@ def car_models(all_cars: str) -> list:
         if el.split()[1] in model:
             continue
         else:
-            full_model = el[1:3]
+            full_model = el.split()[1] + " " + el.split()[2]
             model.append(str(full_model))
     return model
 
