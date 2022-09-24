@@ -13,7 +13,7 @@ def list_of_cars(all_cars: str) -> list:
     if all_cars == "":
         return []
     cars_list = all_cars.split(",")
-    return [cars_list]
+    return cars_list
 
 
 def car_makes(all_cars: str) -> list:
@@ -33,7 +33,7 @@ def car_makes(all_cars: str) -> list:
         if i == 0:
             car_name.append(el)
             i += 1
-    return [car_name]
+    return car_name
 
 
 def car_models(all_cars: str) -> list:
