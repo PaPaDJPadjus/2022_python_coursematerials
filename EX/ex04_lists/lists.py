@@ -63,7 +63,7 @@ def search_by_make(all_cars: str, maker: str):
     cars = []
     cars_list = list_of_cars(all_cars)
     for el in cars_list:
-        if el in cars:
+        if el in cars or el.lower() in cars or el.upper() in cars or el.capitalize() in cars:
             continue
         if maker.lower() in el:
             cars.append(el)
@@ -76,4 +76,9 @@ def search_by_make(all_cars: str, maker: str):
     return cars
 
 
-print(search_by_make("Audi A4 A60,Skoda Superb ultra mega,Audi A4,Audi A6, Audi a4", "audi"))
+print(search_by_make("Audi A4,Skoda Superb,Audi A4", "audi"))  # ["Audi A4", "Skoda Superb", "Audi A4"]
+print(car_makes("Audi A4,Skoda Super,Skoda Octavia,BMW 530,Seat Leon,Skoda Superb,Skoda Superb,BMW x5"))
+                    # ['Audi', 'Skoda', 'BMW', 'Seat']
+print(car_makes( "Mazda 6,Mazda 6,Mazda 6,Mazda 6")) # ['Mazda']
+print(car_makes("")) # []
+print(car_models("Audi A4,Skoda Superb,Audi A4,Audi A6"))  # ["A4", "Superb", "A6"]
