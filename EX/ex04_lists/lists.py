@@ -43,14 +43,20 @@ def car_models(all_cars: str) -> list:
     "Audi A4,Skoda Superb,Audi A4,Audi A6" => ["A4", "Superb", "A6"]
     """
     model = []
+    full_model = ""
     cars = list_of_cars(all_cars)
-    for el in cars:
-        if el.split()[1] in model:
+    for car in cars:
+        if car.split()[1] in model:
             continue
-        else:
-            full_model = el.split()[1] + " " + el.split()[2]
-            model.append(str(full_model))
+        full_car = car.split()[1:]
+        for el in full_car:
+            full_model += el
+            if el != full_car[-1]:
+                full_model += " "
+        model.append(full_model)
+        full_model = ""
     return model
 
 
-print(car_models("Tesla Model X"))
+print(car_models("Audi A4,Skoda Superb,Audi A4,Audi A6"))
+
