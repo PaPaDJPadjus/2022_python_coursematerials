@@ -48,5 +48,9 @@ def car_models(all_cars: str) -> list:
         if el.split()[1] in model:
             continue
         else:
-            model.append(el.split()[1])
+            full_model = el[1:3]
+            model.append(str(full_model))
     return model
+
+
+print(car_models("Tesla Model X"))
