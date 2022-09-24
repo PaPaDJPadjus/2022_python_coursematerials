@@ -27,7 +27,7 @@ def car_makes(all_cars: str) -> list:
     list_of_cars(all_cars)
     car_name = []
     i = 0
-    for el in all_cars:
+    for [el] in all_cars:
         if i == 1:
             i = 0
         if i == 0:
