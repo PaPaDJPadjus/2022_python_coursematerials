@@ -58,5 +58,15 @@ def car_models(all_cars: str) -> list:
     return model
 
 
-print(car_models("Audi A4,Skoda Superb,Audi A4,Audi A6"))
+def search_by_make(all_cars: str, maker: str):
+    """Return list of cars and models."""
+    cars_list = list_of_cars(all_cars)
+    makes_list = car_makes(all_cars)
+    if maker.lower in makes_list or maker.capitalize() in makes_list or maker.upper in makes_list:
+        return makes_list
+    else:
+        return []
+
+
+
 
