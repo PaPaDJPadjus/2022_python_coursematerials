@@ -24,13 +24,13 @@ def car_makes(all_cars: str) -> list:
 
     "Audi A4,Skoda Superb,Audi A4" => ["Audi", "Skoda"]
     """
-    list_of_cars(all_cars)
+    all_list = list_of_cars(all_cars)
     car_name = []
     i = 0
-    for [el] in all_cars:
+    for el in all_list:
         if i == 1:
             i = 0
-        if i == 0:
+        elif i == 0:
             car_name.append(el)
             i += 1
     return car_name
