@@ -24,16 +24,16 @@ def car_makes(all_cars: str) -> list:
 
     "Audi A4,Skoda Superb,Audi A4" => ["Audi", "Skoda"]
     """
-    all_list = list_of_cars(all_cars)
-    car_name = []
-    i = 0
-    for el in all_list:
-        if i == 1:
-            i = 0
-        elif i == 0:
-            car_name.append(el)
-            i += 1
-    return car_name
+    names = []
+    if all_cars == "":
+        return []
+    cars_list = all_cars.split()
+    for el in cars_list:
+        names.append(el)
+    return names[0:len(names):2]
+
+
+print(car_makes("Audi A4, Skoda Superb"))
 
 
 def car_models(all_cars: str) -> list:
