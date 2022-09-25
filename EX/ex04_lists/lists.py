@@ -43,21 +43,16 @@ def car_models(all_cars: str) -> list:
     "Audi A4,Skoda Superb,Audi A4,Audi A6" => ["A4", "Superb", "A6"]
     """
     model = []
-    full_model = ""
     cars = list_of_cars(all_cars)
     for car in cars:
         if car.split()[1] in model:
             continue
-        full_car = car.split()[1:]
-        for el in full_car:
-            full_model += el
-            if el != full_car[-1]:
-                full_model += " "
-        model.append(full_model)
-        full_model = ""
+        full_car = car.split(" ", 1)
+        model.append(full_car[1])
     return model
 
 
+print(car_models("Audi A4,Skoda Superb,Audi A4,Audi A6,Tesla Model X ja lausa Y"))
 def search_by_make(all_cars: str, maker: str):
     """Return list of cars and models."""
     cars_list = list_of_cars(all_cars)
