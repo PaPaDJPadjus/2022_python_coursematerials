@@ -52,7 +52,6 @@ def car_models(all_cars: str) -> list:
     return model
 
 
-print(car_models("Audi A4,Skoda Superb,Audi A4,Audi A6,Tesla Model X ja lausa Y"))
 def search_by_make(all_cars: str, maker: str):
     """Return list of cars and models."""
     cars_list = list_of_cars(all_cars)
@@ -62,17 +61,16 @@ def search_by_make(all_cars: str, maker: str):
     cars = []
     i = 0
     for car in cars_list:
-        if car in cars:
+        if maker.lower() == makes[i] or maker.upper() == makes[i] or maker.capitalize() == makes[i]:
+            i += 1
+            cars.append(car)
+        else:
             i += 1
             continue
-        else:
-            if maker.lower() == makes[i] or maker.upper() == makes[i] or maker.capitalize() == makes[i]:
-                i += 1
-                cars.append(car)
-            else:
-                i += 1
-                continue
     return cars
 
 
-print(search_by_make("Audi A4,auudio 2,Skoda 35,Tesla Model X,Audi A4 2022,Audi a5 2011", "audi"))
+#  print(search_by_make("Audi A4,auudio 2,Skoda 35,Tesla Model X,Audi A4 2022,Audi a5 2011", "audi"))
+
+print(search_by_make("Audi A4,Skoda Superb,Seat Leon,Audi A4,Seat Leon,Audi A4,Audi A6,Audi A4 2022", "Audi"))
+ #  == ['Audi A4', 'Audi A4', 'Audi A4', 'Audi A6', 'Audi A4 2022']
