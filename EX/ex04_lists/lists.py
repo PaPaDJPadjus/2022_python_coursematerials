@@ -46,14 +46,15 @@ def car_models(all_cars: str) -> list:
     full_model = ""
     cars = list_of_cars(all_cars)
     for car in cars:
-        if car.split()[1] in model:
-            continue
         full_car = car.split()[1:]
         for el in full_car:
             full_model += el
             if el != full_car[-1]:
                 full_model += " "
-        model.append(full_model)
+        if full_model in model:
+            continue
+        else:
+            model.append(full_model)
         full_model = ""
     return model
 
