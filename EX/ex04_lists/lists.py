@@ -43,18 +43,12 @@ def car_models(all_cars: str) -> list:
     "Audi A4,Skoda Superb,Audi A4,Audi A6" => ["A4", "Superb", "A6"]
     """
     model = []
-    full_model = ""
     cars = list_of_cars(all_cars)
     for car in cars:
-        if car.split()[1] in model:
-            continue
-        full_car = car.split()[1:]
-        for el in full_car:
-            full_model += el
-            if el != full_car[-1]:
-                full_model += " "
+        current_car = car.split(" ", 1)
+        full_model = current_car[1]
         model.append(full_model)
-        full_model = ""
+
     return model
 
 
