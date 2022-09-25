@@ -63,8 +63,6 @@ def search_by_make(all_cars: str, maker: str):
     cars_list = list_of_cars(all_cars)
     cars = []
     for el in cars_list:
-        if el in cars or el.lower() in cars or el.upper() in cars or el.capitalize() in cars:
-            continue
         if maker.lower() in el:
             cars.append(el)
         elif maker.upper() in el:
