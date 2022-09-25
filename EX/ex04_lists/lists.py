@@ -46,8 +46,11 @@ def car_models(all_cars: str) -> list:
     cars = list_of_cars(all_cars)
     for car in cars:
         current_car = car.split(" ", 1)
-        full_model = current_car[1]
-        model.append(full_model)
+        if len(current_car) == 1:
+            model.append(current_car[0])
+        else:
+            full_model = current_car[1]
+            model.append(full_model)
 
     return model
 
@@ -72,4 +75,4 @@ print(search_by_make("Audi A4,Skoda Superb,audi a4,audi haige machine,AUDI eluka
 print(car_makes("Audi A4,Skoda Super,Skoda Octavia,BMW 530,Seat Leon,Skoda Superb,Skoda Superb,BMW x5"))
 print(car_makes("Mazda 6,Mazda 6,Mazda 6,Mazda 6"))  # ['Mazda']
 print(car_makes(""))  # []
-print(car_models("Audi A4 Haige pill,Skoda Superb extra,Audi A4,Audi A6"))  # ["A4", "Superb", "A6"]
+print(car_models("6"))  # ["A4", "Superb", "A6"]
