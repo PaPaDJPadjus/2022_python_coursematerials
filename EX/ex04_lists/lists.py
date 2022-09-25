@@ -61,20 +61,23 @@ def car_models(all_cars: str) -> list:
 def search_by_make(all_cars: str, maker: str):
     """Return list of cars and models."""
     cars_list = list_of_cars(all_cars)
+    makes = []
+    for el in cars_list:
+        makes.append(el.split()[0])
     cars = []
+    i = 0
     for car in cars_list:
         if car in cars:
+            i += 1
             continue
         else:
-            if maker.lower() in car or maker.upper() in car or maker.capitalize() in car:
+            if maker.lower() == makes[i] or maker.upper() == makes[i] or maker.capitalize() == makes[i]:
+                i += 1
                 cars.append(car)
             else:
+                i += 1
                 continue
     return cars
 
 
-print(search_by_make("Audi A4,Skoda Superb,audi a4,audi haige machine,AUDI elukas X", "audi"))  # ["Audi A4", "Skoda"
-print(car_makes("Audi A4,Skoda Super,Skoda Octavia,BMW 530,Seat Leon,Skoda Superb,Skoda Superb,BMW x5"))
-print(car_makes("Mazda 6,Mazda 6,Mazda 6,Mazda 6"))  # ['Mazda']
-print(car_makes(""))  # []
-print(car_models("Audi A4 Haige pill,Skoda Superb extra,Audi A4,Audi A6"))  # ["A4", "Superb", "A6"]
+print(search_by_make("Audi A4,auudio 2,Skoda 35,Tesla Model X,Audi A4 2022,Audi a5 2011", "audi"))
