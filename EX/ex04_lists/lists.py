@@ -61,11 +61,12 @@ def car_models(all_cars: str) -> list:
 def search_by_make(all_cars: str, maker: str):
     """Return list of cars and models."""
     cars_list = list_of_cars(all_cars)
-    car_make = car_makes(all_cars)
     cars = []
     for car in cars_list:
-        for el in car_make:
-            if maker.lower() in el or maker.upper() in el or maker.capitalize() in el:
+        if car in cars:
+            continue
+        else:
+            if maker.lower() in car or maker.upper() in car or maker.capitalize() in car:
                 cars.append(car)
             else:
                 continue
