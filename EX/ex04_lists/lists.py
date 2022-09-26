@@ -87,4 +87,3 @@ def search_by_model(all_cars: str, model: str):
         else:
             continue
     return cars
-
