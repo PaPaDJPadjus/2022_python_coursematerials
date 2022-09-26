@@ -47,9 +47,9 @@ def car_models(all_cars: str) -> list:
     for car in cars:
         if len(car.split(" ", 1)) == 1:
             continue
-        if car.split()[1] in model:
-            continue
         full_car = car.split(" ", 1)
+        if full_car[1] in model:
+            continue
         model.append(full_car[1])
     return model
 
@@ -90,7 +90,7 @@ def search_by_model(all_cars: str, model: str):
 
 
 cars = "andom A b c d e Ff g"
-print(search_by_model("Audi a", "a"))
+print(car_models("A B C D,A B C D")) # ['B C D']
 print(search_by_model(cars, "sept"))  # == ['Audi A4 2022 sept']
 print(search_by_model(cars, "superb"))  # == []
 # == ['Audi A4', 'Audi A4', 'Audi A4', 'Audi A6', 'Audi A4 2022']
