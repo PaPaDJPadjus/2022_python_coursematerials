@@ -75,13 +75,9 @@ def search_by_make(all_cars: str, maker: str):
 def search_by_model(all_cars: str, model: str):
     """Search for model in all the cars."""
     cars_list = list_of_cars(all_cars)
-    models = []
     cars = []
     if len(model.split()) > 1:
         return []
-    for el in cars_list:
-        car_model = el.split(" ", 1)
-        models.append(car_model[1])
     for car in cars_list:
         full_split = car.upper().split()
         if model.upper() in full_split[0]:
@@ -93,8 +89,8 @@ def search_by_model(all_cars: str, model: str):
     return cars
 
 
-cars = "Audi A4,SkOda SUpERB,SKODA OctaviA,BMW 530,Seat Leon,Skoda Superb x,SkodA Superb,BMW x5"
-print(search_by_model(cars, "A4 2021"))  # == ['Audi A4 2021']
+cars = "Audi A4,SkOda SUpERB,SKODA OctaviA,BMW 530,AudI a4,Skoda SuPERb x,SkodA Superb,BMW x5"
+print(search_by_model(cars, "a4"))  # == ['Audi A4 2021']
 print(search_by_model(cars, "sept"))  # == ['Audi A4 2022 sept']
 print(search_by_model(cars, "superb"))  # == []
 # == ['Audi A4', 'Audi A4', 'Audi A4', 'Audi A6', 'Audi A4 2022']
