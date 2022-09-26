@@ -63,7 +63,7 @@ def search_by_make(all_cars: str, maker: str):
     cars = []
     i = 0
     for car in cars_list:
-        if makes[i].lower() == maker or makes[i].upper() == maker or makes[i].capitalize() == maker:
+        if maker.lower() == makes[i].lower():
             i += 1
             cars.append(car)
         else:
@@ -86,19 +86,17 @@ def search_by_model(all_cars: str, model: str):
         full_split = car.split()
         if model.upper() in full_split[0] or model.lower() in full_split[0] or model.capitalize() in full_split[0]:
             continue
-        for el in models:
-            if el.upper() == model or el.lower() == model or el.capitalize() == model:
-                cars.append(car)
+        if model.upper() in full_split or model.lower() in full_split or model.capitalize() in full_split:
+            cars.append(car)
         else:
             continue
     return cars
 
 
-cars = "Audi A4,Skoda Superb superb,Skoda Octavia,BMW 530,Seat Leon,Skoda Superb x,Skoda Superb,BMW x5"
+cars = "Audi A4,SkOda Superb superb,SKODA Octavia,BMW 530,Seat Leon,Skoda Superb x,SkodA Superb,BMW x5"
 print(search_by_model(cars, "A4 2021"))  # == ['Audi A4 2021']
 print(search_by_model(cars, "sept"))  # == ['Audi A4 2022 sept']
 print(search_by_model(cars, "superb"))  # == []
 print(search_by_make(cars, "skODA"))
-print(search_by_make("AuDi A4", "Audi"))
 # == ['Audi A4', 'Audi A4', 'Audi A4', 'Audi A6', 'Audi A4 2022']
 print(search_by_make("Audi A4", "A4"))  # == []
