@@ -109,19 +109,18 @@ def car_make_and_models(all_cars: str) -> list:
     for car in car_list:
         car_plus_model = car.split(" ", 1)
         if car_plus_model[0] in cars:
-            index = cars.index(car_plus_model[0]) + 1
-            if car_plus_model[1] in cars:
+            if car_plus_model[1] in [cars]:
                 continue
-            cars.insert(index, [car_plus_model[1]])
+            spot = cars.index(car_plus_model[0]) + 1
+            cars[spot].append(car_plus_model[1])
         else:
             cars.append(car_plus_model[0])
-            index = cars.index(car_plus_model[0]) + 1
-            cars.insert(index, [car_plus_model[1]])
+            cars.append([car_plus_model[1]])
     if all_cars == "":
         return []
-    return cars
+    return [cars]
 
-print(car_make_and_models("BMW 530,Skoda Superb,Skoda Superb,BMW x5,Skoda Octavia"))
+print(car_make_and_models("Audi A4,Skoda Super,Skoda Octavia,BMW 530,Seat Leon Lux,Skoda Superb,Skoda Superb,BMW x5"))
 #  print(car_make_and_models("Audi A4,Skoda Super,Skoda Octavia,BMW 530,Seat Leon Lux,Skoda Superb,Skoda Superb,BMW x5,audi a4"))
 
 
