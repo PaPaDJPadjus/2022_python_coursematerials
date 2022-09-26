@@ -104,43 +104,23 @@ def car_make_and_models(all_cars: str) -> list:
     [['Audi', ['A4']], ['Skoda', ['Super', 'Octavia', 'Superb']], ['BMW', ['530', 'x5']], ['Seat', ['Leon Lux']]]
     """
     car_list = list_of_cars(all_cars)
-    i = 0
     cars = []
     models = []
-    all_models = []
     for car in car_list:
         car_plus_model = car.split(" ", 1)
-        cars.append.(car_plus_model[0])
-        models.append(car_plus_model[1])
-        for el in car_plus_model:
-            if el in cars:
-                index = car.index(el)
-                i = 2
+        if car_plus_model[0] in cars:
+            index = cars.index(car_plus_model[0]) + 1
+            if car_plus_model[1] in cars:
                 continue
-            if i == 2:
-                model = models.append(el)
-                cars.insert(index, model)
-                i = 0
-            if el.upper() in cars or el.lower() in cars or el.capitalize() in cars:
-                continue
-            if i == 0:
-                cars.append(el)
-                i = 1
-            else:
-                if el.upper() in all_models or el.lower() in all_models or el.capitalize() in all_models:
-                    i = 0
-                    continue
-                if i == 1:
-                    models.append(el)
-                    all_models.append(el)
-                    cars.append(models)
-                    i = 0
-                    models = []
-                else:
-                    i = 1
+            cars.insert(index, [car_plus_model[1]])
+        else:
+            cars.append(car_plus_model[0])
+            index = cars.index(car_plus_model[0]) + 1
+            cars.insert(index, [car_plus_model[1]])
+
     return [cars]
 
-print(car_make_and_models("Skoda Super,Skoda Octavia,BMW 530,Skoda Superb,Skoda Superb,BMW x5"))
+print(car_make_and_models("BMW 530,Skoda Superb,Skoda Superb,BMW x5,Skoda Octavia"))
 #  print(car_make_and_models("Audi A4,Skoda Super,Skoda Octavia,BMW 530,Seat Leon Lux,Skoda Superb,Skoda Superb,BMW x5,audi a4"))
 
 
