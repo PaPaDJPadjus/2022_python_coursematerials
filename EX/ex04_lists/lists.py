@@ -110,16 +110,19 @@ def car_make_and_models(all_cars: str) -> list:
     all_models = []
     for car in car_list:
         car_plus_model = car.split(" ", 1)
+        cars.append.(car_plus_model[0])
+        models.append(car_plus_model[1])
         for el in car_plus_model:
             if el in cars:
                 index = car.index(el)
                 i = 2
-            if el.upper() in cars or el.lower() in cars or el.capitalize() in cars:
                 continue
             if i == 2:
                 model = models.append(el)
                 cars.insert(index, model)
                 i = 0
+            if el.upper() in cars or el.lower() in cars or el.capitalize() in cars:
+                continue
             if i == 0:
                 cars.append(el)
                 i = 1
@@ -132,6 +135,7 @@ def car_make_and_models(all_cars: str) -> list:
                     all_models.append(el)
                     cars.append(models)
                     i = 0
+                    models = []
                 else:
                     i = 1
     return [cars]
