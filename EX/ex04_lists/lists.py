@@ -80,7 +80,7 @@ def search_by_model(all_cars: str, model: str):
         return []
     for car in cars_list:
         full_split = car.upper().split()
-        if model.upper() in full_split[0]:
+        if model.upper() == full_split[0]:
             continue
         if model.upper() in full_split:
             cars.append(car)
@@ -89,8 +89,8 @@ def search_by_model(all_cars: str, model: str):
     return cars
 
 
-cars = "Audi A4,SkOda SUpERB,SKODA OctaviA,BMW 530,AudI a4,Skoda SuPERb x,SkodA Superb,BMW x5"
-print(search_by_model(cars, "a4"))  # == ['Audi A4 2021']
+cars = "andom A b c d e Ff g"
+print(search_by_model("Audi a", "a"))
 print(search_by_model(cars, "sept"))  # == ['Audi A4 2022 sept']
 print(search_by_model(cars, "superb"))  # == []
 # == ['Audi A4', 'Audi A4', 'Audi A4', 'Audi A6', 'Audi A4 2022']
