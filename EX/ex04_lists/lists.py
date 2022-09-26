@@ -88,9 +88,3 @@ def search_by_model(all_cars: str, model: str):
             continue
     return cars
 
-
-cars = "andom A b c d e Ff g"
-print(car_models("A B C D,A B C D")) # ['B C D']
-print(search_by_model(cars, "sept"))  # == ['Audi A4 2022 sept']
-print(search_by_model(cars, "superb"))  # == []
-# == ['Audi A4', 'Audi A4', 'Audi A4', 'Audi A6', 'Audi A4 2022']
