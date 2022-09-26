@@ -76,7 +76,7 @@ def search_by_model(all_cars: str, model: str):
     models = []
     cars = []
     if len(model.split()) > 1:
-        return cars
+        return []
     for el in cars_list:
         car_model = el.split(" ", 1)
         models.append(car_model[1])
