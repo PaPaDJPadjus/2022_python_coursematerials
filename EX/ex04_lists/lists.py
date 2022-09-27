@@ -165,6 +165,16 @@ def add_cars(car_list: list, all_cars: str) -> list:
         if carslist.count(el) > 1:
             carslist.remove(el)
 
+    if car_list == []:
+        for el in carslist:
+            splat = el.split(" ", 1)
+            car = []
+            car.append(splat[0])
+            car.append([splat[1]])
+            car_list.append(car)
+            car = []
+        return car_list
+
     for el in carslist:
         splat = el.split(" ", 1)
         if splat[0] not in car_list[j]:
@@ -185,4 +195,4 @@ def add_cars(car_list: list, all_cars: str) -> list:
     return car_list
 
 print(add_cars([['Audi', ['A4']], ['Skoda', ['Superb']]], "Audi A6,BMW A B C,Audi A4"))
-#  print(add_cars([], "Audi A6,BMW A B C,Audi A4"))
+print(add_cars([], "Audi A6,BMW A B C,Audi A4"))
