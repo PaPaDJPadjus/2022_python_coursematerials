@@ -100,7 +100,10 @@ def car_make_and_models(all_cars: str) -> list:
 
     The order of the makes and models should be the same os in the input list (first appearance).
 
-    "Audi A4,Skoda Super,Skoda Octavia,BMW 530,Seat Leon Lux,Skoda Superb,Skoda Superb,BMW x5" =>
+    "Audi A4,Skoda Super,Skoda Octavia,BMW 530,Seat Leon Lux,Skoda Superb,Skoda Superb,BMW x5"
+
+    =>
+
     [['Audi', ['A4']], ['Skoda', ['Super', 'Octavia', 'Superb']], ['BMW', ['530', 'x5']], ['Seat', ['Leon Lux']]]
     """
     car_list = list_of_cars(all_cars)
@@ -158,11 +161,14 @@ def add_cars(car_list: list, all_cars: str) -> list:
     for el in all_cars:
         el = el.split(" ", 1)
         add_car.append(el)
-    if car_list == []:
-        car_list.append([el[0]])
-        spot = car_list.index([el[0]])
-        car_list[spot].append([el[1]])
+
     for el in add_car:
+        if car_list == []:
+            for el in add_car:
+                car_list.append(el[0])
+                spot = car_list.index(el[0])
+                car_list.append([el[1]])
+            return car_list
         if el[0] in (car_list[0][i]):
             j = i + 1
             if el[1] in car_list[0][j]:
@@ -172,10 +178,10 @@ def add_cars(car_list: list, all_cars: str) -> list:
         else:
             car_list.append([el[0]])
             spot = car_list.index([el[0]])
-            car_list[spot].append([el[1]])
+            car_list[spot].extend([el[1]])
             i += 0
     return car_list
 
 
 print(add_cars([], "Audi A6 A5,BMW A B C,Audi A4,Audi A4"))
-print(add_cars([], "Audi A6 A5,BMW A B C,Audi A4"))
+#  print(add_cars([], "Audi A6 A5,BMW A B C,Audi A4"))
