@@ -164,6 +164,8 @@ def add_cars(car_list: list, all_cars: str) -> list:
     for el in carslist:
         if carslist.count(el) > 1:
             carslist.remove(el)
+    while len(car_list) > i:
+
 
     if car_list == []:
         for el in carslist:
@@ -194,5 +196,6 @@ def add_cars(car_list: list, all_cars: str) -> list:
             car_list.remove(el)
     return car_list
 
-print(add_cars([['Audi', ['A4']], ['Skoda', ['Superb']]], "Audi A6,BMW A B C,Audi A4"))
-print(add_cars([], "Audi A6,BMW A B C,Audi A4"))
+
+print(add_cars([['Audi', ['A4']], ['Skoda', ['Superb']]], "Audi A6,Audi A6,BMW A B C,Audi A4,Audi A6 55"))
+print(add_cars([], "Audi A6,Audi A6 55,BMW A B C,Audi A4"))
