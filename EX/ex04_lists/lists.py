@@ -154,6 +154,8 @@ def add_cars(car_list: list, all_cars: str) -> list:
     all_cars = list_of_cars(all_cars)
     add_car = []
     i = 0
+    if all_cars == "":
+        return []
     for el in all_cars:
         el = el.split(" ", 1)
         add_car.append(el)
@@ -166,7 +168,6 @@ def add_cars(car_list: list, all_cars: str) -> list:
             continue
         else:
             car_list.append([el[0]])
-            j = i + 1
             spot = car_list.index([el[0]])
             car_list[spot].append([el[1]])
             i += 0
