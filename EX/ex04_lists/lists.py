@@ -169,8 +169,9 @@ def add_cars(car_list: list, all_cars: str) -> list:
             j = i + 1
             spot = car_list.index([el[0]])
             car_list[spot].append([el[1]])
-            i += 1
+            i += 0
     i = 0
     return car_list
 
-print(add_cars([['Audi', ['A4']], ['Skoda', ['Superb']]], "Audi A6,BMW A B C,Audi A4"))
+print(add_cars([['Audi', ['A4']], ['Skoda', ['Superb']]], "Audi A6 A5,BMW A B C,Audi A4,Audi A4"))
+#print(add_cars([], "Audi A6 A5,BMW A B C,Audi A4"))
