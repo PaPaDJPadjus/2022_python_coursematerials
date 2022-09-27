@@ -92,6 +92,7 @@ def search_by_model(all_cars: str, model: str):
 def car_make_and_models(all_cars: str) -> list:
     """
     Create a list of structured information about makes and models.
+
     For each different car make in the input string an element is created in the output list.
     The element itself is a list, where the first position is the name of the make (string),
     the second element is a list of models for the given make (list of strings).
