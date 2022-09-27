@@ -182,5 +182,6 @@ def add_cars(car_list: list, all_cars: str) -> list:
     return car_list
 
 
-print(add_cars([['Audi', ['A4']], ['Skoda', ['Superb']]], "Audi A6"))  #   == [['Audi', ['A4', 'A6']], ['Skoda', ['Superb']]]
+print(add_cars([['Audi', ['A4']], ['Skoda', ['Superb']]],
+               "Audi A6"))  # == [['Audi', ['A4', 'A6']], ['Skoda', ['Superb']]]
 #  print(add_cars([], "Audi A6 A5,BMW A B C,Audi A4"))
