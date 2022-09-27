@@ -164,11 +164,10 @@ def add_cars(car_list: list, all_cars: str) -> list:
 
     for el in add_car:
         if car_list == []:
-            for el in add_car:
-                car_list.append(el[0])
-                spot = car_list.index(el[0])
-                car_list.append([el[1]])
-            return car_list
+            car = []
+            car.append(el[0])
+            car.append([el[1]])
+            car_list.append(car)
         if el[0] in (car_list[0][i]):
             j = i + 1
             if el[1] in car_list[0][j]:
