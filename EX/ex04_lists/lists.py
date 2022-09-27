@@ -128,15 +128,9 @@ def car_make_and_models(all_cars: str) -> list:
         a += 2
         b += 2
         full_car_list.append(full_car)
-
-
     if all_cars == "":
         return []
     return full_car_list
-
-
-print(car_make_and_models("Audi A4,Skoda Super,Skoda Octavia,BMW 530,Seat Leon Lux,Skoda Superb,Skoda Superb,BMW x5"))
-#  print(car_make_and_models("Audi A4,Skoda Super,Skoda Octavia,BMW 530,Seat Leon Lux,Skoda Superb,Skoda Superb,BMW x5,audi a4"))
 
 
 def add_cars(car_list: list, all_cars: str) -> list:
@@ -157,4 +151,26 @@ def add_cars(car_list: list, all_cars: str) -> list:
 
     [['Audi', ['A4', 'A6']], ['Skoda', ['Superb']], ['BMW', ['A B C']]]
     """
-    return []
+    all_cars = list_of_cars(all_cars)
+    add_car = []
+    i = 0
+    for el in all_cars:
+        el = el.split(" ", 1)
+        add_car.append(el)
+    for el in add_car:
+        if el[0] in (car_list[0][i]):
+            j = i + 1
+            if el[1] in car_list[0][j]:
+                continue
+            car_list[0][j].append(el[1])
+            continue
+        else:
+            car_list.append([el[0]])
+            j = i + 1
+            spot = car_list.index([el[0]])
+            car_list[spot].append([el[1]])
+            i += 1
+    i = 0
+    return car_list
+
+print(add_cars([['Audi', ['A4']], ['Skoda', ['Superb']]], "Audi A6,BMW A B C,Audi A4"))
