@@ -155,34 +155,28 @@ def add_cars(car_list: list, all_cars: str) -> list:
 
     [['Audi', ['A4', 'A6']], ['Skoda', ['Superb']], ['BMW', ['A B C']]]
     """
-    all_cars = list_of_cars(all_cars)
-    add_car = []
-    i = 0
+    carslist = list_of_cars(all_cars)
+    models = car_make_and_models(all_cars)
+    i = 1
+    j = 0
+    car = []
+    add = 1
+    for el in carslist:
+        if carslist.count(el) > 1:
+            carslist.remove(el)
 
-    for el in all_cars:
-        el = el.split(" ", 1)
-        add_car.append(el)
-
-    for el in add_car:
-        if car_list == []:
-            car = []
-            car.append(el[0])
-            car.append([el[1]])
+    for el in carslist:
+        splat = el.split(" ", 1)
+        if splat[0] not in car_list[j]:
+            car.append(splat[0])
+            car.append([splat[1]])
             car_list.append(car)
-        if el[0] in (car_list[0][i]):
-            j = i + 1
-            if el[1] in car_list[0][j]:
-                continue
-            car_list[0][j].append(el[1])
+        while splat[0] not in car_list[j]:
+            j += 1
+        if splat[1] in car_list[j]:
             continue
-        else:
-            car_list.append([el[0]])
-            spot = car_list.index([el[0]])
-            car_list[spot].extend([el[1]])
-            i += 0
+        car_list[j][i].append(splat[1])
+        j = 0
     return car_list
 
-
-print(add_cars([['Audi', ['A4']], ['Skoda', ['Superb']]],
-               "Audi A6"))  # == [['Audi', ['A4', 'A6']], ['Skoda', ['Superb']]]
-#  print(add_cars([], "Audi A6 A5,BMW A B C,Audi A4"))
+print(add_cars([['Audi', ['A4']], ['Skoda', ['Superb']]], "Audi A6,BMW A B C,Audi A4"))
