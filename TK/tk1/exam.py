@@ -103,8 +103,9 @@ def num_as_index(nums: list) -> int:
         if el_one > last:
             return el_one
         return nums[el_one]
+
     if el_two > last:
-        return el_one
+        return el_two
     return nums[el_two]
 
 
