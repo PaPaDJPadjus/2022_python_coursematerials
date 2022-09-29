@@ -118,7 +118,7 @@ def remove_in_middle(text, to_remove):
     remove_in_middle("abcdabceabcabc", "abc") => "abcdeabc"
     remove_in_middle("abcd", "abc") => "abcd"
     remove_in_middle("abcdabc", "abc") => "abcdabc"
-    remove_in_middle("ABCAaaaAA", "a") => "ABCAaaAA
+    remove_in_middle("ABCAaaaAA", "a") => "ABCAaaAA"
 
     :param text: string from where the remove takes place.
     :param to_remove: substring to be removed.
