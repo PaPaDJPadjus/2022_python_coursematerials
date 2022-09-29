@@ -100,10 +100,10 @@ def num_as_index(nums: list) -> int:
     last = len(nums) - 1
     el_two = int(nums[last])
     if el_one < el_two:
-        if el_one > len(nums):
+        if el_one > last:
             return el_one
         return nums[el_one]
-    if el_two > len(nums):
+    if el_two > last:
         return el_one
     return nums[el_two]
 
