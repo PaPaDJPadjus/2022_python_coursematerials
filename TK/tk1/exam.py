@@ -100,12 +100,12 @@ def num_as_index(nums: list) -> int:
     last = len(nums) - 1
     el_two = int(nums[last])
     if el_one < el_two:
-        if el_one < len(nums):
+        if el_one > len(nums):
             return el_one
-        return el_one
-    return el_two
+        return nums[el_one]
+    return nums[el_two]
 
-print(num_as_index([4, 2, 6]))
+print(num_as_index([1, 2, 3]))
 
 def remove_in_middle(text, to_remove):
     """
