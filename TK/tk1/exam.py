@@ -103,9 +103,10 @@ def num_as_index(nums: list) -> int:
         if el_one > len(nums):
             return el_one
         return nums[el_one]
+    if el_two > len(nums):
+        return el_one
     return nums[el_two]
 
-print(num_as_index([1, 2, 3]))
 
 def remove_in_middle(text, to_remove):
     """
