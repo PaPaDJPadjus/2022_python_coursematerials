@@ -124,4 +124,16 @@ def remove_in_middle(text, to_remove):
     :param to_remove: substring to be removed.
     :return: string with middle substrings removed.
     """
-    pass
+    last_el = to_remove[-1:]
+    full_text = ""
+    last_el_p = last_el + " "
+    text_replace = text.replace(last_el, last_el_p)
+    text_split = text_replace.split()
+    print(text_split)
+    if to_remove not in text_split:
+        return text
+    while text_split.count(to_remove) >= 3:
+        text_split.remove(to_remove)
+    for el in text_split:
+        full_text += el
+    return full_text
