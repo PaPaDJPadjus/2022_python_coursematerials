@@ -58,12 +58,14 @@ def caught_speeding(speed, is_birthday):
         return 0
     if speed <= 65 and is_birthday is True:
         return 0
-    if 80 >= speed > 61:
+    if 80 >= speed >= 61:
         return 1
-    if 85 >= speed > 66 and is_birthday is True:
-        return 0
+    if 85 >= speed >= 66 and is_birthday is True:
+        return 1
     if speed >= 81:
         return 2
+    if speed <= 86 and is_birthday is True:
+        return 1
 
 
 def first_half(text: str) -> str:
