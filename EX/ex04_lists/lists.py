@@ -164,8 +164,6 @@ def add_cars(car_list: list, all_cars: str) -> list:
     for el in carslist:
         if carslist.count(el) > 1:
             carslist.remove(el)
-    while len(car_list) > i:
-
 
     if car_list == []:
         for el in carslist:
