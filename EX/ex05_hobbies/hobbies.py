@@ -112,9 +112,9 @@ def find_least_popular_hobbies(data: str) -> list:
         all_hobbies.append(key)
         length = len(dictionary[key])
         lengths.append(length)
-    max_len = max(lengths)
+    min_len = min(lengths)
     for el in lengths:
-        if el == max_len:
+        if el == min_len:
             final.append(all_hobbies[i])
         i += 1
 
