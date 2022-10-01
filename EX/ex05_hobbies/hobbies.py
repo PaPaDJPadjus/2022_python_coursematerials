@@ -102,7 +102,23 @@ def find_least_popular_hobbies(data: str) -> list:
     :param data: given string from database
     :return: list of least popular hobbies. Sorted alphabetically.
     """
-    return []
+    dictionary = create_dictionary_with_hobbies(data)
+    names_keys = dictionary.keys()
+    all_hobbies = []
+    final = []
+    lengths = []
+    i = 0
+    for key in names_keys:
+        all_hobbies.append(key)
+        length = len(dictionary[key])
+        lengths.append(length)
+    max_len = max(lengths)
+    for el in lengths:
+        if el == max_len:
+            final.append(all_hobbies[i])
+        i += 1
+
+    return sorted(final)
 
 
 if __name__ == '__main__':
