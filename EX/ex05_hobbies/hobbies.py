@@ -91,7 +91,8 @@ def find_people_with_most_hobbies(data: str) -> list:
         if el == max_len:
             final.append(all_names[i])
         i += 1
-    return final
+
+    return sorted(final)
 
 
 def find_least_popular_hobbies(data: str) -> list:
