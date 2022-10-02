@@ -238,9 +238,13 @@ def find_two_people_with_most_common_hobbies(data: str) -> tuple:
         #  Tee for tsykkel kus votad yhe väärtuse, kaid labi teised väärtused selle sees ja salvestad väärtuste nimed samale indexile et prst selle indexiga votta nimede paar (?)
         intersect = second[j - 1].intersection(second[j])
         symmetric = second[j - 1].symmetric_difference(second[j])
+        if len(symmetric) == 0:
+            div_zero = [keys[j - 1], keys[j]]
+            return tuple(div_zero)
         ratio = len(intersect) / len(symmetric)
         results.append(ratio)
         j += 1
+
     maximum_index = results.index(int(max(results)))
     final_result = [keys[maximum_index], keys[maximum_index + 1]]
     return tuple(final_result)
@@ -254,5 +258,5 @@ if __name__ == '__main__':
         ["running", "dancing"]
     ))  # {"John", "Mary", "Jack"}
 
-    sample_data = """John:running\nJohn:walking\nMary:dancing\nMary:running\nNora:running\nNora:singing\nNora:dancing"""
+    sample_data = """John:running\nJohn:walking\nMary:dancing\nMary:running\nNora:running\nNora:dancing"""
     print(find_two_people_with_most_common_hobbies(sample_data))  # ('Mary', 'Nora')
