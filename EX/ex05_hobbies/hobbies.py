@@ -73,6 +73,7 @@ def create_dictionary_with_hobbies(data: str) -> dict:
 def find_people_with_most_hobbies(data: str) -> list:
     """
     Find the people who have the most hobbies.
+
     :param data: given string from database
     :return: list of people with most hobbies. Sorted alphabetically.
     """
@@ -121,7 +122,6 @@ def find_least_popular_hobbies(data: str) -> list:
     return sorted(final)
 
 
-
 def sort_names_and_hobbies(data: str):
     """
     Create a tuple of sorted names and their hobbies.
@@ -164,7 +164,7 @@ def sort_names_and_hobbies(data: str):
 
 
 def find_people_with_hobbies(data: str, hobbies: list) -> set:
-    """
+    r"""
     Find all the different people with certain hobbies.
 
     It is recommended to use set here.
@@ -231,4 +231,3 @@ if __name__ == '__main__':
 
     sample_data = """John:running\nJohn:walking\nMary:dancing\nMary:running\nNora:running\nNora:singing\nNora:dancing"""
     print(find_two_people_with_most_common_hobbies(sample_data))  # ('Mary', 'Nora')
-
