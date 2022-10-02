@@ -238,7 +238,7 @@ def find_two_people_with_most_common_hobbies(data: str) -> tuple:
         #  Tee for tsykkel kus votad yhe väärtuse, kaid labi teised väärtused selle sees ja salvestad väärtuste nimed samale indexile et prst selle indexiga votta nimede paar (?)
         intersect = second[j - 1].intersection(second[j])
         symmetric = second[j - 1].symmetric_difference(second[j])
-        if len(symmetric) == 0:
+        if len(symmetric) == 0 and len(intersect) >= 1:
             div_zero = [keys[j - 1], keys[j]]
             return tuple(div_zero)
         ratio = len(intersect) / len(symmetric)
