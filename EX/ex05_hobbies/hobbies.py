@@ -159,7 +159,7 @@ def sort_names_and_hobbies(data: str):
         tuple_hob = tuple(hobbies)
         tuple_nam = (name[0], tuple_hob)
         tuple_list.append(tuple_nam)
-
+    tuple_list.sort()
     return tuple(tuple_list)
 print(sort_names_and_hobbies("""Jack:crafting\nMonica:design\nCarmen:sport\nMonica:skateboarding\nWendy:photography\nMonica:tennis\nWendy:sport\nMonica:theatre\nChris:gaming\nMolly:fishing\nJack:skateboarding\nWendy:fishing\nSophie:design\nPeter:gaming\nJack:skateboarding\nCooper:fitness\nChris:yoga\nWendy:football\nMolly:design\nJack:hiking\nMonica:pets\nCarmen:driving\nPeter:theatre\nMolly:hiking\nJack:crafting\nPeter:photography"""))
 def find_people_with_hobbies(data: str, hobbies: list) -> set:
