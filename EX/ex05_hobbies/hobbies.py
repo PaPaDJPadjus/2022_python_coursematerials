@@ -219,7 +219,31 @@ def find_two_people_with_most_common_hobbies(data: str) -> tuple:
 
     If there are less than 2 people in the input, return None.
     """
-    return ()
+    names_n_hobbies = create_dictionary(data)
+    keys = []
+    first = []
+    second = []
+    results = []
+    i = 0
+    j = 1
+    for key in names_n_hobbies.keys():
+        keys.append(key)
+    for i in range(len(names_n_hobbies)):
+        for el in names_n_hobbies[keys[i]]:
+            first.append(el)
+        second.append(set(first))
+        first = []
+        i += 1
+    while i - 1 >= j:
+        #  Tee for tsykkel kus votad yhe väärtuse, kaid labi teised väärtused selle sees ja salvestad väärtuste nimed samale indexile et prst selle indexiga votta nimede paar (?)
+        intersect = second[j - 1].intersection(second[j])
+        symmetric = second[j - 1].symmetric_difference(second[j])
+        ratio = len(intersect) / len(symmetric)
+        results.append(ratio)
+        j += 1
+    maximum_index = results.index(int(max(results)))
+    final_result = [keys[maximum_index], keys[maximum_index + 1]]
+    return tuple(final_result)
 
 
 if __name__ == '__main__':
