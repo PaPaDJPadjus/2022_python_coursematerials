@@ -228,6 +228,8 @@ def find_two_people_with_most_common_hobbies(data: str) -> tuple:
     j = 1
     for key in names_n_hobbies.keys():
         keys.append(key)
+    if 1 >= len(keys):
+        return
     for i in range(len(names_n_hobbies)):
         for el in names_n_hobbies[keys[i]]:
             first.append(el)
@@ -235,7 +237,6 @@ def find_two_people_with_most_common_hobbies(data: str) -> tuple:
         first = []
         i += 1
     while i - 1 >= j:
-        #  Tee for tsykkel kus votad yhe väärtuse, kaid labi teised väärtused selle sees ja salvestad väärtuste nimed samale indexile et prst selle indexiga votta nimede paar (?)
         intersect = second[j - 1].intersection(second[j])
         symmetric = second[j - 1].symmetric_difference(second[j])
         if len(symmetric) == 0 and len(intersect) >= 1:
