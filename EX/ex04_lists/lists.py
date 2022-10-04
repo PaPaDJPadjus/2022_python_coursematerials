@@ -206,7 +206,7 @@ def number_of_cars(all_cars: str) -> list:
             car = []
     return final_list
 
-def car_list_as_string(cars: list) -> str:
+def car_list_as_string(cars: list):
     """
     Create a list of cars.
 
@@ -215,12 +215,19 @@ def car_list_as_string(cars: list) -> str:
     [['Audi', ['A4']], ['Skoda', ['Superb']]] =>
     "Audi A4,Skoda Superb"
     """
+    j = 0
+    final = []
+    output = ""
+    for mark in cars:
+        marks = cars[j][0]
+        for el in cars[j][1]:
+            car = marks + " " + el
+            final.append(car)
+        j += 1
+    for el in final:
+        output += el
+        if final.index(el) != len(final) - 1:
+            output += ", "
+    return output
 
-
-#  print(number_of_cars("Audi A4,Skoda Superb,Seat Leon,Audi A6")) # [('Audi', 2), ('Skoda', 1), ('Seat', 1)]
-
-print(number_of_cars("Mazda 6,Mazda 6,Mazda 6,Mazda 6")) # [('Mazda', 4)]
-
-print(number_of_cars("")) # []
-
-print(car_list_as_string([['Audi', ['A4']], ['Skoda', ['Superb']]]))  # "Audi A4,Skoda Superb
+print(car_list_as_string([['Audi', ['A4', "A6"]], ['Skoda', ['Superb']]]))  # "Audi A4,Skoda Superb"
