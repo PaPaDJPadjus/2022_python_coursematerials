@@ -242,16 +242,18 @@ def find_two_people_with_most_common_hobbies(data: str):
     for el in second:
         for a in range(len(second) - 1):
             intersect = second[j].intersection(el)
-            if el == intersect:
+            if el == intersect and second.index(el) != a:
                 index_one = second.index(el) - 1
                 names = [keys[index_one]]
                 if len(names) == 2:
                     return tuple(names)
             symmetric = second[j].symmetric_difference(el)
-            if len(symmetric) == 0 and len(intersect) >= 1:
+            if len(symmetric) == 0 and len(intersect) > 1:
                 div_zero = [keys[j - 1], keys[j]]
                 return tuple(div_zero)
             commons.append(len(intersect))
+            if len(symmetric) == 0:
+                continue
             ratio = len(intersect) / len(symmetric)
             results.append(ratio)
             j += 1
