@@ -155,17 +155,21 @@ def add_cars(car_list: list, all_cars: str) -> list:
 
     [['Audi', ['A4', 'A6']], ['Skoda', ['Superb']], ['BMW', ['A B C']]]
     """
+    i = 0
+    data = []
     allcars = list_of_cars(all_cars)
     xtra_cars = []
+    for i in range(len(car_list)):
+        data.append(car_list[i][0])
     for el in allcars:
         car_split = el.split(" ", 1)
-        x = len(car_list) - 1
-        if car_split[0] in car_list[0] or car_split[0] in car_list[1] or car_split[0] in car_list[x]:
-            index = car_list.index(car_split[0]) + 1
-            if car_split[1] in car_list[0][index]:
+        if car_split[0] in data:
+            i = data.index(car_split[0])
+            if car_split[1] in car_list[i][1]:
                 continue
-            car_list[0][index].append(car_split[1])
+            car_list[i][1].append(car_split[1])
         else:
+            data.append(car_split[0])
             xtra_cars.append(car_split[0])
             xtra_cars.append([car_split[1]])
             car_list.append(xtra_cars)
