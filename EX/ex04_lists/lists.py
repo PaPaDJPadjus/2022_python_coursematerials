@@ -157,7 +157,6 @@ def add_cars(car_list: list, all_cars: str) -> list:
     """
     allcars = list_of_cars(all_cars)
     xtra_cars = []
-    i = 0
     for el in allcars:
         car_split = el.split(" ", 1)
         x = len(car_list) - 1
@@ -174,5 +173,5 @@ def add_cars(car_list: list, all_cars: str) -> list:
     return car_list
 
 
-print(add_cars([['Audi', ['A4']], ['Skoda', ['Superb']]], "Audi A6,Audi A6,BMW A B C,Audi A4,Audi A6 55,Skoda Super Xtra Fast"))
+print(add_cars([['Audi', ['A4']], ['Skoda', ['Superb']]], "Audi A6,Audi A6,BMW A B C,Audi A4,Audi A6 55,Skoda Super"))
 print(add_cars([], "Audi A6,Audi A6 55,BMW A B C,Audi A4"))
