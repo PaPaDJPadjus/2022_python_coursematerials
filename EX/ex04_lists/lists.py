@@ -155,45 +155,24 @@ def add_cars(car_list: list, all_cars: str) -> list:
 
     [['Audi', ['A4', 'A6']], ['Skoda', ['Superb']], ['BMW', ['A B C']]]
     """
-    carslist = list_of_cars(all_cars)
-    models = car_make_and_models(all_cars)
-    i = 1
-    j = 0
-    car = []
-    add = 1
-    for el in carslist:
-        if carslist.count(el) > 1:
-            carslist.remove(el)
-
-    if car_list == []:
-        for el in carslist:
-            splat = el.split(" ", 1)
-            car = []
-            car.append(splat[0])
-            car.append([splat[1]])
-            car_list.append(car)
-            car = []
-        return car_list
-
-    for el in carslist:
-        splat = el.split(" ", 1)
-        if splat[0] not in car_list[j]:
-            car.append(splat[0])
-            car.append([splat[1]])
-            car_list.append(car)
-        while splat[0] not in car_list[j]:
-            j += 1
-        if splat[1] in car_list[j][1]:
-            j = 0
-            continue
-        car_list[j][i].append(splat[1])
-        j = 0
-
-    for el in car_list[0][1]:
-        if car_list.count(el) > 1:
-            car_list.remove(el)
+    allcars = list_of_cars(all_cars)
+    xtra_cars = []
+    i = 0
+    for el in allcars:
+        car_split = el.split(" ", 1)
+        x = len(car_list) - 1
+        if car_split[0] in car_list[0] or car_split[0] in car_list[1] or car_split[0] in car_list[x]:
+            index = car_list.index(car_split[0]) + 1
+            if car_split[1] in car_list[0][index]:
+                continue
+            car_list[0][index].append(car_split[1])
+        else:
+            xtra_cars.append(car_split[0])
+            xtra_cars.append([car_split[1]])
+            car_list.append(xtra_cars)
+            xtra_cars = []
     return car_list
 
 
-print(add_cars([['Audi', ['A4']], ['Skoda', ['Superb']]], "Audi A6,Audi A6,BMW A B C,Audi A4,Audi A6 55"))
+print(add_cars([['Audi', ['A4']], ['Skoda', ['Superb']]], "Audi A6,Audi A6,BMW A B C,Audi A4,Audi A6 55,Skoda Super Xtra Fast"))
 print(add_cars([], "Audi A6,Audi A6 55,BMW A B C,Audi A4"))
