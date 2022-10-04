@@ -189,7 +189,7 @@ def find_people_with_hobbies(data: str, hobbies: list) -> set:
     return set(people)
 
 
-def find_two_people_with_most_common_hobbies(data: str) -> tuple:
+def find_two_people_with_most_common_hobbies(data: str):
     """
     Find a pair of people who have the highest ratio of common hobbies to different hobbies.
 
@@ -224,12 +224,13 @@ def find_two_people_with_most_common_hobbies(data: str) -> tuple:
     first = []
     second = []
     results = []
+    commons = []
     i = 0
     j = 1
     for key in names_n_hobbies.keys():
         keys.append(key)
     if 1 >= len(keys):
-        return
+        return None
     for i in range(len(names_n_hobbies)):
         for el in names_n_hobbies[keys[i]]:
             first.append(el)
@@ -242,12 +243,19 @@ def find_two_people_with_most_common_hobbies(data: str) -> tuple:
         if len(symmetric) == 0 and len(intersect) >= 1:
             div_zero = [keys[j - 1], keys[j]]
             return tuple(div_zero)
+        commons.append(len(intersect))
         ratio = len(intersect) / len(symmetric)
         results.append(ratio)
         j += 1
 
-    maximum_index = results.index(int(max(results)))
-    final_result = [keys[maximum_index], keys[maximum_index + 1]]
+
+    if results.count(max(results)) > 1:
+        com_max = commons.index(max(commons))
+        final_result = keys[com_max], keys[com_max + 1]
+    else:
+        maximum_index = results.index(int(max(results)))
+        final_result = [keys[maximum_index], keys[maximum_index + 1]]
+
     return tuple(final_result)
 
 
@@ -259,5 +267,5 @@ if __name__ == '__main__':
         ["running", "dancing"]
     ))  # {"John", "Mary", "Jack"}
 
-    sample_data = """John:running\nJohn:walking\nMary:dancing\nMary:running\nNora:running\nNora:dancing"""
+    sample_data = """John:running\nJohn:walking\nMary:dancing\nMary:running\nNora:running\nNora:dancing\nNora:gaming\nNora:swimming"""
     print(find_two_people_with_most_common_hobbies(sample_data))  # ('Mary', 'Nora')
