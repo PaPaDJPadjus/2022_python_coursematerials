@@ -155,7 +155,6 @@ def add_cars(car_list: list, all_cars: str) -> list:
 
     [['Audi', ['A4', 'A6']], ['Skoda', ['Superb']], ['BMW', ['A B C']]]
     """
-    i = 0
     data = []
     allcars = list_of_cars(all_cars)
     xtra_cars = []
@@ -206,6 +205,7 @@ def number_of_cars(all_cars: str) -> list:
             car = []
     return final_list
 
+
 def car_list_as_string(cars: list):
     """
     Create a list of cars.
@@ -227,7 +227,8 @@ def car_list_as_string(cars: list):
     for el in final:
         output += el
         if final.index(el) != len(final) - 1:
-            output += ", "
+            output += ","
     return output
+
 
 print(car_list_as_string([['Audi', ['A4', "A6"]], ['Skoda', ['Superb']]]))  # "Audi A4,Skoda Superb"
