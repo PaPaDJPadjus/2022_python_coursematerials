@@ -133,31 +133,38 @@ def find_phone_numbers(text: str) -> dict:
     :param text: given string to find phone numbers from
     :return: dict containing the numbers
     """
-    pass
-
+    numbers_pattern = r"\+[\d]{3} [\d]{7,8}|\+[\d]{3}[\d]{7,8}|[\d]{7,8}"
+    location_pattern = r"\+[\d]{3}"
+    locations = re.findall(location_pattern, text)
+    locations = set(locations)
+    locations = list(locations)
+    dictionary = {}
+    numbers = []
+    first_n = []
+    extras = []
+    i = 0
+    legit_nr = re.findall(numbers_pattern, text)
+    for nr in legit_nr:
+        if nr[:4:] in locations:
+            if nr[:4:] not in first_n:
+                first_n.append(nr[:4:])
+                numbers.append([nr[:4:]])
+                index = first_n.index(nr[:4:])
+                numbers[index].append([nr[4::]])
+            else:
+                index = first_n.index(nr[:4:])
+                numbers[index][index + 1].append(nr[4::])
+        else:
+            extras.append(nr)
+    numbers.append([""])
+    first_n.append("")
+    numbers[len(first_n) - 1].append(extras)
+    for loc in first_n:
+        for el in numbers[i]:
+            dictionary[loc] = el
+        i += 1
+    return dictionary
 
 if __name__ == '__main__':
-    print(find_words('See on esimene - ä lause. See, on teine: lause! Aga kas see on?'))
-    # ['Kana', 'Muna', 'Pelmeen', 'Apelsin', 'Õun', 'Mandariin', 'Kakao', 'Hernes', 'Ahven']
-
-    print(find_words_with_vowels('KanaMunaPelmeenApelsinÕunMandariinKakaoHernesAhven'))
-    # ['Apelsin', 'Õun', 'Ahven']
-
-    print(find_sentences('See on esimene - lause. See on ä teine lause! see ei ole lause. Aga kas see on? jah, oli.'))
-    # ['See on esimene - lause.', 'See on ä teine lause!', 'Aga kas see on?']
-
-    print(find_sentences('ei ole lause. See on!!! See ka...Ja see... See pole'))
-    # ['See on!!!', 'See ka...', 'Ja see...']
-
-    print(find_words_from_sentence('See on esimene - ä lause. See, on teine: 77 lause! Aga kas see on?'))
-    # ['Super', 'lause', 'ää', 'sorry']
-
-    print(find_words_from_sentences_only(
-        'See on esimene - ä lause. See, on teine: lause! see ei ole lause. Aga kas see on? jah, oli.'))
-    # ['See', 'on', 'esimene', 'ä', 'lause', 'See', 'on', 'teine', 'lause', 'Aga', 'kas', 'see', 'on']
-
-    print(find_years("1998sef672387fh3f87fh83777f777f7777f73wfj893w8938434343"))
-    # [1998, 7777]
-
     print(find_phone_numbers("+372 56887364  +37256887364  +33359835647  56887364 +11 1234567 +327 1 11111111"))
     # {'+372': ['56887364', '56887364'], '+333': ['59835647'], '': ['56887364', '1234567', '11111111']}
