@@ -56,6 +56,7 @@ def find_sentences(text: str) -> list:
     final = re.findall(pattern, text)
     return final
 
+
 def find_words_from_sentence(sentence: str) -> list:
     """
     Given a sentence, return all words in that sentence.
@@ -164,6 +165,7 @@ def find_phone_numbers(text: str) -> dict:
             dictionary[loc] = el
         i += 1
     return dictionary
+
 
 if __name__ == '__main__':
     print(find_phone_numbers("+372 56887364  +37256887364  +33359835647  56887364 +11 1234567 +327 1 11111111"))
