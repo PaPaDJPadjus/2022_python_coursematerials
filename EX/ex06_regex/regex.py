@@ -47,12 +47,12 @@ def find_sentences(text: str) -> list:
     Note that a sentence may also contain all the typical symbols (like commas, colons, numbers, etc.).
     A sentence may also end in multiple punctuation (example: "Wait...").
 
-    Sentences must be found using regex.
+    Sentences must be found using regex. |[A-^ZÜÕÖÄ][\wõüäö ,-]+[(.!?)$]{1}
 
     :param text: given string to find sentences from
     :return: list of sentences found in given string
     """
-    pattern = r"[A-^ZÜÕÖÄ][\wõüäö ,-]+[(.!?)$]{3}|[A-^ZÜÕÖÄ][\wõüäö ,-]+[(.!?)$]{1}"
+    pattern = r"[A-^ZÜÕÖÄ][\wõüäö ,-]+[(.!?)$]{4}"
     final = re.findall(pattern, text)
     return final
 
