@@ -146,6 +146,7 @@ def find_phone_numbers(text: str) -> dict:
     i = 0
     legit_nr = re.findall(numbers_pattern, text)
     for nr in legit_nr:
+        nr = nr.replace(" ", "")
         if nr[:4:] in locations:
             if nr[:4:] not in first_n:
                 first_n.append(nr[:4:])
