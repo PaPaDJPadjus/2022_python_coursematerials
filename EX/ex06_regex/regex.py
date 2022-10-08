@@ -108,7 +108,10 @@ def find_years(text: str) -> list:
     :return: list of years (integers) found in given string
     """
     pattern = r"(?<!\d)([\d+]{4})(?!\d)"
-    final = re.findall(pattern, text)
+    final = []
+    first = re.findall(pattern, text)
+    for el in first:
+        final.append(int(el))
     return final
 
 
