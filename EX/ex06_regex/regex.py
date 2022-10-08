@@ -70,7 +70,7 @@ def find_words_from_sentence(sentence: str) -> list:
     :param sentence: given sentence to find words from
     :return: list of words found in given sentence
     """
-    pattern = r"[A-^ZÜÕÖÄa-züõäö][\wõüäö]*"
+    pattern = r"[A-^ZÜÕÖÄa-züõäö\s\d][\w\s\dõüäö]*"
     final = re.findall(pattern, sentence)
     return final
 
@@ -148,7 +148,7 @@ if __name__ == '__main__':
     # ['Super', 'lause', 'ää', 'sorry']
 
     print(find_words_from_sentences_only(
-        'See on esimene - ä lause. See, on teine: lause! see ei ole lause. Aga kas see on? jah, oli.'))
+        'See.'))
     # ['See', 'on', 'esimene', 'ä', 'lause', 'See', 'on', 'teine', 'lause', 'Aga', 'kas', 'see', 'on']
 
     print(find_years("1998sef672387fh3f87fh83777f777f7777f73wfj893w8938434343"))
