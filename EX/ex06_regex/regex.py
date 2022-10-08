@@ -34,7 +34,9 @@ def find_words_with_vowels(text: str) -> list:
     :param text: given string to find words from
     :return: list of words that start with a vowel found in given string
     """
-    pass
+    pattern = r"[A^E^O^U^I^Ü^Õ^Ö^Ä^][a-zõüöä]+"
+    final = re.findall(pattern, text)
+    return final
 
 
 def find_sentences(text: str) -> list:
@@ -50,8 +52,9 @@ def find_sentences(text: str) -> list:
     :param text: given string to find sentences from
     :return: list of sentences found in given string
     """
-    pass
-
+    pattern = r"[A-^ZÜÕÖÄ][\wõüäö ,-]+[.$!$?$]{1,3}"
+    final = re.findall(pattern, text)
+    return final
 
 def find_words_from_sentence(sentence: str) -> list:
     """
@@ -67,7 +70,9 @@ def find_words_from_sentence(sentence: str) -> list:
     :param sentence: given sentence to find words from
     :return: list of words found in given sentence
     """
-    pass
+    pattern = r"[A-^ZÜÕÖÄa-züõäö][\wõüäö]*"
+    final = re.findall(pattern, sentence)
+    return final
 
 
 def find_words_from_sentences_only(text: str) -> list:
@@ -80,7 +85,11 @@ def find_words_from_sentences_only(text: str) -> list:
     :param text: given string to find words from
     :return: list of words found in sentences from given string
     """
-    pass
+    pattern = r"[A-^ZÜÕÖÄ][a-züõäö ,:-]*"
+    first = re.findall(pattern, text)
+    str(first)
+    final = find_words_from_sentence(first)
+    return final
 
 
 def find_years(text: str) -> list:
@@ -123,7 +132,7 @@ def find_phone_numbers(text: str) -> dict:
 
 
 if __name__ == '__main__':
-    print(find_words('KanaMunaPelmeen!!ApelsinÕunMandariinKakaoHernesAhven'))
+    print(find_words('See on esimene - ä lause. See, on teine: lause! Aga kas see on?'))
     # ['Kana', 'Muna', 'Pelmeen', 'Apelsin', 'Õun', 'Mandariin', 'Kakao', 'Hernes', 'Ahven']
 
     print(find_words_with_vowels('KanaMunaPelmeenApelsinÕunMandariinKakaoHernesAhven'))
@@ -135,7 +144,7 @@ if __name__ == '__main__':
     print(find_sentences('ei ole lause. See on!!! See ka...Ja see... See pole'))
     # ['See on!!!', 'See ka...', 'Ja see...']
 
-    print(find_words_from_sentence("Super lause ää, sorry."))
+    print(find_words_from_sentence('See on esimene - ä lause. See, on teine: lause! Aga kas see on?'))
     # ['Super', 'lause', 'ää', 'sorry']
 
     print(find_words_from_sentences_only(
