@@ -157,9 +157,10 @@ def find_phone_numbers(text: str) -> dict:
                 numbers[index][index + 1].append(nr[4::])
         else:
             extras.append(nr)
-    numbers.append([""])
-    first_n.append("")
-    numbers[len(first_n) - 1].append(extras)
+    if len(extras) >= 1:
+        numbers.append([""])
+        first_n.append("")
+        numbers[len(first_n) - 1].append(extras)
     for loc in first_n:
         for el in numbers[i]:
             dictionary[loc] = el
