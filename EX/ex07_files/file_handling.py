@@ -33,7 +33,8 @@ def read_file_contents_to_list(filename: str) -> list:
     f = open(filename, "r")
     output = []
     for line in f:
-        line = f.readline()
+        if line.endswith("\n") is True:
+            output.append(line.strip("\n"))
         output.append(line)
     f.close()
     return output
