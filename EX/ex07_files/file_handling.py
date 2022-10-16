@@ -196,20 +196,26 @@ def merge_dates_and_towns_into_csv(dates_filename: str, towns_filename: str, csv
         list_list.append(line[0])
         names.append(line[0])
         list_list.append("-")
-        list_list.append(str(line[1]))
-        list_of_stuff.append(list_list)
-        list_list = []
+        if line[1].endswith("\n") is True:
+            list_list.append(line[1].strip("\n"))
+            list_of_stuff.append(list_list)
+            list_list = []
+        else:
+            list_list.append(line[1])
+            list_of_stuff.append(list_list)
+            list_list = []
 
     towns_f = open(towns_filename, "r")
     for line in towns_f:
         line = line.split(":")
         for i in range(len(list_of_stuff)):
             if line[0] in list_of_stuff[i]:
-                list_of_stuff[i][1] = str(line[1])
+                list_of_stuff[i][1] = str(line[1].strip("\n"))
             elif line[0] not in names:
                 names.append(line[0])
                 list_list.append(line[0])
-                list_list.append(line[1])
+                if line[1].endswith("\n") is True:
+                    list_list.append(line[1].strip("\n"))
                 list_list.append("-")
                 list_of_stuff.append(list_list)
                 list_list = []
@@ -220,3 +226,6 @@ def merge_dates_and_towns_into_csv(dates_filename: str, towns_filename: str, csv
         for row in list_of_stuff:
             csv_writer.writerow(row)
     return
+
+
+print(merge_dates_and_towns_into_csv("dates_filename", "towns_filename", "csv_output_filename"))
