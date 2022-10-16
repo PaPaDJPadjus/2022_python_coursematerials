@@ -35,7 +35,8 @@ def read_file_contents_to_list(filename: str) -> list:
     for line in f:
         if line.endswith("\n") is True:
             output.append(line.strip("\n"))
-        output.append(line)
+        else:
+            output.append(line)
     f.close()
     return output
 
@@ -67,9 +68,7 @@ def read_csv_file(filename: str) -> list:
     with open(filename) as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
         for row in csv_reader:
-            lists = lists.append(row)
-            lists = []
-    return [lists]
+            return row
 
 
 
