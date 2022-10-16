@@ -72,7 +72,6 @@ def read_csv_file(filename: str) -> list:
     return lists
 
 
-
 def write_contents_to_file(filename: str, contents: str) -> None:
     """
     Write contents to file.
@@ -87,6 +86,7 @@ def write_contents_to_file(filename: str, contents: str) -> None:
     f.write(contents)
     f.close()
     return
+
 
 def write_lines_to_file(filename: str, lines: list) -> None:
     """
