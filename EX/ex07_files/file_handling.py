@@ -219,4 +219,5 @@ def merge_dates_and_towns_into_csv(dates_filename: str, towns_filename: str, csv
         csv_writer.writerow(["name", "town", "date"])
         for row in list_of_stuff:
             csv_writer.writerow(row)
+    print(list_of_stuff)
     return
