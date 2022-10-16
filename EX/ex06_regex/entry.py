@@ -64,7 +64,7 @@ def parse(row: str) -> Entry:
     :param row: String representation of the data.
     :return: Entry object with filled values
     """
-    p = r"([A-^Z][a-z]+)?([A-^Z][a-z]+)?(\d{11})(\+[\d]{3} [\d]{7,8}|\+[\d]{3}[\d]{7,8}|[\d]{7,8})?(\d+-\d+-\d+)?(.*)"
+    p = r"([A-^Z][a-z]+)?([A-^Z][a-z]+)?(\d{11})(\+[\d]{3} [\d]{7,8}|\+[\d]{3}[\d]{7,8}|[\d]{7,8})?(\d+-\d+-\d+)?(.+)?"
     name = re.search(p, row)
     first_name = name.group(1)
     last_name = name.group(2)
