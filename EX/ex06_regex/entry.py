@@ -26,7 +26,7 @@ class Entry:
         :return:
         """
         dates = self.date_of_birth
-        if dates == None:
+        if dates is None:
             return None
         pattern = r"(\d{1,2})-(\d{1,2})-(\d{1,4})"
         date = re.search(pattern, dates)
@@ -64,8 +64,7 @@ def parse(row: str) -> Entry:
     :param row: String representation of the data.
     :return: Entry object with filled values
     """
-    length = 0
-    p = r"([A-^Z][a-z]+)?([A-^Z][a-z]+)?(\d{11})(\+[\d]{3} [\d]{7,8})?(\d\d-\d\d-\d+)?([\w ,-]+)?"
+    p = r"([A-^Z][a-z]+)?([A-^Z][a-z]+)?(\d{11})(\+[\d]{3} [\d]{7,8}|\+[\d]{3}[\d]{7,8}|[\d]{7,8})?(\d+-\d+-\d+)?(.*)?"
     name = re.search(p, row)
     first_name = name.group(1)
     last_name = name.group(2)
@@ -78,7 +77,7 @@ def parse(row: str) -> Entry:
 
 
 if __name__ == '__main__':
-    print(parse('PriitPann39712047623+372 5688736402-12-1998Oja 18-2,Pärnumaa,Are'))
+    print(parse('PriitPann39712047623+3725688736402-12-1998Oja 18-2,Pärnumaa,Are'))
     """
     Name: Priit Pann
     ID code: 39712047623
@@ -87,7 +86,7 @@ if __name__ == '__main__':
     Address: Oja 18-2,Pärnumaa,Are
     """
     print()
-    print(parse('39712047623+372 5688736402-12-1998Oja 18-2,Pärnumaa,Are'))
+    print(parse('397120476235688736402-12-1998Oja 18-2,Pärnumaa,Are'))
     """
     Name: None None
     ID code: 39712047623
@@ -105,7 +104,7 @@ if __name__ == '__main__':
     Address: Oja 18-2,Pärnumaa,Are
     """
     print()
-    print(parse('PriitPann39712047623+372 56887364Oja 18-2,Pärnumaa,Are'))
+    print(parse('PriitPann39712047623+37256887364Oja 18-2,Pärnumaa,Are'))
     """
     Name: Priit Pann
     ID code: 39712047623
@@ -114,7 +113,7 @@ if __name__ == '__main__':
     Address: Oja 18-2,Pärnumaa,Are
     """
     print()
-    print(parse('PriitPann39712047623+372 5688736402-12-1998'))
+    print(parse('PriitPann397120476235688736402-12-1998'))
     """Name: Priit Pann
     ID code: 39712047623
     Phone number: +372 56887364
