@@ -135,7 +135,6 @@ def write_csv_file(filename: str, data: list) -> None:
     :param data: List of lists to write to the file.
     :return: None
     """
-    length = len(data) - 1
     with open(filename, 'w', newline='') as csv_file:
         csv_writer = csv.writer(csv_file, delimiter=",")
         for row in data:
@@ -143,7 +142,7 @@ def write_csv_file(filename: str, data: list) -> None:
     return
 
 
-def merge_dates_and_towns_into_csv(dates_filename: str, towns_filename: str, csv_output_filename: str) -> None:
+def merge_dates_and_towns_into_csv(dates_filename: str, towns_filename: str, csv_output_filename: str):
     """
     Merge information from two files into one CSV file.
 
@@ -188,4 +187,30 @@ def merge_dates_and_towns_into_csv(dates_filename: str, towns_filename: str, csv
     :param csv_output_filename: Output CSV-file with names, towns and dates.
     :return: None
     """
-    pass
+    list_of_stuff = []
+    list_list = []
+    dates_f = open(dates_filename, "r")
+    for line in dates_f:
+        line.split(":")
+        list_list.append(line[0])
+        list_list.append("-")
+        list_list.append(line[1])
+        list_of_stuff.append(list_list)
+        list_list = []
+
+    towns_f = open(towns_filename, "r")
+    for line in towns_f:
+        line.split(":")
+        for i in range(len(list_of_stuff)):
+            if line[0] in list_of_stuff[i]:
+                list_of_stuff[i][2] = line[1]
+            else:
+                list_of_stuff.append(line[0])
+                list_of_stuff.append(line[1])
+                list_of_stuff.append("-")
+
+    with open(csv_output_filename, 'w', newline='') as csv_file:
+        csv_writer = csv.writer(csv_file, delimiter=",")
+        for row in list_of_stuff:
+            csv_writer.writerow(row)
+    return
