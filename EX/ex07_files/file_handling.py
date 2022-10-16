@@ -207,6 +207,7 @@ def merge_dates_and_towns_into_csv(dates_filename: str, towns_filename: str, csv
             if line[0] in list_of_stuff[i]:
                 list_of_stuff[i][1] = line[1]
             elif line[0] not in names:
+                names.append(line[0])
                 list_list.append(line[0])
                 list_list.append(line[1])
                 list_list.append("-")
