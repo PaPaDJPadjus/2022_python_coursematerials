@@ -26,6 +26,8 @@ class Entry:
         :return:
         """
         dates = self.date_of_birth
+        if dates == None:
+            return None
         pattern = r"(\d{1,2})-(\d{1,2})-(\d{1,4})"
         date = re.search(pattern, dates)
         return "Day: " + date.group(1) + ", " + "Month: " + date.group(2) + ", " + "Year: " + date.group(3)
@@ -62,7 +64,8 @@ def parse(row: str) -> Entry:
     :param row: String representation of the data.
     :return: Entry object with filled values
     """
-    p = r"([A-^ZÜÕÖÄ][a-zõüöä]+)([A-^ZÜÕÖÄ][a-zõüöä]+)(\d{11})(\+[\d]{3} [\d]{7,8})(\d\d-\d\d-\d+)([\wõüöäÕÜÖÄ ,-]+)"
+    length = 0
+    p = r"([A-^Z][a-z]+)?([A-^Z][a-z]+)?(\d{11})(\+[\d]{3} [\d]{7,8})?(\d\d-\d\d-\d+)?([\w ,-]+)?"
     name = re.search(p, row)
     first_name = name.group(1)
     last_name = name.group(2)
