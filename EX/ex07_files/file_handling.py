@@ -211,7 +211,7 @@ def merge_dates_and_towns_into_csv(dates_filename: str, towns_filename: str, csv
 
     with open(csv_output_filename, 'w', newline='') as csv_file:
         csv_writer = csv.writer(csv_file, delimiter=",")
-        csv_writer.writerow("name," "town," "date")
+        csv_writer.writerow(["name", "town", "date"])
         for row in list_of_stuff:
             csv_writer.writerow(row)
     return
