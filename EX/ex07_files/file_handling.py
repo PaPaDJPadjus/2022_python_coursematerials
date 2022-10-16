@@ -194,7 +194,7 @@ def merge_dates_and_towns_into_csv(dates_filename: str, towns_filename: str, csv
         line = line.split(":")
         list_list.append(line[0])
         list_list.append("-")
-        list_list.append(line[1])
+        list_list.append(str(line[1]))
         list_of_stuff.append(list_list)
         list_list = []
 
@@ -204,10 +204,6 @@ def merge_dates_and_towns_into_csv(dates_filename: str, towns_filename: str, csv
         for i in range(len(list_of_stuff)):
             if line[0] in list_of_stuff[i]:
                 list_of_stuff[i][1] = line[1]
-            else:
-                list_of_stuff.append(line[0])
-                list_of_stuff.append(line[1])
-                list_of_stuff.append("-")
 
     with open(csv_output_filename, 'w', newline='') as csv_file:
         csv_writer = csv.writer(csv_file, delimiter=",")
