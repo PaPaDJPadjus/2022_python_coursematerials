@@ -51,8 +51,8 @@ class Entry:
         This method is perfect. Don't touch it.
         """
         return self.first_name == other.first_name and self.last_name == other.last_name and \
-               self.id_code == other.id_code and self.phone_number == other.phone_number and \
-               self.date_of_birth == other.date_of_birth and self.address == other.address
+            self.id_code == other.id_code and self.phone_number == other.phone_number and \
+            self.date_of_birth == other.date_of_birth and self.address == other.address
 
 
 def parse(row: str) -> Entry:
@@ -62,8 +62,8 @@ def parse(row: str) -> Entry:
     :param row: String representation of the data.
     :return: Entry object with filled values
     """
-    pat = r"([A-^ZÜÕÖÄ][a-zõüöä]+)([A-^ZÜÕÖÄ][a-zõüöä]+)(\d{11})(\+[\d]{3} [\d]{7,8})(\d\d-\d\d-\d+)([\wõüöäÕÜÖÄ ,-]+)"
-    name = re.search(pat, row)
+    p = r"([A-^ZÜÕÖÄ][a-zõüöä]+)([A-^ZÜÕÖÄ][a-zõüöä]+)(\d{11})(\+[\d]{3} [\d]{7,8})(\d\d-\d\d-\d+)([\wõüöäÕÜÖÄ ,-]+)"
+    name = re.search(p, row)
     first_name = name.group(1)
     last_name = name.group(2)
     id_code = name.group(3)
