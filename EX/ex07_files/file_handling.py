@@ -329,12 +329,24 @@ def write_list_of_dicts_to_csv_file(filename: str, data: list) -> None:
             csv_writer.write("")
             return
         for dicts in data:
-            keys = dicts.keys()
+            keyyy = dicts.keys()
+            for el in keyyy:
+                if el not in keys:
+                    keys.append(el)
+                else:
+                    continue
         csv_writer.writerow(keys)
         for dicts in data:
             for key in keys:
+
+                if key not in dicts:
+                    rows.append("")
+                    continue
                 value = dicts[key]
                 rows.append(value)
             csv_writer.writerow(rows)
             rows = []
     return
+
+
+print(write_list_of_dicts_to_csv_file(filename="filename", data=[{"name": "john", "age": "12"}, {"name": "mary", "town": "London"}]))
