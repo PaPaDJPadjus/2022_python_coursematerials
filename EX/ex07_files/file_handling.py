@@ -333,4 +333,5 @@ def write_list_of_dicts_to_csv_file(filename: str, data: list) -> None:
                 value = dicts[key]
                 rows.append(value)
             csv_writer.writerow(rows)
+            rows = []
     return
