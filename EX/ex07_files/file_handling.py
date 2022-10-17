@@ -338,5 +338,3 @@ def write_list_of_dicts_to_csv_file(filename: str, data: list) -> None:
             csv_writer.writerow(rows)
             rows = []
     return
-
-print(write_list_of_dicts_to_csv_file(filename="filename", [{"name": "john", "age": "12"}, {"name": "mary", "town": "London"}])
