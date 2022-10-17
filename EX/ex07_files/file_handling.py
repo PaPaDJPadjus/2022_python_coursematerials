@@ -231,8 +231,8 @@ def merge_dates_and_towns_into_csv(dates_filename: str, towns_filename: str, csv
 def read_csv_file_into_list_of_dicts(filename: str):
     """
     Read csv file into list of dictionaries.
-    Header line will be used for dict keys.
 
+    Header line will be used for dict keys.
     Each line after header line will result in a dict inside the result list.
     Every line contains the same number of fields.
 
