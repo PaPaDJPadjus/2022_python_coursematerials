@@ -264,18 +264,21 @@ def read_csv_file_into_list_of_dicts(filename: str) -> list:
     counter = 0
     with open(filename, "r") as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
+
         for row in csv_reader:
             if i == 0:
                 for el in row:
                     diction[el] = "-"
                     columns.append(el)
-                i += 1
-            elif i == 1:
+
+            elif i >= 1:
                 while len(row) > counter:
                     for info in row:
                         diction[columns[counter]] = info
                         counter += 1
                 final.append(diction)
+
+            i += 1
     return final
 
 
