@@ -326,7 +326,7 @@ def write_list_of_dicts_to_csv_file(filename: str, data: list) -> None:
     with open(filename, 'w', newline='') as csv_file:
         csv_writer = csv.writer(csv_file, delimiter=",")
         if [] in data:
-            filename.write("")
+            csv_writer.write("")
             return
         for dicts in data:
             keys = dicts.keys()
