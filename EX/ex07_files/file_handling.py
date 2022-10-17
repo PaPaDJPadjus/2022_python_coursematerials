@@ -228,7 +228,7 @@ def merge_dates_and_towns_into_csv(dates_filename: str, towns_filename: str, csv
     return
 
 
-def read_csv_file_into_list_of_dicts(filenames: str):
+def read_csv_file_into_list_of_dicts(filename: str):
     """
     Read csv file into list of dictionaries.
     Header line will be used for dict keys.
@@ -254,7 +254,7 @@ def read_csv_file_into_list_of_dicts(filenames: str):
     The order of the elements in the list should be the same
     as the lines in the file (the first line becomes the first element etc.)
 
-    :param filenames: CSV-file to read.
+    :param filename: CSV-file to read.
     :return: List of dictionaries where keys are taken from the header.
     """
     final = []
@@ -281,7 +281,6 @@ def read_csv_file_into_list_of_dicts(filenames: str):
             counter = 0
     return final
 
-print(read_csv_file_into_list_of_dicts(filenames))
 
 def write_list_of_dicts_to_csv_file(filename: str, data: list) -> None:
     """
