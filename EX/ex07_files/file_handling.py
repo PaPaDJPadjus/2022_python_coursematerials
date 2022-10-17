@@ -263,7 +263,7 @@ def read_csv_file_into_list_of_dicts(filename: str) -> list:
     columns = []
     counter = 0
     with open(filename, "r") as csv_file:
-        csv_reader = csv.reader(csv_file, delimiter=',')
+        csv_reader = csv.reader(filename, delimiter=',')
         for row in csv_reader:
             if i == 0:
                 for el in row:
@@ -276,7 +276,6 @@ def read_csv_file_into_list_of_dicts(filename: str) -> list:
                         diction[columns[counter]] = info
                         counter += 1
                 final.append(diction)
-                diction = {}
     return final
 
 
