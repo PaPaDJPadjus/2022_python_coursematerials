@@ -88,7 +88,7 @@ def find_words_from_sentences_only(text: str) -> list:
     """
     final = []
     for sentence in find_sentences(text):
-        for word in find_words(sentence):
+        for word in find_words_from_sentence(sentence):
             final.append(word)
     return final
 
@@ -145,5 +145,6 @@ def find_phone_numbers(text: str) -> dict:
 
 
 if __name__ == '__main__':
-    print(find_phone_numbers("+372 56887364  +37256887364  +33359835647  56887364 +11 1234567 +327 1 11111111"))
-    # {'+372': ['56887364', '56887364'], '+333': ['59835647'], '': ['56887364', '1234567', '11111111']}
+    print(find_words_from_sentences_only(
+        'See on esimene - ä lause. See, on teine: lause! see ei ole lause. Aga kas see on? jah, oli.'))
+    # ['See', 'on', 'esimene', 'ä', 'lause', 'See', 'on', 'teine', 'lause', 'Aga', 'kas', 'see', 'on']
