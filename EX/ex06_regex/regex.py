@@ -134,14 +134,15 @@ def find_phone_numbers(text: str) -> dict:
     :param text: given string to find phone numbers from
     :return: dict containing the numbers
     """
-    keys = []
     dictionary = {}
     pattern = r"(\+[\d]{3})? *([\d]{7,8})?"
-    numbers = re.search(pattern, text)
-    for numbers in numbers:
-
-    for area_code in numbers.group(2):
-        dictionary[area_code] = 0
+    numbers = re.findall(pattern, text)
+    print(numbers)
+    for location, number in numbers:
+        if number == "":
+            continue
+        dictionary.setdefault(location, []).append(number)
+    return dictionary
 
 
 if __name__ == '__main__':
