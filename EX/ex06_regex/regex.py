@@ -16,7 +16,7 @@ def find_words(text: str) -> list:
      find words from
     :return: list of words found in given string
     """
-    pattern = r"[A-^ZÜÕÖÄ][a-zõüöä]+"
+    pattern = r"[A-ZÜÕÖÄ][a-zõüöä]+"
     final = re.findall(pattern, text)
     return final
 
@@ -34,7 +34,7 @@ def find_words_with_vowels(text: str) -> list:
     :param text: given string to find words from
     :return: list of words that start with a vowel found in given string
     """
-    pattern = r"[A^E^O^U^I^Ü^Õ^Ö^Ä^][a-zõüöä]+"
+    pattern = r"[AEOUIÜÕÖÄ][a-zõüöä]+"
     final = re.findall(pattern, text)
     return final
 
@@ -52,7 +52,7 @@ def find_sentences(text: str) -> list:
     :param text: given string to find sentences from
     :return: list of sentences found in given string
     """
-    pattern = r"[A-^ZÜÕÖÄ][\wõüäö ,:-]+[(.!?)$]{1,4}"
+    pattern = r"[A-ZÜÕÖÄ][\wõüäö ,:-]+[(.!?)$]{1,4}"
     final = re.findall(pattern, text)
     return final
 
@@ -86,10 +86,10 @@ def find_words_from_sentences_only(text: str) -> list:
     :param text: given string to find words from
     :return: list of words found in sentences from given string
     """
-    pattern = r"[A-^ZÜÕÖÄ][\d*a-züõäö ,:-]*"
-    first = re.findall(pattern, text)
-    first = " ".join(first)
-    final = find_words_from_sentence(first)
+    final = []
+    for sentence in find_sentences(text):
+        for word in find_words(sentence):
+            final.append(word)
     return final
 
 
@@ -134,39 +134,14 @@ def find_phone_numbers(text: str) -> dict:
     :param text: given string to find phone numbers from
     :return: dict containing the numbers
     """
-    numbers_pattern = r"\+[\d]{3} [\d]{7,8}|\+[\d]{3}[\d]{7,8}|[\d]{7,8}"
-    location_pattern = r"\+[\d]{3}"
-    locations = re.findall(location_pattern, text)
-    locations = set(locations)
-    locations = list(locations)
+    keys = []
     dictionary = {}
-    numbers = []
-    first_n = []
-    extras = []
-    i = 0
-    legit_nr = re.findall(numbers_pattern, text)
-    for nr in legit_nr:
-        nr = nr.replace(" ", "")
-        if nr[:4:] in locations:
-            if nr[:4:] not in first_n:
-                first_n.append(nr[:4:])
-                numbers.append([nr[:4:]])
-                index = first_n.index(nr[:4:])
-                numbers[index].append([nr[4::]])
-            else:
-                index = first_n.index(nr[:4:])
-                numbers[index][index + 1].append(nr[4::])
-        else:
-            extras.append(nr)
-    if len(extras) >= 1:
-        numbers.append([""])
-        first_n.append("")
-        numbers[len(first_n) - 1].append(extras)
-    for loc in first_n:
-        for el in numbers[i]:
-            dictionary[loc] = el
-        i += 1
-    return dictionary
+    pattern = r"(\+[\d]{3})? *([\d]{7,8})?"
+    numbers = re.search(pattern, text)
+    for numbers in numbers:
+
+    for area_code in numbers.group(2):
+        dictionary[area_code] = 0
 
 
 if __name__ == '__main__':
