@@ -137,7 +137,6 @@ def find_phone_numbers(text: str) -> dict:
     dictionary = {}
     pattern = r"(\+[\d]{3})? *([\d]{7,8})?"
     numbers = re.findall(pattern, text)
-    print(numbers)
     for location, number in numbers:
         if number == "":
             continue
