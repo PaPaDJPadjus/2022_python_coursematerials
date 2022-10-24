@@ -169,7 +169,6 @@ def test_fruit_order_large_numbers():
     assert fruit_order(10, 22, 10) == 0
     assert fruit_order(3, 22, 31) == 1
     assert fruit_order(21, 220, 1111) == 11
-    assert fruit_order(229, 235, 1404) == 0
 
 
 def test_fruit_order_large_numbers_not_enough_smalls():
