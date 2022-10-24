@@ -51,4 +51,7 @@ def test_lottery_a_is_b_or_c_not_both():
     """Test if a is equal to b or c."""
     assert lottery(1, 1, 3) == 0
     assert lottery(0, 4, 0) == 0
+
+
+def test_lottery_b_is_c_not_a():
     assert lottery(0, 1, 1) == 0
