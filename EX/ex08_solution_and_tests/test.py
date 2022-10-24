@@ -1,4 +1,4 @@
-"""Tests for week 8"""
+"""Tests for week 8."""
 from solution import students_study
 from solution import lottery
 from solution import fruit_order
@@ -39,6 +39,8 @@ def test_lottery_same_number_not_5():
     assert lottery(4, 4, 4) == 5
     assert lottery(8, 8, 8) == 5
     assert lottery(0, 0, 0) == 5
+    assert lottery(-1, -1, -1) == 5
+
 
 def test_lottery_all_different():
     """Test if numbers are different for mini prize."""
@@ -51,7 +53,6 @@ def test_lottery_a_is_b_or_c_not_both():
     """Test if a is equal to b or c."""
     assert lottery(1, 1, 3) == 0
     assert lottery(0, 4, 0) == 0
-
 
 
 def test_lottery_b_is_c_not_a():
