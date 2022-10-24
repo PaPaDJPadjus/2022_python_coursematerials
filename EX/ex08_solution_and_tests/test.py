@@ -1,7 +1,8 @@
-import pytest
+"""Tests for week 8"""
 from solution import students_study
 from solution import lottery
 from solution import fruit_order
+
 
 def test_students_study_evening_always_true():
     """Test nightly study session times."""
@@ -50,3 +51,4 @@ def test_lottery_a_is_b_or_c_not_both():
     """Test if a is equal to b or c."""
     assert lottery(1, 1, 3) == 0
     assert lottery(0, 4, 0) == 0
+    assert lottery(0, 1, 1) == 0
