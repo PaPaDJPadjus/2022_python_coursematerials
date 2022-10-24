@@ -120,6 +120,18 @@ def test_fruit_order_all_big_some_small():
 
 
 def test_fruit_order_some_big_some_small():
-    """Test if possible to use all big and some small baskets."""
+    """Test if possible to use some big and some small baskets."""
     assert fruit_order(5, 4, 21) == 1
     assert fruit_order(12, 3, 20) == 5
+
+
+def test_fruit_order_some_big_all_small():
+    """Test if possible to use all big and all small baskets."""
+    assert fruit_order(1, 5, 21) == 1
+    assert fruit_order(3, 3, 18) == 3
+
+
+def test_fruit_order_only_small_not_enough_more_than_five():
+    """Test if not enough small baskets if there's more than 5."""
+    assert fruit_order(10, 2, 21) == -1
+    assert fruit_order(6, 2, 18) == -1
