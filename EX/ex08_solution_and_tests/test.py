@@ -172,5 +172,5 @@ def test_fruit_order_large_numbers():
 
 def test_fruit_order_large_numbers_not_enough_smalls():
     """Test answers for large numbers not enough smalls."""
-    assert fruit_order(10, 22, 111) == -1
+    assert fruit_order(3, 23, 114) == -1
     assert fruit_order(1, 24, 119) == -1
