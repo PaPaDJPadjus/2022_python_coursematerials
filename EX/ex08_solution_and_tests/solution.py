@@ -59,4 +59,4 @@ def fruit_order(small_baskets: int, big_baskets: int, ordered_amount: int) -> in
 
 
 if __name__ == '__main__':
-    print(fruit_order(1, 5, 0))
+    print(fruit_order(20, 22, 16))
