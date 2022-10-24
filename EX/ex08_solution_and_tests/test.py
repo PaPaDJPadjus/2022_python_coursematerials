@@ -58,3 +58,9 @@ def test_lottery_a_is_b_or_c_not_both():
 def test_lottery_b_is_c_not_a():
     """Test if b and c are equal but don't equal a."""
     assert lottery(0, 1, 1) == 1
+
+
+def test_fruit_order_examples():
+    """Test examples given in docstring."""
+    assert fruit_order(4, 1, 9) == 4
+    assert fruit_order(3, 1, 10) == -1
