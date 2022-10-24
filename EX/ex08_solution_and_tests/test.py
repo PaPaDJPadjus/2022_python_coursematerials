@@ -135,3 +135,37 @@ def test_fruit_order_only_small_not_enough_more_than_five():
     """Test if not enough small baskets if there's more than 5."""
     assert fruit_order(10, 2, 21) == -1
     assert fruit_order(6, 2, 18) == -1
+
+
+def test_fruit_order_no_amount_no_small():
+    """Test if no amount and no small given."""
+    assert fruit_order(0, 5, 0) == -1
+    assert fruit_order(0, 3, 0) == -1
+
+
+def test_fruit_order_no_amount_no_big():
+    """Test if no amount and no big given."""
+    assert fruit_order(1, 0, 0) == -1
+    assert fruit_order(3, 0, 0) == -1
+
+
+def test_fruit_order_no_amount():
+    """Test if no amount given."""
+    assert fruit_order(1, 5, 0) == -1
+    assert fruit_order(3, 3, 0) == -1
+
+
+def test_fruit_order_only_small_not_enough():
+    """Test if only small baskets but not enough, more than 5 small."""
+    assert fruit_order(7, 0, 8) == -1
+    assert fruit_order(12, 0, 24) == -1
+
+
+def test_fruit_order_large_numbers():
+    """Test correct answers for large numbers"""
+    assert fruit_order(10, 4, 30) == 10
+
+
+def test_fruit_order_large_numbers_not_enough_smalls():
+    """Test correct answers for large numbers"""
+    assert fruit_order(9, 4, 30) == -1
