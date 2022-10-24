@@ -139,20 +139,20 @@ def test_fruit_order_only_small_not_enough_more_than_five():
 
 def test_fruit_order_no_amount_no_small():
     """Test if no amount and no small given."""
-    assert fruit_order(0, 5, 0) == -1
-    assert fruit_order(0, 3, 0) == -1
+    assert fruit_order(0, 5, 0) == 0
+    assert fruit_order(0, 3, 0) == 0
 
 
 def test_fruit_order_no_amount_no_big():
     """Test if no amount and no big given."""
-    assert fruit_order(1, 0, 0) == -1
-    assert fruit_order(3, 0, 0) == -1
+    assert fruit_order(1, 0, 0) == 0
+    assert fruit_order(3, 0, 0) == 0
 
 
 def test_fruit_order_no_amount():
     """Test if no amount given."""
-    assert fruit_order(1, 5, 0) == -1
-    assert fruit_order(3, 3, 0) == -1
+    assert fruit_order(1, 5, 0) == 0
+    assert fruit_order(3, 3, 0) == 0
 
 
 def test_fruit_order_only_small_not_enough():

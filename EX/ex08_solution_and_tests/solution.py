@@ -48,7 +48,7 @@ def fruit_order(small_baskets: int, big_baskets: int, ordered_amount: int) -> in
         big_baskets -= 1
         if ordered_amount - 5 < 0:
             break
-    if ordered_amount == 0:
+    if ordered_amount <= 0:
         return 0
     if ordered_amount - small_baskets == 0:
         return small_baskets
@@ -59,4 +59,4 @@ def fruit_order(small_baskets: int, big_baskets: int, ordered_amount: int) -> in
 
 
 if __name__ == '__main__':
-    print(fruit_order(0, 0, 0))
+    print(fruit_order(1, 5, 0))
