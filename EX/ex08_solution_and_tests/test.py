@@ -166,8 +166,8 @@ def test_fruit_order_only_small_not_enough():
 
 def test_fruit_order_large_numbers():
     """Test correct answers for large numbers."""
-    assert fruit_order(10, 20, 110) == 10
-    assert fruit_order(20, 22, 130) == 20
+    assert fruit_order(10, 22, 110) == 0
+    assert fruit_order(20, 22, 16) == 1
 
 
 def test_fruit_order_large_numbers_not_enough_smalls():
