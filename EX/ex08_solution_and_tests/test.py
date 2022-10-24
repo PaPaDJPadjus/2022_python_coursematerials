@@ -111,6 +111,8 @@ def test_fruit_order_not_enough_small():
     assert fruit_order(1, 1, 7) == -1
     assert fruit_order(3, 4, 25) == -1
     assert fruit_order(0, 1, 6) == -1
+    assert fruit_order(7, 2, 18) == -1
+    assert fruit_order(2, 3, 18) == -1
 
 
 def test_fruit_order_all_big_some_small():
@@ -124,6 +126,7 @@ def test_fruit_order_some_big_some_small():
     assert fruit_order(5, 4, 21) == 1
     assert fruit_order(12, 3, 20) == 5
     assert fruit_order(12, 6, 21) == 1
+
 
 def test_fruit_order_some_big_all_small():
     """Test if possible to use all big and all small baskets."""
@@ -164,8 +167,10 @@ def test_fruit_order_only_small_not_enough():
 def test_fruit_order_large_numbers():
     """Test correct answers for large numbers."""
     assert fruit_order(10, 20, 110) == 10
+    assert fruit_order(20, 22, 130) == 20
 
 
 def test_fruit_order_large_numbers_not_enough_smalls():
     """Test answers for large numbers not enough smalls."""
     assert fruit_order(9, 20, 110) == -1
+    assert fruit_order(12, 21, 120) == -1
