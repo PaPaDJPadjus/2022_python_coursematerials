@@ -54,4 +54,5 @@ def test_lottery_a_is_b_or_c_not_both():
 
 
 def test_lottery_b_is_c_not_a():
-    assert lottery(0, 1, 1) == 0
+    """Test if b and c are equal but don't equal a."""
+    assert lottery(0, 1, 1) == 1
