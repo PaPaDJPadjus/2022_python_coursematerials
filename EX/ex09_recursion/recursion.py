@@ -106,7 +106,11 @@ def add_commas(n: int):
     :param n: int
     :return: string of the formatted int
     """
-    pass
+    if len(str(n)) <= 3:
+        return n
+    n = str(n)
+
+    return n[-3:]
 
 
 def sum_digits_recursive(number: int) -> int:
