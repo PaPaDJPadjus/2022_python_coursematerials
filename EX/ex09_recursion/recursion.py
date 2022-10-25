@@ -36,7 +36,6 @@ def recursive_reverse(s: str) -> str:
     return recursive_reverse(s[1:]) + s[0]
 
 
-
 def loop_sum(n: int) -> int:
     """
     Calculate the sum of all numbers up to n (including n) using a loop.
@@ -53,6 +52,7 @@ def loop_sum(n: int) -> int:
         sum += n
         n -= 1
     return sum
+
 
 def recursive_sum(n: int) -> int:
     """
@@ -81,7 +81,13 @@ def countdown(n: int):
     :param n: start
     :return: countdown sequence
     """
-    pass
+    list_n = []
+    if n < 0:
+        return []
+    else:
+        list_n.append(n)
+        list_n.extend(countdown(n - 1))
+        return list_n
 
 
 def add_commas(n: int):
