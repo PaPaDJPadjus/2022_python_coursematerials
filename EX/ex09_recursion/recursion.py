@@ -129,7 +129,10 @@ def sum_digits_recursive(number: int) -> int:
     :param number: non-negative number
     :return: sum of digits in the number
     """
-    pass
+    number = str(number)
+    if number[1::] == "":
+        return int(number)
+    return int(number[0]) + sum_digits_recursive(int(number[1::]))
 
 
 def pair_star_recursive(s: str) -> str:
@@ -217,7 +220,7 @@ if __name__ == "__main__":
 
     print(sum_digits_recursive(123))  # -> 6
     print(sum_digits_recursive(0))  # -> 0
-    print(sum_digits_recursive(1000000000000000))  # -> 1
+    print(sum_digits_recursive(1000100000000003))  # -> 1
 
     print(pair_star_recursive("abc"))  # -> "abc"
     print(pair_star_recursive("aaa"))  # -> a*a*a
