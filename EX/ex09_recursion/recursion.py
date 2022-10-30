@@ -1,4 +1,5 @@
 """If you're going to perform recursion, you need to use recursion."""
+from math import trunc
 
 
 def loop_reverse(s: str) -> str:
@@ -158,7 +159,7 @@ def pair_star_recursive(s: str) -> str:
     return s[0] + pair_star_recursive(s[1::])
 
 
-def stonks(coins: float, rate: float, years: int) -> int:
+def stonks(coins: float, rate: float, years: int):
     """
     Each year your crypto-investment grows.
 
@@ -174,9 +175,9 @@ def stonks(coins: float, rate: float, years: int) -> int:
     :param years: number of years (0-50)
     :return: coins after years
     """
-    growth = round((coins * rate) / 100)
+    growth = coins * rate / 100
     if years == 1:
-        return coins + growth
+        return trunc(coins + growth)
     return stonks(coins + growth, rate, years - 1)
 
 
