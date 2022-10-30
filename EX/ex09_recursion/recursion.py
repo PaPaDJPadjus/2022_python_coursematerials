@@ -1,5 +1,5 @@
 """If you're going to perform recursion, you need to use recursion."""
-from math import trunc
+from math import floor
 
 
 def loop_reverse(s: str) -> str:
@@ -177,7 +177,7 @@ def stonks(coins: float, rate: float, years: int):
     """
     growth = coins * rate / 100
     if years == 1:
-        return trunc(coins + growth)
+        return floor(coins + growth)
     return stonks(coins + growth, rate, years - 1)
 
 
