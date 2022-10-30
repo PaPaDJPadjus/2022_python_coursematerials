@@ -155,8 +155,7 @@ def pair_star_recursive(s: str) -> str:
         return s
     if s[0] == s[1]:
         return f"{s[0]}*" + pair_star_recursive(s[1::])
-    else:
-        return s[0] + pair_star_recursive(s[1::])
+    return s[0] + pair_star_recursive(s[1::])
 
 
 def stonks(coins: float, rate: float, years: int) -> int:
@@ -175,7 +174,10 @@ def stonks(coins: float, rate: float, years: int) -> int:
     :param years: number of years (0-50)
     :return: coins after years
     """
-    pass
+    growth = round((coins * rate) / 100)
+    if years == 1:
+        return coins + growth
+    return stonks(coins + growth, rate, years - 1)
 
 
 def quic_mafs(a: int, b: int) -> list:
