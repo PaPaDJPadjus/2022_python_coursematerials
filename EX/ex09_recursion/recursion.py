@@ -151,7 +151,12 @@ def pair_star_recursive(s: str) -> str:
     :param s: input string
     :return: string with stars between identical chars.
     """
-    pass
+    if s[1::] == "":
+        return s
+    if s[0] == s[1]:
+        return f"{s[0]}*" + pair_star_recursive(s[1::])
+    else:
+        return s[0] + pair_star_recursive(s[1::])
 
 
 def stonks(coins: float, rate: float, years: int) -> int:
