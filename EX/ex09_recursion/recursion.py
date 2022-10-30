@@ -1,5 +1,5 @@
 """If you're going to perform recursion, you need to use recursion."""
-from math import floor
+from math import trunc
 
 
 def loop_reverse(s: str) -> str:
@@ -175,10 +175,11 @@ def stonks(coins: float, rate: float, years: int):
     :param years: number of years (0-50)
     :return: coins after years
     """
-    growth = coins * rate / 100
+    growth = (coins * rate) / 100
     if years == 1:
-        return floor(coins + growth)
-    return stonks(coins + growth, rate, years - 1)
+        return trunc(coins + growth)
+    else:
+        return stonks(coins + growth, rate, years - 1)
 
 
 def quic_mafs(a: int, b: int) -> list:
