@@ -176,6 +176,8 @@ def stonks(coins: float, rate: float, years: int):
     :return: coins after years
     """
     growth = (coins * rate) / 100
+    if years > 50 or rate > 100:
+        return trunc(coins)
     if years == 1:
         return trunc(coins + growth)
     else:
