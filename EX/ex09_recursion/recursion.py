@@ -199,7 +199,15 @@ def quic_mafs(a: int, b: int) -> list:
     :param b: int
     :return: result
     """
-    pass
+    if a == 0 or b == 0:
+        return [a, b]
+
+    if a >= 2 * b:
+        return quic_mafs(a - 2 * b, b)
+    elif b >= 2 * a:
+        return quic_mafs(a, b - 2 * a)
+    else:
+        return [a, b]
 
 
 if __name__ == "__main__":
