@@ -100,7 +100,7 @@ def sum_squares(nested_list):
         return nested_list[0] ** 2
 
 
-def count_strings(data: list, pos=None, result: dict = None) -> dict:
+def count_strings(data: list, pos=None, result: dict = None):
     """
     Count strings in list.
 
@@ -119,9 +119,20 @@ def count_strings(data: list, pos=None, result: dict = None) -> dict:
     :param result: figure out how to use it
     :return: dict of given symbols and their count
     """
-    pass
+    if pos is None and result is None:
+        pos = 0
+        result = {}
+    if len(data) > pos:
+        if isinstance(data[pos], list):
+            count_strings(data[pos], pos, result)
+            count_strings(data[pos + 1::], pos, result)
+        if isinstance(data[pos], str):
+            result[data[pos]] = result.get(data[pos], 0) + 1
+            count_strings(data[pos + 1::], pos, result)
+    return result
 
-
-print(sum_squares([1, 2, 3]))
-print(sum_squares([[1, 2], 3]))
-print(sum_squares([[[[[[[[[2]]]]]]]]]))
+print(count_strings([[], ["J", "*", "W", "f"], ["j", "g", "*"], ["j", "8", "5", "6", "*"], ["*", "*", "A", "8"]]))
+# {'J': 1, '*': 5, 'W': 1, 'f': 1, 'j': 2, 'g': 1, '8': 2, '5': 1, '6': 1, 'A': 1}
+print(count_strings([[], [], [], [], ["h", "h", "m"], [], ["m", "m", "M", "m"]]))  # {'h': 2, 'm': 4, 'M': 1}
+print(count_strings([]))  # {}
+print(count_strings([['a'], 'b', ['a', ['b']]]))  # {'a': 2, 'b': 2}
