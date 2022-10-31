@@ -127,10 +127,17 @@ def symbol_average_position_in_words(words):
     :return: dictionary with symbol average positions
     """
     dictionary_letters = {}
+    letters = []
+    for word in words:
+        for letter in word:
+            letters.append(letter)
+
     for word in words:
         for letter in word:
             index_letter = word.index(letter)
             dictionary_letters[letter] = dictionary_letters.get(letter, 0) + index_letter
 
+    for key in dictionary_letters:
+        dictionary_letters[key] = dictionary_letters[key] / letters.count(key)
     return dictionary_letters
 
