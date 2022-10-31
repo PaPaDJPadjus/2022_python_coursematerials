@@ -80,9 +80,8 @@ def nr_into_num_list(nr: int, num_list: list) -> list:
         if number >= nr:
             num_list.insert(num_list.index(number), nr)
             break
-        else:
-            num_list.append(nr)
-            break
+    if nr not in num_list:
+        num_list.append(nr)
     return num_list
 
 
@@ -130,4 +129,4 @@ def symbol_average_position_in_words(words):
     pass
 
 
-print(nr_into_num_list(45, [39]))
+print(nr_into_num_list(35, [30]))
