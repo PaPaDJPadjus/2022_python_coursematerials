@@ -71,7 +71,9 @@ def nr_into_num_list(nr: int, num_list: list) -> list:
     nr_into_num_list(0, [1,2,3,4,5]) -> [0,1,2,3,4,5,]
 
     """
-    pass
+    num_list.append(nr)
+    num_list.sort()
+    return num_list
 
 
 def symbol_average_position_in_words(words):
@@ -118,7 +120,4 @@ def symbol_average_position_in_words(words):
     pass
 
 
-print(nr_of_common_characters("iva", "avis")) #-> 3 # 'a', 'i', 'v' are common
-print(nr_of_common_characters("saali", "pall")) #-> 2  # 'a', 'l' are common
-print(nr_of_common_characters("memm", "taat")) #-> 0
-print(nr_of_common_characters("memm", ""))  #-> 0
+print(nr_into_num_list(5, []))   # -> [1,2,3,4,5,5,6]
