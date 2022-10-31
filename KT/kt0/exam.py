@@ -27,7 +27,7 @@ def add_char_into_pos(char: str, pos: int, string: str) -> str:
         return final_word
 
 
-def nr_of_common_characters(string1: str, string2: str) -> int:
+def nr_of_common_characters(string1: str, string2: str):
     """
     Return a number of common characters of string1 and string2.
 
@@ -39,7 +39,24 @@ def nr_of_common_characters(string1: str, string2: str) -> int:
     common_characters("memm", "") -> 0
 
     """
-    pass
+    if string1 == "" or string2 == "":
+        return 0
+    letters1 = []
+    letters2 = []
+    common_chars = 0
+
+    for letter in string1:
+        letters1.append(letter)
+    letters1 = sorted(list(set(letters1)))
+
+    for letter in string2:
+        letters2.append(letter)
+    letters2 = sorted(list(set(letters2)))
+
+    for letter in letters2:
+        if letter in letters1:
+            common_chars += 1
+    return common_chars
 
 
 def nr_into_num_list(nr: int, num_list: list) -> list:
@@ -101,8 +118,7 @@ def symbol_average_position_in_words(words):
     pass
 
 
-print(add_char_into_pos("a", 2, "kheksa"))  # -> "kaheksa"
-print(add_char_into_pos("t", 8, "kaheksa"))   #  -> "kaheksat"
-print(add_char_into_pos("a", 1, "mps"))  # -> "amps"
-print(add_char_into_pos("a", 1, ""))  # -> "a"
-print(add_char_into_pos("k", 10, "kalla"))  # -> "kalla"
+print(nr_of_common_characters("iva", "avis")) #-> 3 # 'a', 'i', 'v' are common
+print(nr_of_common_characters("saali", "pall")) #-> 2  # 'a', 'l' are common
+print(nr_of_common_characters("memm", "taat")) #-> 0
+print(nr_of_common_characters("memm", ""))  #-> 0
