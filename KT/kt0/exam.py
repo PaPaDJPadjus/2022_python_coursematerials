@@ -133,11 +133,14 @@ def symbol_average_position_in_words(words):
             letters.append(letter)
 
     for word in words:
+        index_letter = 0
         for letter in word:
-            index_letter = word.index(letter)
             dictionary_letters[letter] = dictionary_letters.get(letter, 0) + index_letter
+            index_letter += 1
 
     for key in dictionary_letters:
         dictionary_letters[key] = dictionary_letters[key] / letters.count(key)
     return dictionary_letters
 
+
+print(symbol_average_position_in_words(["hello", "world"]))
