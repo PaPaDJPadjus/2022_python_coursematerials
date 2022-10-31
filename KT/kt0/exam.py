@@ -80,6 +80,7 @@ def nr_into_num_list(nr: int, num_list: list) -> list:
         if number >= nr:
             num_list.insert(num_list.index(number), nr)
             break
+    num_list.append(nr)
     return num_list
 
 
@@ -125,3 +126,6 @@ def symbol_average_position_in_words(words):
     :return: dictionary with symbol average positions
     """
     pass
+
+
+print(nr_into_num_list(45, [39]))
