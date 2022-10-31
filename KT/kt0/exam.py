@@ -126,7 +126,11 @@ def symbol_average_position_in_words(words):
     :param words: list of words
     :return: dictionary with symbol average positions
     """
-    pass
+    dictionary_letters = {}
+    for word in words:
+        for letter in word:
+            index_letter = word.index(letter)
+            dictionary_letters[letter] = dictionary_letters.get(letter, 0) + index_letter
 
+    return dictionary_letters
 
-print(nr_into_num_list(35, [30]))
