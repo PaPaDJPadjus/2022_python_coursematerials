@@ -80,7 +80,9 @@ def nr_into_num_list(nr: int, num_list: list) -> list:
         if number >= nr:
             num_list.insert(num_list.index(number), nr)
             break
-    num_list.append(nr)
+        else:
+            num_list.append(nr)
+            break
     return num_list
 
 
