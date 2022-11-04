@@ -36,6 +36,8 @@ def take_partial(text: str, leave_count: int, take_count: int) -> str:
     take_partial("abcdef", 1, 0) => ""
     take_partial("Hello world", 3, 3) => "lo ld"
     """
+    if not text:
+        return ""
     new_text = ""
     counter = 0
     if take_count == 0:
@@ -104,7 +106,7 @@ if __name__ == '__main__':
     print(switch_lasts_and_firsts("car"))  # => "rac"
 
     print(take_partial("abcdef", 2, 3))  # => "cde"
-    print(take_partial("abcdef", 0, 1))  # => "abcdef"
+    print(take_partial("whatever sentence?", 0, 1))  # => "abcdef"
     print(take_partial("abcdef", 1, 0))  # => ""
     print(take_partial("Abracadabra", 3, 3))  # => "lo ld"
 
