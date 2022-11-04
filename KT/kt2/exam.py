@@ -72,9 +72,13 @@ def min_diff(nums: list) -> int:
         if nums[0] - nums[1] > nums[1] - nums[0]:
             return nums[0] - nums[1]
         return nums[1] - nums[0]
+
     nums = sorted(nums)
+    diffs = []
     for el in nums:
-        if el >
+        for el2 in nums[el:]:
+            diffs.append(el2 - el)
+    return min(diffs)
 
 
 def get_symbols_by_occurrences(text: str) -> dict:
