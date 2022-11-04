@@ -46,11 +46,12 @@ def take_partial(text: str, leave_count: int, take_count: int) -> str:
     for el in text[leave_count:]:
         if el == " ":
             new_text += " "
-            counter = 0
-        if counter != take_count:
-            new_text += el
-            counter += 1
-
+            counter += leave_count
+            continue
+        if counter > take_count - 1:
+            counter -= 1
+            continue
+        new_text += el
     return new_text
 
 
