@@ -36,23 +36,21 @@ def take_partial(text: str, leave_count: int, take_count: int) -> str:
     take_partial("abcdef", 1, 0) => ""
     take_partial("Hello world", 3, 3) => "lo ld"
     """
-    counter = 0
     new_text = ""
+    counter = 0
     if take_count == 0:
         return ""
-    if leave_count == 0:
-        return text
 
     for el in text[leave_count:]:
-        if el == " ":
-            new_text += ""
-            counter += leave_count
-            continue
-        if counter > take_count - 1:
-            counter -= 1
-            continue
+        if take_count > len(text[leave_count:]):
+            take_count = len(text[leave_count:])
         new_text += el
-    return new_text
+        counter += 1
+        if counter == take_count:
+            if len(text[leave_count + counter:]) >= take_count:
+                return new_text + take_partial(text[leave_count + counter:], leave_count, take_count)
+            else:
+                return new_text
 
 
 def min_diff(nums: list) -> int:
