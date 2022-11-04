@@ -304,7 +304,7 @@ if __name__ == '__main__':
 
     print("\nFull message:")
     print(get_data_from_id("49808270244"))  # -> "This is a female born on 27.08.1998 in Tallinn."
-    print(get_data_from_id("60109200187"))  # -> "Given invalid ID code!"
+    print(get_data_from_id("50404220825"))  # -> "Given invalid ID code!"
 
     print("\nTest now your own ID code:")
     personal_id = input()  # type your own id in command prompt
