@@ -47,7 +47,6 @@ def take_partial(text: str, leave_count: int, take_count: int) -> str:
         if el == " ":
             new_text += " "
             counter = 0
-            return new_text + take_partial(text[take_count + leave_count:], leave_count, take_count)
         if counter != take_count:
             new_text += el
             counter += 1
@@ -69,7 +68,13 @@ def min_diff(nums: list) -> int:
     :param nums: list of ints, at least 2 elements.
     :return: min diff between 2 numbers.
     """
-    pass
+    if len(nums) == 2:
+        if nums[0] - nums[1] > nums[1] - nums[0]:
+            return nums[0] - nums[1]
+        return nums[1] - nums[0]
+    nums = sorted(nums)
+    for el in nums:
+        if el >
 
 
 def get_symbols_by_occurrences(text: str) -> dict:
