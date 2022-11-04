@@ -73,10 +73,16 @@ def min_diff(nums: list) -> int:
             return nums[0] - nums[1]
         return nums[1] - nums[0]
 
+    for el in nums:
+        if nums.count(el) >= 2:
+            return 0
+
     nums = sorted(nums)
     diffs = []
     for el in nums:
-        for el2 in nums[el:]:
+        for el2 in nums:
+            if 0 >= el2 - el:
+                continue
             diffs.append(el2 - el)
     return min(diffs)
 
