@@ -18,9 +18,6 @@ class Tweet:
         self.time = time
         self.retweets = retweets
 
-    def __repr__(self):
-        return self.user, self.content, self.time, self.retweets
-
 
 def find_fastest_growing(tweets: list):
     """
@@ -69,7 +66,11 @@ def filter_by_hashtag(tweets: list, hashtag: str) -> list:
     :param hashtag: Hashtag to filter by.
     :return: Filtered list of tweets.
     """
-    pass
+    list_of_tweets_w_hashtag = []
+    for el in tweets:
+        if hashtag in el.content:
+            list_of_tweets_w_hashtag.append(el)
+    return list_of_tweets_w_hashtag
 
 
 def sort_hashtags_by_popularity(tweets: list) -> list:
@@ -95,7 +96,7 @@ if __name__ == '__main__':
     tweet3 = Tweet("@CIA", "We can neither confirm nor deny that this is our first tweet. #heart", 2192, 284200)
     tweet4 = Tweet("@elonmusk8eer", "Technically, alcohol isn't a solution #bigsmart", 34, 54303)
     tweet5 = Tweet("@me", "L + Ratio", 155, 284200)
-    tweets = [tweet1, tweet2, tweet3, tweet4, tweet5]
+    tweets = [tweet1, tweet2, tweet3]
 
     print(find_fastest_growing(tweets).user)  # -> "@elonmusk"
 
@@ -103,11 +104,10 @@ if __name__ == '__main__':
     print(filtered_by_popularity[0].user)  # -> "@CIA"
     print(filtered_by_popularity[1].user)  # -> "@elonmusk"
     print(filtered_by_popularity[2].user)  # -> "@realDonaldTrump"
-    print(filtered_by_popularity[3].user)
-    print(filtered_by_popularity[4].user)
-    #  filtered_by_hashtag = filter_by_hashtag(tweets, "#bigsmart")
-    #  print(filtered_by_hashtag[0].user)  # -> "@realDonaldTrump"
-    #  print(filtered_by_hashtag[1].user)  # -> "@elonMusk"
 
-    #  sorted_hashtags = sort_hashtags_by_popularity(tweets)
-    #  print(sorted_hashtags[0])  # -> "#heart"
+    filtered_by_hashtag = filter_by_hashtag(tweets, "#bigsmart")
+    print(filtered_by_hashtag[0].user)  # -> "@realDonaldTrump"
+    print(filtered_by_hashtag[1].user)  # -> "@elonMusk"
+
+    #sorted_hashtags = sort_hashtags_by_popularity(tweets)
+    #print(sorted_hashtags[0])  # -> "#heart"
