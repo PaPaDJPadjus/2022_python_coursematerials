@@ -18,6 +18,9 @@ class Tweet:
         self.time = time
         self.retweets = retweets
 
+    def __repr__(self):
+        return self.user, self.content, self.time, self.retweets
+
 
 def find_fastest_growing(tweets: list):
     """
@@ -52,15 +55,7 @@ def sort_by_popularity(tweets: list) -> list:
     :param tweets: Input list of tweets.
     :return: List of tweets by popularity
     """
-    tweets.sort(reverse=True, key=lambda x: x.retweets)  # Auto sortib kahanevaks järjekorraks
-    i = 0
-    while i != len(tweets) - 1:
-        if tweets[i].retweets == tweets[i + 1].retweets:  # While tsykkel kontrollib sama rt arvuga ja asendab
-            if tweets[i].time > tweets[i + 1].time:
-                first_tweet = tweets[i]
-                tweets[i] = tweets[i + 1]
-                tweets[i + 1] = first_tweet
-        i += 1
+    tweets.sort(key=lambda x: (-x.retweets, x.time))
     return tweets
 
 
