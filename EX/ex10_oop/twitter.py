@@ -52,10 +52,10 @@ def sort_by_popularity(tweets: list) -> list:
     :param tweets: Input list of tweets.
     :return: List of tweets by popularity
     """
-    tweets.sort(reverse=True, key=lambda x: x.retweets)
+    tweets.sort(reverse=True, key=lambda x: x.retweets)  # Auto sortib kahanevaks järjekorraks
     i = 0
     while i != len(tweets) - 1:
-        if tweets[i].retweets == tweets[i + 1].retweets:
+        if tweets[i].retweets == tweets[i + 1].retweets:  # While tsykkel kontrollib sama rt arvuga ja asendab
             if tweets[i].time > tweets[i + 1].time:
                 first_tweet = tweets[i]
                 tweets[i] = tweets[i + 1]
@@ -98,7 +98,9 @@ if __name__ == '__main__':
     tweet1 = Tweet("@realDonaldTrump", "Despite the negative press covfefe #bigsmart", 1249, 54303)
     tweet2 = Tweet("@elonmusk", "Technically, alcohol is a solution #bigsmart", 366.4, 54303)
     tweet3 = Tweet("@CIA", "We can neither confirm nor deny that this is our first tweet. #heart", 2192, 284200)
-    tweets = [tweet1, tweet2, tweet3]
+    tweet4 = Tweet("@elonmusk8eer", "Technically, alcohol isn't a solution #bigsmart", 34, 54303)
+    tweet5 = Tweet("@me", "L + Ratio", 155, 284200)
+    tweets = [tweet1, tweet2, tweet3, tweet4, tweet5]
 
     print(find_fastest_growing(tweets).user)  # -> "@elonmusk"
 
@@ -106,7 +108,8 @@ if __name__ == '__main__':
     print(filtered_by_popularity[0].user)  # -> "@CIA"
     print(filtered_by_popularity[1].user)  # -> "@elonmusk"
     print(filtered_by_popularity[2].user)  # -> "@realDonaldTrump"
-
+    print(filtered_by_popularity[3].user)
+    print(filtered_by_popularity[4].user)
     #  filtered_by_hashtag = filter_by_hashtag(tweets, "#bigsmart")
     #  print(filtered_by_hashtag[0].user)  # -> "@realDonaldTrump"
     #  print(filtered_by_hashtag[1].user)  # -> "@elonMusk"
