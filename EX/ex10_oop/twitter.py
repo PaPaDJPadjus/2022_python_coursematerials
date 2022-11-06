@@ -1,4 +1,5 @@
 """Twitter."""
+import re
 
 
 class Tweet:
@@ -87,27 +88,30 @@ def sort_hashtags_by_popularity(tweets: list) -> list:
     :param tweets: Input list of tweets.
     :return: List of hashtags by popularity.
     """
-    pass
+    dictionary_of_tags = {}
+    dictionary_keys = []
+    pattern = r"[#]+[A-Za-z]+"
+    final_hashtag_list = []
+    for el in tweets:
+        hashtags_from_content = re.findall(pattern, el.content)
+        for hashtag in hashtags_from_content:
+            if hashtag in dictionary_keys:
+                dictionary_of_tags.setdefault(hashtag, []).append(el.retweets)
+                dictionary_of_tags[hashtag] = [sum(dictionary_of_tags[hashtag])]
+            else:
+                dictionary_keys.append(hashtag)
+                dictionary_of_tags[hashtag] = [el.retweets]
+    sorted_dict = sorted(dictionary_of_tags.items(), key=lambda x: (x[1], x[0]), reverse=True)
+    for key, value in sorted_dict:
+        final_hashtag_list.append(key)
+    return final_hashtag_list
 
 
 if __name__ == '__main__':
-    tweet1 = Tweet("@realDonaldTrump", "Despite the negative press covfefe #bigsmart", 1249, 54303)
-    tweet2 = Tweet("@elonmusk", "Technically, alcohol is a solution #bigsmart", 366.4, 54303)
-    tweet3 = Tweet("@CIA", "We can neither confirm nor deny that this is our first tweet. #heart", 2192, 284200)
-    tweet4 = Tweet("@elonmusk8eer", "Technically, alcohol isn't a solution #bigsmart", 34, 54303)
-    tweet5 = Tweet("@me", "L + Ratio", 155, 284200)
+    tweet1 = Tweet("@realDonaldTrump", "Despite the negative press covfefe #bigsmart #LFG", 1249, 284200)
+    tweet2 = Tweet("@elonmusk", "Technically, alcohol is a solution #bigsmart", 366.4, 543)
+    tweet3 = Tweet("@CIA", "We can neither confirm nor deny that this is our first tweet. #heart", 2192, 284743)
     tweets = [tweet1, tweet2, tweet3]
 
-    print(find_fastest_growing(tweets).user)  # -> "@elonmusk"
-
-    filtered_by_popularity = sort_by_popularity(tweets)
-    print(filtered_by_popularity[0].user)  # -> "@CIA"
-    print(filtered_by_popularity[1].user)  # -> "@elonmusk"
-    print(filtered_by_popularity[2].user)  # -> "@realDonaldTrump"
-
-    filtered_by_hashtag = filter_by_hashtag(tweets, "#bigsmart")
-    print(filtered_by_hashtag[0].user)  # -> "@realDonaldTrump"
-    print(filtered_by_hashtag[1].user)  # -> "@elonMusk"
-
-    #sorted_hashtags = sort_hashtags_by_popularity(tweets)
-    #print(sorted_hashtags[0])  # -> "#heart"
+    sorted_hashtags = sort_hashtags_by_popularity(tweets)
+    print(sorted_hashtags)  # -> "#heart"
