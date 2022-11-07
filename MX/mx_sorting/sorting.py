@@ -1,4 +1,5 @@
 """Sorting."""
+from itertools import count
 
 
 def sort_numbers_using_sort(numbers: list[int]):
@@ -136,7 +137,10 @@ def sort_people_by_popularity_of_name(people: list[Person]) -> list:
     :param people: Input list of people (Objects of the Person class).
     :return: Sorted list of people.
     """
-    sorted_list = sorted(people, key=lambda x: (x.name.count, x.name))
+    names = []
+    for person in people:
+        names.append(person.name)
+    sorted_list = sorted(people, key=lambda x: (-names.count(x.name), x.name))
     return sorted_list
 
 
