@@ -119,7 +119,7 @@ def sort_people_by_age_name_height(people: list[Person]) -> list:
     :param people: Input list of people (Objects of the Person class).
     :return: Sorted list of people.
     """
-    sorted_list = sorted(people, key=lambda x: (x.age, x.name, x.height))
+    sorted_list = sorted(people, key=lambda x: (x.name.count, x.name))
     return sorted_list
 
 
