@@ -48,7 +48,7 @@ def filter_by_hobby(people_list: list, hobby: str) -> list:
     same_hobbies_people = []
     for person in people_list:
         if hobby in person.hobbies:
-            same_hobbies_people.append(Person(person.first_name, person.last_name, hobbies=[]))
+            same_hobbies_people.append(person)
     return same_hobbies_people
 
 
@@ -62,7 +62,7 @@ def sort_by_most_hobbies(people_list: list) -> list:
     :param people_list: list of people to sort.
     :return: sorted list of people.
     """
-    pass
+
 
 
 def sort_by_least_hobbies(people_list: list) -> list:
