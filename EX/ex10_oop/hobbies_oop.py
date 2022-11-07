@@ -86,7 +86,18 @@ def sort_by_least_hobbies(people_list: list) -> list:
     :param people_list: list of people to sort.
     :return: sorted list of people.
     """
-    pass
+    most_hobbies_people = {}
+    final_list = []
+    for person in people_list:
+        most_hobbies_people[person.full_name] = len(person.hobbies)
+    sorted_hobbies_list = sorted(most_hobbies_people.items(), key=lambda x: (x[1], x[0]))
+
+    for name, amount in sorted_hobbies_list:
+        for object_person in people_list:
+            if object_person.full_name == name:
+                if object_person not in final_list:
+                    final_list.append(object_person)
+    return final_list
 
 
 def sort_people_and_hobbies(people_list: list) -> list:
