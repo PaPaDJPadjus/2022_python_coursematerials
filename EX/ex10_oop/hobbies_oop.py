@@ -108,7 +108,19 @@ def sort_people_and_hobbies(people_list: list) -> list:
     :param people_list: list of people to sort.
     :return: sorted list of people.
     """
-    pass
+    final_list = []
+    names_list = []
+    for person in people_list:
+        person.hobbies = sorted(person.hobbies, key=lambda x: x)
+        names_list.append(person.full_name)
+
+    sorted_by_name = sorted(names_list, key=lambda x: x)
+    for name in sorted_by_name:
+        for object_person in people_list:
+            if object_person.full_name == name:
+                if object_person not in final_list:
+                    final_list.append(object_person)
+    return final_list
 
 
 if __name__ == '__main__':
