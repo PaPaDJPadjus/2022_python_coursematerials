@@ -11,7 +11,7 @@ def sort_numbers_using_sort(numbers: list[int]):
 
     :param numbers: List of integers in a random order.
     """
-    return numbers.sort()
+    numbers.sort()
 
 
 def sort_numbers_using_sorted(numbers: list[int]) -> list:
@@ -102,7 +102,8 @@ def sort_people_by_name(people: list[Person]) -> list:
     :param people: Input list of people (Objects of the Person class).
     :return: Sorted list of people.
     """
-    pass
+    sorted_list = sorted(people, key=lambda x: x.name)
+    return sorted_list
 
 
 def sort_people_by_age_name_height(people: list[Person]) -> list:
@@ -118,7 +119,8 @@ def sort_people_by_age_name_height(people: list[Person]) -> list:
     :param people: Input list of people (Objects of the Person class).
     :return: Sorted list of people.
     """
-    pass
+    sorted_list = sorted(people, key=lambda x: (x.age, x.name, x.height))
+    return sorted_list
 
 
 def sort_people_by_popularity_of_name(people: list[Person]) -> list:
@@ -134,7 +136,8 @@ def sort_people_by_popularity_of_name(people: list[Person]) -> list:
     :param people: Input list of people (Objects of the Person class).
     :return: Sorted list of people.
     """
-    pass
+    sorted_list = sorted(people, key=lambda x: (x.name.count, x.name))
+    return sorted_list
 
 
 if __name__ == '__main__':
