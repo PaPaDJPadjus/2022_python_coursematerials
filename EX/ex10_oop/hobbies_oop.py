@@ -48,8 +48,9 @@ def filter_by_hobby(people_list: list, hobby: str) -> list:
     same_hobbies_people = []
     for person in people_list:
         if hobby in person.hobbies:
-            same_hobbies_people.append(person.full_name)
+            same_hobbies_people.append(str(person.full_name))
     return same_hobbies_people
+
 
 def sort_by_most_hobbies(people_list: list) -> list:
     """
