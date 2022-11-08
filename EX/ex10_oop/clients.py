@@ -100,7 +100,7 @@ def largest_earnings_per_day(filename: str) -> Optional[Client]:
 
     for person in clients_list:
         earnings_list.append(person)
-    return earnings_list
+    return clients_list
 
 
 def largest_loss_per_day(filename: str) -> Optional[Client]:
