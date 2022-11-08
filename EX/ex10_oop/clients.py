@@ -33,6 +33,7 @@ class Client:
     def __repr__(self):
         """
         Client representation.
+
         :return: clients name
         """
         return self.name
@@ -99,6 +100,9 @@ def largest_earnings_per_day(filename: str) -> Optional[Client]:
         clients_list.append((client_to_add, Client.earnings_per_day(client_to_add)))
 
     sorted_by_earnings = sorted(clients_list, reverse=True, key=lambda x: (x[1], -x[0].account_age))
+
+    if 0 >= sorted_by_earnings[0][1]:
+        return
     return sorted_by_earnings[0][0]
 
 
