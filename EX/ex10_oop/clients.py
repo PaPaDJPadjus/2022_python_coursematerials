@@ -92,15 +92,14 @@ def largest_earnings_per_day(filename: str) -> Optional[Client]:
     :return: client with largest earnings.
     """
     clients_list = []
-    earnings_list = []
     f = open(filename, "r")
     for line in f:
         line = line.split(",")
-        clients_list.append(Client(line[0], line[1], int(line[2]), int(line[3]), int(line[4])))
+        client_to_add = Client(line[0], line[1], int(line[2]), int(line[3]), int(line[4]))
+        clients_list.append((client_to_add, Client.earnings_per_day(client_to_add)))
 
-    for person in clients_list:
-        earnings_list.append(person)
-    return clients_list
+    sorted_by_earnings = sorted(clients_list, reverse=True, key=lambda x: (x[1], -x[0].account_age))
+    return sorted_by_earnings[0][0]
 
 
 def largest_loss_per_day(filename: str) -> Optional[Client]:
