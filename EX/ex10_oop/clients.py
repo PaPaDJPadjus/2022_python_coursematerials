@@ -122,7 +122,7 @@ def largest_loss_per_day(filename: str) -> Optional[Client]:
         client_to_add = Client(line[0], line[1], int(line[2]), int(line[3]), int(line[4]))
         clients_list.append((client_to_add, Client.earnings_per_day(client_to_add)))
 
-    sorted_by_earnings = sorted(clients_list, key=lambda x: (x[1], -x[0].account_age))
+    sorted_by_earnings = sorted(clients_list, key=lambda x: (x[1], x[0].account_age))
 
     if sorted_by_earnings[0][1] >= 0:
         return
