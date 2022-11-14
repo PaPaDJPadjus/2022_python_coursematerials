@@ -12,7 +12,7 @@ class AlchemicalElement:
 
     def __repr__(self) -> str:
         """Display element."""
-        return "<AE: " + self.name + ">"
+        return f"<AE: {self.name}>"
 
 
 class AlchemicalStorage:
@@ -24,7 +24,7 @@ class AlchemicalStorage:
 
         You will likely need to add something here, maybe a list?
         """
-        list_of_ae = []
+        self.list_of_ae = []
 
     def add(self, element: AlchemicalElement):
         """
@@ -34,9 +34,9 @@ class AlchemicalStorage:
 
         :param element: Input object to add to storage.
         """
-        if element is not AlchemicalElement:
-            return TypeError
-        AlchemicalStorage.add(element)
+        if isinstance(element, AlchemicalElement):
+            return self.list_of_ae.append(element)
+        raise TypeError
 
     def pop(self, element_name: str) -> AlchemicalElement or None:
         """
@@ -97,9 +97,6 @@ if __name__ == '__main__':
     element_two = AlchemicalElement('Water')
     element_three = AlchemicalElement('Water')
     storage = AlchemicalStorage()
-
-    print(element_one)  # <AE: Fire>
-    print(element_two)  # <AE: Water>
 
     storage.add(element_one)
     storage.add(element_two)
