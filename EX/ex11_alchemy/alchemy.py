@@ -54,7 +54,7 @@ class AlchemicalStorage:
         :return: The removed AlchemicalElement object or None.
         """
         i = len(self.elements) - 1
-        while i != 0:
+        while i >= 0:
             if element_name == self.elements[i].name:
                 return self.elements.pop(i)
             i -= 1
@@ -78,7 +78,12 @@ class AlchemicalStorage:
 
         :return: A list of all of the elements that were previously in the storage.
         """
-        return []
+        new_list = []
+        for el in self.elements:
+            new_list.append(el)
+
+        self.elements.clear()
+        return new_list
 
     def get_content(self) -> str:
         """
