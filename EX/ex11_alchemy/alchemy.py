@@ -24,7 +24,11 @@ class AlchemicalStorage:
 
         You will likely need to add something here, maybe a list?
         """
-        self.list_of_ae = []
+        self.elements = []
+
+    def __repr__(self):
+        """Display list."""
+        return f"{self.elements}"
 
     def add(self, element: AlchemicalElement):
         """
@@ -35,8 +39,9 @@ class AlchemicalStorage:
         :param element: Input object to add to storage.
         """
         if isinstance(element, AlchemicalElement):
-            return self.list_of_ae.append(element)
-        raise TypeError
+            self.elements.append(element)
+        else:
+            raise TypeError()
 
     def pop(self, element_name: str) -> AlchemicalElement or None:
         """
@@ -48,6 +53,11 @@ class AlchemicalStorage:
         :param element_name: Name of the element to remove.
         :return: The removed AlchemicalElement object or None.
         """
+        i = len(self.elements) - 1
+        while i != 0:
+            if element_name == self.elements[i].name:
+                return self.elements.pop(i)
+            i -= 1
         return None
 
     def extract(self) -> list[AlchemicalElement]:
@@ -100,6 +110,7 @@ if __name__ == '__main__':
 
     storage.add(element_one)
     storage.add(element_two)
+    print(storage)
 
     print(storage.get_content())
     # Content:
