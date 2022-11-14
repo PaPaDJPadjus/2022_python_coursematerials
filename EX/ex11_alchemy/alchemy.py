@@ -121,21 +121,3 @@ class AlchemicalStorage:
         for key_n_value in el_dict:
             final_string += f"\n * {key_n_value} x {el_dict[key_n_value]}"
         return final_string
-
-
-if __name__ == '__main__':
-    element_one = AlchemicalElement('Water')
-    element_two = AlchemicalElement('Water')
-    element_three = AlchemicalElement('Water')
-    storage = AlchemicalStorage()
-
-    storage.add(element_two)
-    storage.add(element_three)
-    storage.add(element_two)
-    storage.add(element_two)
-    storage.add(element_one)
-    storage.add(element_one)
-    storage.add(element_one)
-    storage.add(element_one)
-    print(storage.get_content())  #  Content:\n * Water x 4
-
