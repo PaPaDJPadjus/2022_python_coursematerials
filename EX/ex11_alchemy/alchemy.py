@@ -104,7 +104,16 @@ class AlchemicalStorage:
 
         :return: Content as a string.
         """
-        return ''
+        sorted_elements_list = sorted(self.elements, key=lambda x: x.name)
+        used_el = []
+        final_string = ""
+        for el in sorted_elements_list:
+            if el.name not in used_el:
+                amount = sorted_elements_list.count(el)
+                final_string += f"* {el.name} {amount}\n"
+                used_el.append(el.name)
+
+        return final_string
 
 
 if __name__ == '__main__':
@@ -115,15 +124,13 @@ if __name__ == '__main__':
 
     storage.add(element_one)
     storage.add(element_two)
-    print(storage)
-
     print(storage.get_content())
     # Content:
     #  * Fire x 1
     #  * Water x 1
 
-    print(storage.extract())  # [<AE: Fire>, <AE: Water>]
-    print(storage.get_content())
+    #  print(storage.extract())  # [<AE: Fire>, <AE: Water>]
+    #  print(storage.get_content())
     # Content:
     #  Empty
 
