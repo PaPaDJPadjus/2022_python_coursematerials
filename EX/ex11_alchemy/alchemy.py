@@ -111,10 +111,14 @@ class AlchemicalStorage:
         sorted_elements_list = sorted(self.elements, key=lambda x: x.name)
         used_el = []
         final_string = "Content:\n"
+        length_of_sorted_el_list = len(sorted_elements_list)
         for el in sorted_elements_list:
             if el.name not in used_el:
                 amount = sorted_elements_list.count(el)
-                final_string += f" * {el.name} x {amount}\n"
+                if sorted_elements_list.index(el) == length_of_sorted_el_list:
+                    final_string += f" * {el.name} x {amount}"
+                else:
+                    final_string += f" * {el.name} x {amount}\n"
                 used_el.append(el.name)
 
         return final_string
@@ -125,9 +129,12 @@ if __name__ == '__main__':
     element_two = AlchemicalElement('Water')
     element_three = AlchemicalElement('Water')
     storage = AlchemicalStorage()
+    storage.add(element_one)
 
     storage.add(element_one)
-    storage.add(element_two)
+
+    storage.add(element_one)
+
     print(storage.get_content())
     # Content:
     #  * Fire x 1
