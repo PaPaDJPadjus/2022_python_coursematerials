@@ -106,21 +106,17 @@ class AlchemicalStorage:
 
         :return: Content as a string.
         """
-        if self.elements is []:
+        if not self.elements:
             return "Content:\n Empty."
         sorted_elements_list = sorted(self.elements, key=lambda x: x.name)
         used_el = []
-        final_string = "Content:\n"
+        final_string = "Content:"
         length_of_sorted_el_list = len(sorted_elements_list)
         for el in sorted_elements_list:
             if el.name not in used_el:
                 amount = sorted_elements_list.count(el)
-                if sorted_elements_list.index(el) == length_of_sorted_el_list:
-                    final_string += f" * {el.name} x {amount}"
-                else:
-                    final_string += f" * {el.name} x {amount}\n"
+                final_string += f"\n * {el.name} x {amount}"
                 used_el.append(el.name)
-
         return final_string
 
 
