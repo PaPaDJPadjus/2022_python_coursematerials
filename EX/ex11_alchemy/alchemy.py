@@ -7,7 +7,9 @@ class AlchemicalElement:
 
     Every element must have a name.
     """
+
     def __init__(self, name: str):
+        """Define name."""
         self.name = name
 
     def __repr__(self) -> str:
@@ -104,9 +106,11 @@ class AlchemicalStorage:
 
         :return: Content as a string.
         """
+        if self.elements is []:
+            return ""
         sorted_elements_list = sorted(self.elements, key=lambda x: x.name)
         used_el = []
-        final_string = ""
+        final_string = "Content:\n "
         for el in sorted_elements_list:
             if el.name not in used_el:
                 amount = sorted_elements_list.count(el)
