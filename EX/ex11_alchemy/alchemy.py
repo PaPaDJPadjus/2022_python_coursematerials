@@ -109,26 +109,33 @@ class AlchemicalStorage:
         if not self.elements:
             return "Content:\n Empty."
         sorted_elements_list = sorted(self.elements, key=lambda x: x.name)
-        used_el = []
+        el_dict = {}
+        counted_el = []
         final_string = "Content:"
         for el in sorted_elements_list:
-            if el.name not in used_el:
+            if el not in counted_el:
                 amount = sorted_elements_list.count(el)
-                final_string += f"\n * {el.name} x {amount}"
-                used_el.append(el.name)
+                el_dict[el.name] = el_dict.get(el.name, 0) + amount
+                counted_el.append(el)
+
+        for key_n_value in el_dict:
+            final_string += f"\n * {key_n_value} x {el_dict[key_n_value]}"
         return final_string
 
 
 if __name__ == '__main__':
-    element_one = AlchemicalElement('Fire')
+    element_one = AlchemicalElement('Water')
     element_two = AlchemicalElement('Water')
     element_three = AlchemicalElement('Water')
     storage = AlchemicalStorage()
 
     storage.add(element_two)
+    storage.add(element_three)
     storage.add(element_two)
     storage.add(element_two)
-    storage.add(element_two)
-
+    storage.add(element_one)
+    storage.add(element_one)
+    storage.add(element_one)
+    storage.add(element_one)
     print(storage.get_content())  #  Content:\n * Water x 4
 
