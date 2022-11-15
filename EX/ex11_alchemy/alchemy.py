@@ -132,7 +132,7 @@ class AlchemicalRecipes:
 
         Add whatever you need to make this class function.
         """
-        self.dict_recipe= {}
+        self.dict_recipe = {}
 
     def add_recipe(self, first_component_name: str, second_component_name: str, product_name: str):
         """
@@ -202,6 +202,10 @@ class Cauldron(AlchemicalStorage):
 
     def __init__(self, recipes: AlchemicalRecipes):
         """Initialize the Cauldron class."""
+        super().__init__()
+        self.cauldron = []
+        self.recipes = recipes
+
 
     def add(self, element: AlchemicalElement):
         """
@@ -219,7 +223,7 @@ class Cauldron(AlchemicalStorage):
 
         :param element: Input object to add to storage.
         """
-
+        self.cauldron.append(element)
 
 if __name__ == '__main__':
     recipes = AlchemicalRecipes()
