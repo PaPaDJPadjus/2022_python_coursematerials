@@ -230,8 +230,6 @@ class Cauldron(AlchemicalStorage):
 
         :param element: Input object to add to storage.
         """
-        if element is not AlchemicalElement:
-            raise TypeError
         self.elements.append(element)
         el_combos = []
 
@@ -241,12 +239,12 @@ class Cauldron(AlchemicalStorage):
 
         recipe_matching_list = []
         for el in self.elements:
-            i = 0
-            while i != len(el_combos):
+            i = len(el_combos)
+            while i != 0:
                 if el.name == el_combos[i][0] or el.name == el_combos[i][1]:
                     if el.name not in recipe_matching_list:
                         recipe_matching_list.append(el.name)
-                i += 1
+                i -= 1
 
         for combo in el_combos:
             for one_el, other_el in [combo]:
