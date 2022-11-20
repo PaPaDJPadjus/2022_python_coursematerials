@@ -246,18 +246,26 @@ class Cauldron(AlchemicalStorage):
                         recipe_matching_list.append(el.name)
                 i += 1
 
+
+        second_recipe_matching_list = recipe_matching_list
         for combo in el_combos:
             for one_el, other_el in [combo]:
-                if one_el in recipe_matching_list and other_el in recipe_matching_list:
+                if one_el in second_recipe_matching_list and other_el in second_recipe_matching_list:
                     new_el_to_add = AlchemicalElement(self.recipes.get_product_name(one_el, other_el))
+
+                    i = 0
                     for el in self.elements:
-                        if el.name == one_el:
-                            self.elements.remove(el)
-                            recipe_matching_list.remove(el.name)
+                        if i == 0:
+                            if el.name == one_el:
+                                self.elements.remove(el)
+                                i += 1
+                    i = 0
                     for el in self.elements:
-                        if el.name == other_el:
-                            self.elements.remove(el)
-                            recipe_matching_list.remove(el.name)
+                        if i == 0:
+                            if el.name == other_el:
+                                self.elements.remove(el)
+                                i += 1
+
                     self.elements.append(new_el_to_add)
 
 
