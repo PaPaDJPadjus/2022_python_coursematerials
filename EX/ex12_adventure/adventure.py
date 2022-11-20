@@ -23,13 +23,78 @@ class Adventurer:
         """Display correctly."""
         return f"{self.name}, the {self.class_type}, Power: {self.power}, Experience: {self.experience}"
 
+    def add_power(self, power: int):
+        """Add power to adventurer."""
+        self.power += power
+
+    def add_experience(self, exp: int):
+        """Add XP to adventurer."""
+        if self.experience > 99:
+            self.power += round(self.experience / 10)
+            self.experience = 0
+        else:
+            self.experience += exp
+
+
+class Monster:
+    """Class fo tha monsters."""
+
+    def __init__(self, name: str, type: str, power: int):
+        """Define monstah"""
+        self.name = name
+        self.type = type
+        self.power = power
+
+        if self.type == "Zombie":
+            self.name = "Undead " + self.name
+
+    def __repr__(self):
+        """Display correctly."""
+        return f"{self.name} of type {self.type}, Power: {self.power}"
+
+
+class World:
+    """World-class."""
+
+    def __init__(self, python_master):
+        """World init."""
+        self.python_master = python_master
+        self.adventurer_list = []
+        self.monster_list = []
+        self.graveyard = []
+
+    def get_python_master(self):
+        """Get python master."""
+        return self.python_master
+
+    def get_adventurer_list(self):
+        """Get adventurer list."""
+        return self.adventurer_list
+
+    def get_monster_list(self):
+        """Get monster list."""
+        return self.monster_list
+
+    def add_adventurer(self, adventurer: Adventurer):
+        """Add adventurer to list of adventurers."""
+        if isinstance(adventurer, Adventurer):
+            self.adventurer_list.append(adventurer.name)
+
+    def add_monster(self, monster: Monster):
+        """Add monster to list of monsters."""
+        if isinstance(monster, Monster):
+            self.adventurer_list.append(monster)
+
+    def get_graveyard(self):
+        """Get graveyard."""
+        return self.graveyard
 
 if __name__ == "__main__":
     print("Kord oli maailm.")
-    #world = World("Sõber")
-    #print(world.get_python_master())  # -> "Sõber"
-    #print(world.get_graveyard())  # -> []
-    #print()
+    world = World("Sõber")
+    print(world.get_python_master())  # -> "Sõber"
+    print(world.get_graveyard())  # -> []
+    print()
     print("Tutvustame tegelasi.")
     hero = Adventurer("Sander", "Paladin", 50)
     friend = Adventurer("Peep", "Druid", 25)
