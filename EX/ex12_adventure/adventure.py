@@ -17,7 +17,6 @@ class Adventurer:
         if self.power > 99:
             self.power = 10
 
-
     def __repr__(self):
         """Display correctly."""
         return f"{self.name}, the {self.class_type}, Power: {self.power}, Experience: {self.experience}."
@@ -28,8 +27,8 @@ class Adventurer:
 
     def add_experience(self, exp: int):
         """Add XP to adventurer."""
-        if 0 > self.experience:
-            self.experience = 0
+        if 0 > exp:
+            self.experience = self.experience
         elif self.experience > 99:
             self.power += round(self.experience / 10)
             self.experience = 0
