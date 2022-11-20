@@ -152,10 +152,10 @@ class AlchemicalRecipes:
             raise DuplicateRecipeNamesException
         if first_component_name != second_component_name != product_name:
             if product_name not in self.dict_recipe.keys():
-                if [first_component_name, second_component_name] in self.dict_recipe.values():
-                    raise RecipeOverlapException
                 new_recipe = [first_component_name, second_component_name]
                 self.dict_recipe[product_name] = new_recipe
+            else:
+                raise RecipeOverlapException
         else:
             raise DuplicateRecipeNamesException
 
