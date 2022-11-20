@@ -152,10 +152,10 @@ class AlchemicalRecipes:
             raise DuplicateRecipeNamesException
         if first_component_name != second_component_name != product_name:
             if product_name not in self.dict_recipe.keys():
+                if [first_component_name, second_component_name] in self.dict_recipe.values():
+                    raise RecipeOverlapException
                 new_recipe = [first_component_name, second_component_name]
                 self.dict_recipe[product_name] = new_recipe
-            else:
-                raise RecipeOverlapException
         else:
             raise DuplicateRecipeNamesException
 
@@ -208,7 +208,6 @@ class Cauldron(AlchemicalStorage):
         self.cauldron = []
         self.recipes = recipes
 
-
     def add(self, element: AlchemicalElement):
         """
         Add element to storage and check if it can combine with anything already inside.
@@ -225,29 +224,36 @@ class Cauldron(AlchemicalStorage):
 
         :param element: Input object to add to storage.
         """
-        self.cauldron.append(element)
+        self.cauldron.append(element.name)
+        el_combos = []
+
+        for combo in self.recipes.dict_recipe.values():
+            el_combos.append(combo)
+        el_combos = tuple(el_combos)
+
+        recipe_matching_list = []
+        for el in self.cauldron:
+            i = 0
+            while i != len(el_combos):
+                if el == el_combos[i][0] or el == el_combos[i][1]:
+                    if el not in recipe_matching_list:
+                        recipe_matching_list.append(el)
+                i += 1
+
+        for combo in el_combos:
+            for one_el, other_el in [combo]:
+                if one_el in recipe_matching_list and other_el in recipe_matching_list:
+                    el_combos = AlchemicalElement(self.recipes.get_product_name(one_el, other_el))
+                    recipe_matching_list.remove(one_el)
+                    recipe_matching_list.remove(other_el)
+                    self.cauldron.append(el_combos)
+
 
 if __name__ == '__main__':
     recipes = AlchemicalRecipes()
     recipes.add_recipe('Fire', 'Water', 'Steam')
     recipes.add_recipe('Fire', 'Earth', 'Iron')
     recipes.add_recipe('Water', 'Iron', 'Rust')
-
-    print(recipes.get_product_name('Water', 'Fire'))  # -> 'Steam'
-
-    try:
-        recipes.add_recipe('Fire', 'Something else', 'Fire')
-        print('Did not raise, not working as intended.')
-
-    except DuplicateRecipeNamesException:
-        print('Raised DuplicateRecipeNamesException, working as intended!')
-
-    try:
-        recipes.add_recipe('Fire', 'Earth', 'Gold')
-        print('Did not raise, not working as intended.')
-
-    except RecipeOverlapException:
-        print('Raised RecipeOverlapException, working as intended!')
 
     cauldron = Cauldron(recipes)
     cauldron.add(AlchemicalElement('Earth'))
