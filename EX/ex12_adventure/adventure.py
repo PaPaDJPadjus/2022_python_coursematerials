@@ -28,7 +28,6 @@ class Adventurer:
 
     def add_experience(self, exp: int):
         """Add XP to adventurer."""
-
         if 0 > self.experience:
             self.experience = 0
 
@@ -46,7 +45,7 @@ class Monster:
     """Class fo tha monsters."""
 
     def __init__(self, name: str, type: str, power: int):
-        """Define monstah"""
+        """Define monstah."""
         self.name = name
         self.type = type
         self.power = power
