@@ -1,4 +1,5 @@
 """Adventure time."""
+from math import floor
 
 
 class Adventurer:
@@ -37,7 +38,7 @@ class Adventurer:
             else:
                 self.experience += exp
             if self.experience > 99:
-                self.power += round(self.experience / 10)
+                self.power += floor(self.experience / 10)
                 self.experience = 0
 
 
