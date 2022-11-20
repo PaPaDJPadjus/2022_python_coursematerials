@@ -27,7 +27,7 @@ class Adventurer:
 
     def add_experience(self, exp: int):
         """Add XP to adventurer."""
-        if 0 > exp:
+        if 0 > self.experience + exp:
             self.experience = self.experience
         if 0 > self.experience:
             self.experience = 0
