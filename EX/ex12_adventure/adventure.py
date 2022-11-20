@@ -29,11 +29,12 @@ class Adventurer:
         """Add XP to adventurer."""
         if 0 >= exp:
             self.experience = self.experience
-        elif 99 > self.experience >= 0:
+
+        if self.experience >= 0:
             self.experience += exp
-        if self.experience > 99:
-            self.power = round(self.experience / 10)
-            self.experience = 0
+            if self.experience > 99:
+                self.power = round(self.experience / 10)
+                self.experience = 0
 
 class Monster:
     """Class fo tha monsters."""
