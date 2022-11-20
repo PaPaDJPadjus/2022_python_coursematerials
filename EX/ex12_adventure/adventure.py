@@ -16,8 +16,7 @@ class Adventurer:
             self.class_type = "Fighter"
         if self.power > 99:
             self.power = 10
-        if self.experience != 0:
-            self.experience = 0
+
 
     def __repr__(self):
         """Display correctly."""
@@ -29,7 +28,9 @@ class Adventurer:
 
     def add_experience(self, exp: int):
         """Add XP to adventurer."""
-        if self.experience > 99:
+        if 0 > self.experience:
+            self.experience = 0
+        elif self.experience > 99:
             self.power += round(self.experience / 10)
             self.experience = 0
         else:
@@ -91,40 +92,24 @@ class World:
 
 
 if __name__ == "__main__":
-    print("Kord oli maailm.")
     world = World("Sõber")
-    print(world.get_python_master())  # -> "Sõber"
-    print(world.get_graveyard())  # -> []
-    print()
-    print("Tutvustame tegelasi.")
+
     hero = Adventurer("Sander", "Paladin", 50)
     friend = Adventurer("Peep", "Druid", 25)
     another_friend = Adventurer("Toots", "Wizard", 40)
     annoying_friend = Adventurer("XxX_Eepiline_Sõdalane_XxX", "Tulevikurändaja ja ninja", 999999)
     print(hero)  # -> "Sander, the Paladin, Power: 50, Experience: 0."
-    # Ei, tüütu sõber, sa ei saa olla tulevikurändaja ja ninja, nüüd sa pead fighter olema.
-    # Ei maksa liiga tugevaks ka ennast alguses teha!
     print(annoying_friend)  # -> "XxX_Eepiline_Sõdalane_XxX, the Fighter, Power: 10, Experience: 0."
     print(friend)  # -> "Peep, the Druid, Power: 25, Experience: 0."
     print(another_friend)  # -> "Toots, the Wizard, Power: 40, Experience: 0."
-    print()
-
-    print("Peep, sa tundud kuidagi nõrk, ma lisasin sulle natukene tugevust.")
     friend.add_power(20)
     print(friend)  # -> "Peep, the Druid, Power: 45, Experience: 0."
-    print()
-
     world.add_adventurer(hero)
     world.add_adventurer(friend)
     world.add_adventurer(another_friend)
     print(world.get_adventurer_list())  # -> Sander, Peep ja Toots
 
-    world.add_monster(annoying_friend)
-    # Ei, tüütu sõber, sa ei saa olla vaenlane.
     print(world.get_monster_list())  # -> []
-    world.add_adventurer(annoying_friend)
-    print()
-
     print("Oodake veidikene, ma tekitan natukene kolle.")
     zombie = Monster("Rat", "Zombie", 10)
     goblin_spear = Monster("Goblin Spearman", "Goblin", 10)
