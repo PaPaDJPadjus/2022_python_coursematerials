@@ -78,7 +78,7 @@ class World:
     def add_adventurer(self, adventurer: Adventurer):
         """Add adventurer to list of adventurers."""
         if isinstance(adventurer, Adventurer):
-            self.adventurer_list.append(adventurer.name)
+            self.adventurer_list.append(adventurer)
 
     def add_monster(self, monster: Monster):
         """Add monster to list of monsters."""
@@ -88,6 +88,7 @@ class World:
     def get_graveyard(self):
         """Get graveyard."""
         return self.graveyard
+
 
 if __name__ == "__main__":
     print("Kord oli maailm.")
