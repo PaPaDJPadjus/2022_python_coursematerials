@@ -31,7 +31,7 @@ class Adventurer:
             self.experience = self.experience
         elif 99 > self.experience >= 0:
             self.experience += exp
-        elif self.experience > 99:
+        if self.experience > 99:
             self.power = round(self.experience / 10)
             self.experience = 0
 
