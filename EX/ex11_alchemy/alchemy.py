@@ -152,8 +152,6 @@ class AlchemicalRecipes:
             raise DuplicateRecipeNamesException
         if [first_component_name, second_component_name] in self.dict_recipe.values():
             raise RecipeOverlapException
-        if [second_component_name, first_component_name] in self.dict_recipe.values():
-            raise RecipeOverlapException
         if first_component_name != second_component_name != product_name:
             if product_name not in self.dict_recipe.keys():
                 new_recipe = [first_component_name, second_component_name]
@@ -239,12 +237,12 @@ class Cauldron(AlchemicalStorage):
 
         recipe_matching_list = []
         for el in self.elements:
-            i = len(el_combos)
-            while i != 0:
+            i = 0
+            while i != len(el_combos):
                 if el.name == el_combos[i][0] or el.name == el_combos[i][1]:
                     if el.name not in recipe_matching_list:
                         recipe_matching_list.append(el.name)
-                i -= 1
+                i += 1
 
         for combo in el_combos:
             for one_el, other_el in [combo]:
