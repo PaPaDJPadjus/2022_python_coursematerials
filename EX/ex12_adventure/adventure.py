@@ -37,8 +37,9 @@ class Adventurer:
             else:
                 self.experience += exp
             if self.experience > 99:
-                self.power = round(self.experience / 10)
+                self.power += round(self.experience / 10)
                 self.experience = 0
+
 
 class Monster:
     """Class fo tha monsters."""
@@ -106,5 +107,5 @@ if __name__ == "__main__":
     print(friend)  # -> "Peep, the Druid, Power: 25, Experience: 0."
     print(another_friend)  # -> "Toots, the Wizard, Power: 40, Experience: 0."
     friend.add_power(20)
-    friend.add_experience(-100)
+    friend.add_experience(140)
     print(friend)  # -> "Peep, the Druid, Power: 45, Experience: 0."
