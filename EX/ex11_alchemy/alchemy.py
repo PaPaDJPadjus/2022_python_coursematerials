@@ -230,6 +230,8 @@ class Cauldron(AlchemicalStorage):
 
         :param element: Input object to add to storage.
         """
+        if not isinstance(element, AlchemicalElement):
+            raise TypeError
         self.elements.append(element)
         el_combos = []
 
@@ -245,7 +247,6 @@ class Cauldron(AlchemicalStorage):
                     if el.name not in recipe_matching_list:
                         recipe_matching_list.append(el.name)
                 i += 1
-
 
         second_recipe_matching_list = recipe_matching_list
         for combo in el_combos:
@@ -275,28 +276,7 @@ if __name__ == '__main__':
     recipes.add_recipe('Fire', 'Earth', 'Iron')
     recipes.add_recipe('Water', 'Iron', 'Rust')
 
-    print(recipes.get_product_name('Water', 'Fire'))  # -> 'Steam'
-
-    try:
-        recipes.add_recipe('Fire', 'Something else', 'Fire')
-        print('Did not raise, not working as intended.')
-
-    except DuplicateRecipeNamesException:
-        print('Raised DuplicateRecipeNamesException, working as intended!')
-
-    try:
-        recipes.add_recipe('Fire', 'Earth', 'Gold')
-        print('Did not raise, not working as intended.')
-
-    except RecipeOverlapException:
-        print('Raised RecipeOverlapException, working as intended!')
-
     cauldron = Cauldron(recipes)
-    cauldron.add(AlchemicalElement('Earth'))
-    cauldron.add(AlchemicalElement('Water'))
-    cauldron.add(AlchemicalElement('Fire'))
-
-    print(cauldron.extract())  # -> [<AE: Earth>, <AE: Steam>]
 
     cauldron.add(AlchemicalElement('Earth'))
     cauldron.add(AlchemicalElement('Earth'))
