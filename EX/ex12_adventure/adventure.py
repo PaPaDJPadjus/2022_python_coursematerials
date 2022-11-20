@@ -21,7 +21,7 @@ class Adventurer:
 
     def __repr__(self):
         """Display correctly."""
-        return f"{self.name}, the {self.class_type}, Power: {self.power}, Experience: {self.experience}"
+        return f"{self.name}, the {self.class_type}, Power: {self.power}, Experience: {self.experience}."
 
     def add_power(self, power: int):
         """Add power to adventurer."""
@@ -50,7 +50,7 @@ class Monster:
 
     def __repr__(self):
         """Display correctly."""
-        return f"{self.name} of type {self.type}, Power: {self.power}"
+        return f"{self.name} of type {self.type}, Power: {self.power}."
 
 
 class World:
