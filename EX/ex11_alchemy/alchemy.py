@@ -232,42 +232,24 @@ class Cauldron(AlchemicalStorage):
         """
         if not isinstance(element, AlchemicalElement):
             raise TypeError
-        self.elements.append(element)
-        el_combos = []
 
+        el_combos = []
         for combo in self.recipes.dict_recipe.values():
             el_combos.append(combo)
-        el_combos = tuple(el_combos)
 
-        recipe_matching_list = []
-        for el in self.elements:
-            i = 0
-            while i != len(el_combos):
-                if el.name == el_combos[i][0] or el.name == el_combos[i][1]:
-                    if el.name not in recipe_matching_list:
-                        recipe_matching_list.append(el.name)
-                i += 1
+        i = 0
+        if_el_in_list_counter = 0
+        for el in self.elements[::-1]:
+            if not if_el_in_list_counter == 1:
+                if [el.name, element.name] in el_combos or [element.name, el.name] in el_combos:
+                    new_el = AlchemicalElement(self.recipes.get_product_name(el.name, element.name))
+                    self.elements.remove(el)
+                    self.elements.append(new_el)
+                    i += 1
+                    if_el_in_list_counter += 1
 
-        second_recipe_matching_list = recipe_matching_list[::-1]
-        for combo in el_combos:
-            for one_el, other_el in [combo]:
-                if one_el in second_recipe_matching_list and other_el in second_recipe_matching_list:
-                    new_el_to_add = AlchemicalElement(self.recipes.get_product_name(one_el, other_el))
-
-                    i = 0
-                    for el in self.elements:
-                        if i == 0:
-                            if el.name == one_el:
-                                self.elements.remove(el)
-                                i += 1
-                    i = 0
-                    for el in self.elements:
-                        if i == 0:
-                            if el.name == other_el:
-                                self.elements.remove(el)
-                                i += 1
-
-                    self.elements.append(new_el_to_add)
+        if i == 0:
+            self.elements.append(element)
 
 
 if __name__ == '__main__':
