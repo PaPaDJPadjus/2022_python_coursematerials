@@ -248,7 +248,7 @@ class Cauldron(AlchemicalStorage):
                         recipe_matching_list.append(el.name)
                 i += 1
 
-        second_recipe_matching_list = recipe_matching_list
+        second_recipe_matching_list = recipe_matching_list[::-1]
         for combo in el_combos:
             for one_el, other_el in [combo]:
                 if one_el in second_recipe_matching_list and other_el in second_recipe_matching_list:
