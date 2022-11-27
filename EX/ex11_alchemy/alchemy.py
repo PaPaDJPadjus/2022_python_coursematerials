@@ -188,6 +188,12 @@ class AlchemicalRecipes:
                 if self.dict_recipe[key][1] == first_component_name or self.dict_recipe[key][1] == second_component_name:
                     return str(key)
 
+    def get_component_name(self, product_name: str):
+        """Get component name."""
+        if product_name in self.dict_recipe.keys():
+            return self.dict_recipe[product_name]
+        return None
+
 
 class DuplicateRecipeNamesException(Exception):
     """Raised when attempting to add a recipe that has same names for components and product."""
@@ -232,57 +238,123 @@ class Cauldron(AlchemicalStorage):
         """
         if not isinstance(element, AlchemicalElement):
             raise TypeError
-        self.elements.append(element)
-        el_combos = []
 
+        el_combos = []
         for combo in self.recipes.dict_recipe.values():
             el_combos.append(combo)
-        el_combos = tuple(el_combos)
 
-        recipe_matching_list = []
-        for el in self.elements:
-            i = 0
-            while i != len(el_combos):
-                if el.name == el_combos[i][0] or el.name == el_combos[i][1]:
-                    if el.name not in recipe_matching_list:
-                        recipe_matching_list.append(el.name)
-                i += 1
+        i = 0
+        if_el_in_list_counter = 0
+        for el in self.elements[::-1]:
+            if not if_el_in_list_counter == 1:
+                if [el.name, element.name] in el_combos or [element.name, el.name] in el_combos:
+                    new_el = AlchemicalElement(self.recipes.get_product_name(el.name, element.name))
+                    self.elements.remove(el)
+                    self.elements.append(new_el)
+                    i += 1
+                    if_el_in_list_counter += 1
 
-        second_recipe_matching_list = recipe_matching_list
-        for combo in el_combos:
-            for one_el, other_el in [combo]:
-                if one_el in second_recipe_matching_list and other_el in second_recipe_matching_list:
-                    new_el_to_add = AlchemicalElement(self.recipes.get_product_name(one_el, other_el))
+        if i == 0:
+            self.elements.append(element)
 
-                    i = 0
-                    for el in self.elements:
-                        if i == 0:
-                            if el.name == one_el:
-                                self.elements.remove(el)
-                                i += 1
-                    i = 0
-                    for el in self.elements:
-                        if i == 0:
-                            if el.name == other_el:
-                                self.elements.remove(el)
-                                i += 1
 
-                    self.elements.append(new_el_to_add)
+class Catalyst(AlchemicalElement):
+    """Catalyst class."""
+
+    def __init__(self, name: str, uses: int):
+        """
+        Initialize the Catalyst class.
+
+        :param name: The name of the Catalyst.
+        :param uses: The number of uses the Catalyst has.
+        """
+        self.name = name
+        self.uses = 0
+
+    def __repr__(self) -> str:
+        """
+        Representation of the Catalyst class.
+
+        Example:
+            catalyst = Catalyst("Philosophers' stone", 3)
+            print(catalyst) # -> <C: Philosophers' stone (3)>
+
+        :return: String representation of the Catalyst.
+        """
+        return f"<C: {self.name} ({self.uses})>."
+
+
+class Purifier(AlchemicalStorage):
+    """
+    Purifier class.
+
+    Extends the 'AlchemicalStorage' class.
+    """
+
+    def __init__(self, recipes: AlchemicalRecipes):
+        """Initialize the Purifier class."""
+        super().__init__()
+        self.recipes = recipes
+
+    def add(self, element: AlchemicalElement):
+        """
+        Add element to storage and check if it can be split into anything.
+
+        Use the 'recipes' object that was given in the constructor to determine the combinations.
+
+        Example:
+            recipes = AlchemicalRecipes()
+            recipes.add_recipe('Water', 'Wind', 'Ice')
+            purifier = Purifier(recipes)
+            purifier.add(AlchemicalElement('Ice'))
+            purifier.extract() # -> [<AE: Water>, <AE: Wind>]   or  [<AE: Wind>, <AE: Water>]
+
+        :param element: Input object to add to storage.
+        """
+        if not isinstance(element, AlchemicalElement):
+            raise TypeError
+
+        el_combos = []
+        for combo in self.recipes.dict_recipe.values():
+            el_combos.append(combo)
+
+        i = 0
+        if_el_in_list_counter = 0
+        for el in self.elements[::-1]:
+            if not if_el_in_list_counter == 1:
+                if el.name == element.name:
+                    new_el = self.recipes.get_component_name(element.name)
+                    self.elements.remove(el)
+                    for object in new_el:
+                        self.elements.append(AlchemicalElement(object))
+                        i += 1
+                        if_el_in_list_counter += 1
+
+        if i == 0:
+            self.elements.append(element)
 
 
 if __name__ == '__main__':
+    philosophers_stone = Catalyst("Philosophers' stone", 2)
+
     recipes = AlchemicalRecipes()
-    recipes.add_recipe('Fire', 'Water', 'Steam')
-    recipes.add_recipe('Fire', 'Earth', 'Iron')
-    recipes.add_recipe('Water', 'Iron', 'Rust')
+    recipes.add_recipe("Philosophers' stone", 'Mercury', 'Gold')
+    recipes.add_recipe("Fire", 'Earth', 'Iron')
 
     cauldron = Cauldron(recipes)
+    cauldron.add(philosophers_stone)
+    cauldron.add(AlchemicalElement('Mercury'))
+    print(cauldron.extract())  # -> [<C: Philosophers' stone (1)>, <AE: Gold>]
 
-    cauldron.add(AlchemicalElement('Earth'))
-    cauldron.add(AlchemicalElement('Earth'))
-    cauldron.add(AlchemicalElement('Earth'))
-    cauldron.add(AlchemicalElement('Fire'))
-    cauldron.add(AlchemicalElement('Fire'))
-    cauldron.add(AlchemicalElement('Water'))
+    cauldron.add(philosophers_stone)
+    cauldron.add(AlchemicalElement('Mercury'))
+    print(cauldron.extract())  # -> [<C: Philosophers' stone (0)>, <AE: Gold>]
 
-    print(cauldron.extract())  # -> [<AE: Earth>, <AE: Iron>, <AE: Rust>]
+    cauldron.add(philosophers_stone)
+    cauldron.add(AlchemicalElement('Mercury'))
+    print(cauldron.extract())  # -> [<C: Philosophers' stone (0)>, <AE: Mercury>]
+
+    purifier = Purifier(recipes)
+    purifier.add(AlchemicalElement('Iron'))
+    print(purifier.extract())  # -> [<AE: Fire>, <AE: Earth>]    or      [<AE: Earth>, <AE: Fire>]
+
