@@ -1,3 +1,4 @@
+"""Api v hoopis Appi?"""
 from __future__ import print_function
 
 import os.path
@@ -59,6 +60,7 @@ def get_links_from_spreadsheet(id: str, token_file_name: str) -> list:
         print(err)
 
     return final_list_of_links
+
 
 if __name__ == '__main__':
     print(get_links_from_spreadsheet('1WrCzu4p5lFwPljqZ6tMQEJb2vSJQSGjyMsqcYt-yS4M', 'token.json'))
