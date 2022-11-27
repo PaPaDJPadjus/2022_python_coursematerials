@@ -1,4 +1,4 @@
-"""Api v hoopis Appi?"""
+"""Api v hoopis Appi."""
 from __future__ import print_function
 
 import os.path
