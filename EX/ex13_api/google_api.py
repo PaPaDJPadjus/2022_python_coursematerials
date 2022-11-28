@@ -89,14 +89,24 @@ def get_links_from_playlist(link: str, developer_key: str) -> list:
         part="contentDetails",
         playlistId="PLFt_AvWsXl0ehjAfLFsp1PGaatzAwo0uK"
     )
-    response = request.execute()
-    for el in response["items"]:
-        for content_dict_key in el["contentDetails"]:
-            vid_id = el["contentDetails"][content_dict_key]
-            full_link = f"youtube.com/watch?v={vid_id}"
-            list_of_links.append(full_link)
-            break
 
+    response = request.execute()
+
+    while len(list_of_links) != response["pageInfo"]["totalResults"]:
+        for el in response["items"]:
+            for content_dict_key in el["contentDetails"]:
+                vid_id = el["contentDetails"][content_dict_key]
+                full_link = f"youtube.com/watch?v={vid_id}"
+                list_of_links.append(full_link)
+                break
+
+        request = youtube.playlistItems().list(
+            part="contentDetails",
+            nextPageToken=str(response['nextPageToken']),
+            playlistId="PLFt_AvWsXl0ehjAfLFsp1PGaatzAwo0uK"
+        )
+
+        response = request.execute()
     return list_of_links
 
 
