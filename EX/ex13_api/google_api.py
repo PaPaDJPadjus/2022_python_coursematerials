@@ -3,7 +3,6 @@ from __future__ import print_function
 
 import os.path
 
-import google_auth_oauthlib
 import googleapiclient
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
@@ -15,6 +14,7 @@ from googleapiclient.errors import HttpError
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 SAMPLE_RANGE_NAME = 'A1:Z'
 scopes = ["https://www.googleapis.com/auth/youtube.readonly"]
+
 
 def get_links_from_spreadsheet(id: str, token_file_name: str) -> list:
     """
@@ -80,14 +80,14 @@ def get_links_from_playlist(link: str, developer_key: str) -> list:
     list_of_links = []
     api_service_name = "youtube"
     api_version = "v3"
-    DEVELOPER_KEY = "AIzaSyCGrpTOTFZG1AYHeWPDSJuREEotIk5uqSo"
+    DEVELOPER_KEY = developer_key
 
     youtube = googleapiclient.discovery.build(
         api_service_name, api_version, developerKey=DEVELOPER_KEY)
 
     request = youtube.playlistItems().list(
         part="contentDetails",
-        playlistId="PLFt_AvWsXl0ehjAfLFsp1PGaatzAwo0uK"
+        playlistId=link
     )
 
     response = request.execute()
@@ -104,9 +104,8 @@ def get_links_from_playlist(link: str, developer_key: str) -> list:
         request = youtube.playlistItems().list(
             part="contentDetails",
             pageToken=token,
-            playlistId="PLFt_AvWsXl0ehjAfLFsp1PGaatzAwo0uK"
+            playlistId=link
         )
         response = request.execute()
 
     return list_of_links
-
