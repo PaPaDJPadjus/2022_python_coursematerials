@@ -3,6 +3,8 @@ from __future__ import print_function
 
 import os.path
 
+import google_auth_oauthlib
+import googleapiclient
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
@@ -12,7 +14,7 @@ from googleapiclient.errors import HttpError
 # If modifying these scopes, delete the file token.json.
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 SAMPLE_RANGE_NAME = 'A1:Z'
-
+scopes = ["https://www.googleapis.com/auth/youtube.readonly"]
 
 def get_links_from_spreadsheet(id: str, token_file_name: str) -> list:
     """
@@ -62,5 +64,42 @@ def get_links_from_spreadsheet(id: str, token_file_name: str) -> list:
     return final_list_of_links
 
 
-if __name__ == '__main__':
-    print(get_links_from_spreadsheet('1WrCzu4p5lFwPljqZ6tMQEJb2vSJQSGjyMsqcYt-yS4M', 'token.json'))
+def get_links_from_playlist(link: str, developer_key: str) -> list:
+    """
+    Return a list of links to songs in the Youtube playlist with the given address.
+
+    Example input
+        get_links_from_playlist('https://www.youtube.com/playlist?list=PLFt_AvWsXl0ehjAfLFsp1PGaatzAwo0uK',
+                                'ThisIsNotARealKey_____ThisIsNotARealKey')
+
+    Returns
+        ['https://youtube.com/watch?v=r_It_X7v-1E', 'https://youtube.com/watch?v=U4ogK0MIzqk', ... and so on]
+    """
+    os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
+
+    list_of_links = []
+    api_service_name = "youtube"
+    api_version = "v3"
+    DEVELOPER_KEY = "AIzaSyCGrpTOTFZG1AYHeWPDSJuREEotIk5uqSo"
+
+    youtube = googleapiclient.discovery.build(
+        api_service_name, api_version, developerKey=DEVELOPER_KEY)
+
+    request = youtube.playlistItems().list(
+        part="contentDetails",
+        playlistId="PLFt_AvWsXl0ehjAfLFsp1PGaatzAwo0uK"
+    )
+    response = request.execute()
+    for el in response["items"]:
+        for content_dict_key in el["contentDetails"]:
+            vid_id = el["contentDetails"][content_dict_key]
+            full_link = f"youtube.com/watch?v={vid_id}"
+            list_of_links.append(full_link)
+            break
+
+    return list_of_links
+
+
+if __name__ == "__main__":
+    print(get_links_from_playlist('https://www.youtube.com/playlist?list=PLFt_AvWsXl0ehjAfLFsp1PGaatzAwo0uK',
+                                'ThisIsNotARealKey_____ThisIsNotARealKey'))
