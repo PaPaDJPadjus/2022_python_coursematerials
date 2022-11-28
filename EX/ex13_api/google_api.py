@@ -100,16 +100,13 @@ def get_links_from_playlist(link: str, developer_key: str) -> list:
                 list_of_links.append(full_link)
                 break
 
+        token = response.get("nextPageToken", None)
         request = youtube.playlistItems().list(
             part="contentDetails",
-            nextPageToken=str(response['nextPageToken']),
+            pageToken=token,
             playlistId="PLFt_AvWsXl0ehjAfLFsp1PGaatzAwo0uK"
         )
-
         response = request.execute()
+
     return list_of_links
 
-
-if __name__ == "__main__":
-    print(get_links_from_playlist('https://www.youtube.com/playlist?list=PLFt_AvWsXl0ehjAfLFsp1PGaatzAwo0uK',
-                                'ThisIsNotARealKey_____ThisIsNotARealKey'))
