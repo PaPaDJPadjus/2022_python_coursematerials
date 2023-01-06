@@ -1,5 +1,4 @@
 """Test for errors in attempt_two.py."""
-import pytest
 from attempt_two import GiftDatabase
 
 

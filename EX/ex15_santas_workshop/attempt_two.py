@@ -6,8 +6,9 @@ import requests
 
 class NeededLists:
     """Hold all the needed lists."""
+
     def __init__(self):
-        """Lists that I need."""
+        """List the lists and values."""
         self.all_names = []
         self.children = []
         self.naughty_kids_in_tuples = []   # Kasutan, et hiljem kontrollida, et sama laps pole naughty ja nice
@@ -17,7 +18,9 @@ class NeededLists:
 
 class Child:
     """Child class, that holds its name, place, behaviour and wish list."""
+
     def __init__(self):
+        """Child atributes"""
         self.name = ""
         self.country = ""
         self.behaviour = ""
@@ -30,7 +33,9 @@ class Child:
 
 class GiftDatabase(NeededLists):
     """Store info bout gifts."""
+
     def __init__(self):
+        """Hold url and gift data dict."""
         super().__init__()
         self.url = "https://cs.ttu.ee/services/xmas/gift?name="
         self.gifts = {}
@@ -78,7 +83,7 @@ class GiftDatabase(NeededLists):
         return self.children
 
     def __get_gift_from_api(self, name):
-        """Api request."""
+        """Request API."""
         url = self.url + name
         response = requests.get(url)
         self.gifts[name] = response.json()
