@@ -20,7 +20,7 @@ class Child:
     """Child class, that holds its name, place, behaviour and wish list."""
 
     def __init__(self):
-        """Child atributes"""
+        """Child atributes."""
         self.name = ""
         self.country = ""
         self.behaviour = ""
