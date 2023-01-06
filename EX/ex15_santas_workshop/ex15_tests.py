@@ -54,7 +54,7 @@ def test_when_naughty_list_empty():
 
 
 def test_when_wish_list_empty():
-    """Test code for circumstance of no wish list."""
+    """Test code for circumstance of no wishlist."""
     gifts = GiftDatabase()
     gifts.info_from_csv_files("nice_list_same_name.csv", "naughty_list_same_name.csv", "empty.csv")
     result = gifts.get_needed_gifts_for_children()

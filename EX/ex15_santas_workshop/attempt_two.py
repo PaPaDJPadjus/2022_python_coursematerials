@@ -86,7 +86,7 @@ class GiftDatabase(NeededLists):
         return self.gifts[name]
 
     def get_gift(self, name):
-        """Get the gift """
+        """Get the gifts."""
         if name in self.gifts.keys():
             return self.gifts[name]
         return self.__get_gift_from_api(name)
