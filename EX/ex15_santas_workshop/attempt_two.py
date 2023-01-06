@@ -114,4 +114,3 @@ if __name__ == '__main__':
     gifts = GiftDatabase()
     print(gifts.info_from_csv_files("test_nice_one.csv", "test_naughty_one.csv", "test_wish_list_one.csv"))
     print(gifts.get_needed_gifts_for_children())
-

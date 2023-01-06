@@ -1,7 +1,5 @@
 """Test for errors in attempt_two.py."""
 import pytest
-from attempt_two import NeededLists
-from attempt_two import Child
 from attempt_two import GiftDatabase
 
 
@@ -16,7 +14,8 @@ def test_if_reads_info_from_files_singular_name_in_each_list():
 
 def test_if_same_person_on_both_lists_only_represent_naughty():
     """If someone is on both lists, remove them from the nice list and make them naughty."""
-    result = GiftDatabase().info_from_csv_files("nice_list_same_name.csv", "naughty_list_same_name.csv", "wish_list_same_names.csv")
+    gifts = GiftDatabase()
+    result = gifts.info_from_csv_files("nice_list_same_name.csv", "naughty_list_same_name.csv", "wish_list_same_names.csv")
     assert result[0].behaviour == "Naughty"
     assert result[1].behaviour == "Naughty"
     assert result[2].behaviour == "Naughty"
