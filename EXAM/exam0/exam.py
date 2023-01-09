@@ -213,8 +213,30 @@ def longest_substring(text: str) -> str:
     abBcd => Bcd
     '' -> ''
     """
-    pass
+    if 1 >= len(text):
+        return text
+    alphabet = "abcdefghijklmnopqrstuvõäöüxyz"
+    result = []
+    longest_record = 0
+    for start in range(len(text)):
+        for end in range(start + 1, len(text) + 1):
+            word = text[start:end]
+            if len(word) > longest_record:
+                longest_record = len(word)
+            result.append(word)
+    print(result)
 
+    record_holder = 0
+    new_result = ""
+    for el in result:
+        if el.capitalize() in alphabet.capitalize():
+            if len(el) > len(new_result):
+                new_result = el
+                record_holder += len(el)
+    return new_result
+
+
+print(longest_substring("abcabcdEfGhijkklmnabcdefghijKLMNOP"))
 
 class Student:
     """Student class."""
