@@ -69,10 +69,7 @@ def get_names_from_results(results_string: str, min_result: int) -> list:
     for name_score in coma_sep:
         name_separated_score = name_score.split(" ")
 
-        if len(name_separated_score) == 0:
-            continue
-
-        if name_separated_score[0] == "":
+        if len(name_separated_score) == 0 or len(name_separated_score) == 1:
             continue
 
         if int(name_separated_score[len(name_separated_score) - 1]) >= min_result:
@@ -86,7 +83,7 @@ def get_names_from_results(results_string: str, min_result: int) -> list:
 
     return result_list
 
-print(get_names_from_results("peeter 11,000 22,  33", 11))
+print(get_names_from_results("peeter 11,000 22,33", 11))
 
 def tic_tac_toe(game: list) -> int:
     """
