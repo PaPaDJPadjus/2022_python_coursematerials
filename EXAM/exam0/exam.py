@@ -28,9 +28,6 @@ def find_capital_letters(s: str) -> str:
     return final_string
 
 
-print(find_capital_letters("LoLhahaHA"))
-
-
 def close_far(a: int, b: int, c: int) -> bool:
     """
     Return if one value is "close" and other is "far".
@@ -44,7 +41,6 @@ def close_far(a: int, b: int, c: int) -> bool:
     close_far(1, 2, 3) => False
     close_far(4, 1, 3) => True
     """
-    pass
 
 
 def get_names_from_results(results_string: str, min_result: int) -> list:
@@ -65,8 +61,30 @@ def get_names_from_results(results_string: str, min_result: int) -> list:
     get_names_from_results("ago 123,peeter 11,kitty11!! 33", 11) => ["ago", "peeter",  "kitty11!!"]
     get_names_from_results("ago 123,peeter 11,kusti riin 14", 12) => ["ago", "kusti riin"]
     """
-    pass
+    result_list = []
 
+    coma_sep = results_string.split(",")
+    for name_score in coma_sep:
+        name_separated_score = name_score.split(" ")
+
+        if len(name_separated_score) == 0:
+            continue
+
+        if int(name_separated_score[len(name_separated_score) - 1]) >= min_result:
+
+            name = ""
+            space_counter = 0
+            for el in name_separated_score:
+                if el != name_separated_score[len(name_separated_score) - 1]:
+                    if space_counter != 0:
+                        name += " "
+                    name += el
+                    space_counter += 1
+            result_list.append(name)
+
+    return result_list
+
+print(get_names_from_results("ago 123,peeter 11,kusti riin 14", 12))
 
 def tic_tac_toe(game: list) -> int:
     """
