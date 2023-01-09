@@ -72,19 +72,16 @@ def get_names_from_results(results_string: str, min_result: int) -> list:
 
         if int(name_separated_score[len(name_separated_score) - 1]) >= min_result:
 
-            name = ""
-            space_counter = 0
+            name = []
             for el in name_separated_score:
                 if el != name_separated_score[len(name_separated_score) - 1]:
-                    if space_counter != 0:
-                        name += " "
-                    name += el
-                    space_counter += 1
-            result_list.append(name)
+                    name.append(el)
+            name_str = " ".join(name)
+            result_list.append(name_str)
 
     return result_list
 
-print(get_names_from_results("ago 123,peeter 11,kusti riin 14", 12))
+print(get_names_from_results("ago ag ago 123,peeter 11,000 0,kitty11!! 33", 11))
 
 def tic_tac_toe(game: list) -> int:
     """
