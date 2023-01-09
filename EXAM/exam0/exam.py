@@ -276,7 +276,7 @@ def get_top_student_with_credit_points(students: list, min_credit_points: int):
     If there are no students with enough credit points, return None.
     If several students have the same average score, return the first.
     """
-    sorted_students = sorted(students, key=lambda s: (s.average_grade, s.credit_points))
+    sorted_students = sorted(students, key=lambda s: (-s.average_grade, s.credit_points))
 
     for etudient in sorted_students:
         if etudient.credit_points >= min_credit_points:
