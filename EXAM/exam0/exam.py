@@ -72,6 +72,9 @@ def get_names_from_results(results_string: str, min_result: int) -> list:
         if len(name_separated_score) == 0 or len(name_separated_score) == 1:
             continue
 
+        if name_separated_score[0].isdigit():
+            continue
+
         if int(name_separated_score[len(name_separated_score) - 1]) >= min_result:
 
             name = []
