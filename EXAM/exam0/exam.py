@@ -41,7 +41,43 @@ def close_far(a: int, b: int, c: int) -> bool:
     close_far(1, 2, 3) => False
     close_far(4, 1, 3) => True
     """
+    if a == b or a + 1 == b or a - 1 == b:
+        if a >= b:
+            if a > c:
+                if a - c >= 2:
+                    return True
+                return False
+            if c - a >= 2:
+                return True
+            return False
+        if a < b:
+            if b > c:
+                if b - c >= 2:
+                    return True
+                return False
+            if c - b >= 2:
+                return True
+            return False
 
+    elif a == c or a + 1 == c or a - 1 == c:
+        if a >= c:
+            if a > b:
+                if a - b >= 2:
+                    return True
+                return False
+            if b - a >= 2:
+                return True
+            return False
+        if a < c:
+            if b > c:
+                if b - c >= 2:
+                    return True
+                return False
+            if c - b >= 2:
+                return True
+            return False
+
+print(close_far(1, 10, 2))
 
 def get_names_from_results(results_string: str, min_result: int) -> list:
     """
@@ -72,9 +108,6 @@ def get_names_from_results(results_string: str, min_result: int) -> list:
         if len(name_separated_score) == 0 or len(name_separated_score) == 1:
             continue
 
-        if name_separated_score[0].isdigit():
-            continue
-
         if int(name_separated_score[len(name_separated_score) - 1]) >= min_result:
 
             name = []
@@ -86,7 +119,6 @@ def get_names_from_results(results_string: str, min_result: int) -> list:
 
     return result_list
 
-print(get_names_from_results("peeter 11,000 22,33", 11))
 
 def tic_tac_toe(game: list) -> int:
     """
