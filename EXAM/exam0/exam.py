@@ -76,6 +76,8 @@ def close_far(a: int, b: int, c: int) -> bool:
             if c - b >= 2:
                 return True
             return False
+    else:
+        return False
 
 print(close_far(1, 10, 2))
 
