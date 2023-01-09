@@ -215,7 +215,7 @@ def longest_substring(text: str) -> str:
     """
     if 1 >= len(text):
         return text
-    alphabet = "abcdefghijklmnopqrstuvõäöüxyz"
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
     result = []
     longest_record = 0
     for start in range(len(text)):
@@ -236,7 +236,7 @@ def longest_substring(text: str) -> str:
     return new_result
 
 
-print(longest_substring("abcabcdEfGhijkklmnabcdefghijKLMNOP"))
+print(longest_substring("abcabcdEfGqwertyuiop"))
 
 class Student:
     """Student class."""
