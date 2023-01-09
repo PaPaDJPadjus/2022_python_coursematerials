@@ -79,7 +79,6 @@ def close_far(a: int, b: int, c: int) -> bool:
     else:
         return False
 
-print(close_far(1, 10, 2))
 
 def get_names_from_results(results_string: str, min_result: int) -> list:
     """
@@ -142,7 +141,40 @@ def tic_tac_toe(game: list) -> int:
     :param game
     :return: winning player id
     """
-    pass
+    # rows
+    if game[0] == [1, 1, 1] or game[1] == [1, 1, 1] or game[2] == [1, 1, 1]:
+        return 1
+    if game[0] == [2, 2, 2] or game[1] == [2, 2, 2] or game[2] == [2, 2, 2]:
+        return 2
+
+    # diagonals
+    if game[0][0] == 1 and game[1][1] == 1 and game[2][2] == 1:
+        return 1
+    if game[0][0] == 2 and game[1][1] == 2 and game[2][2] == 2:
+        return 2
+
+    if game[0][2] == 1 and game[1][1] == 1 and game[2][0] == 1:
+        return 1
+    if game[0][2] == 2 and game[1][1] == 2 and game[2][0] == 2:
+        return 2
+
+    # columns
+    if game[0][0] == 1 and game[1][0] == 1 and game[2][0] == 1:
+        return 1
+    if game[0][1] == 1 and game[1][1] == 1 and game[2][1] == 1:
+        return 1
+    if game[0][2] == 1 and game[1][2] == 1 and game[2][2] == 1:
+        return 1
+
+    if game[0][0] == 2 and game[1][0] == 2 and game[2][0] == 2:
+        return 2
+    if game[0][1] == 2 and game[1][1] == 2 and game[2][1] == 2:
+        return 2
+    if game[0][2] == 2 and game[1][2] == 2 and game[2][2] == 2:
+        return 2
+
+    else:
+        return 0
 
 
 def rainbows(field: str, lower=False) -> int:
